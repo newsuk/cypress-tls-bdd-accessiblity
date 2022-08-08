@@ -15,7 +15,7 @@ slack-fail-post-step: &slack-fail-post-step
         
 jobs:
   cypress-tests:
-    working_directory: ./TLS_E2E_Automation/
+  
 
     docker:
       - image: cimg/node:18.7.0
