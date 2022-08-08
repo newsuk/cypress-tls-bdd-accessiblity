@@ -18,7 +18,7 @@ jobs:
   
 
     docker:
-      - image: cimg/node:18.7.0
+      - image: ubuntu-2004:202010-01
 
     steps:
       - checkout
