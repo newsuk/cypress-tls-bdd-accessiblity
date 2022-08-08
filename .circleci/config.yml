@@ -37,6 +37,7 @@ jobs:
             npx cypress run  --spec "$( circleci tests glob cypress/e2e/ACCESSIBILITY/*.js | circleci tests split --split-by=filesize | paste -sd "," -)"
       - store_artifacts:
           path: cypress/screenshots
+          
 workflows:
   tests:
     jobs:
