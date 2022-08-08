@@ -37,11 +37,12 @@ jobs:
           command: |
               cd TLS_E2E_Automation 
               npm install
-    
+      - working_directory: ./TLS_E2E_Automation/
       - run:
           name: Run Cypress tests
           command: |
             npx cypress run  --env ENV=dev --spec 'cypress/e2e/ACCESSIBILITY/Home.cy.js'
+
 
       - store_artifacts:
           path: cypress/screenshots
