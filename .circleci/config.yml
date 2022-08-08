@@ -48,9 +48,9 @@ jobs:
       - run:
           name: Install Cypress 
           command: |
-            yarn add cypress --dev
-            yarn add -D cypress-wait-until
-            yarn add -D faker 
+            npm add cypress --dev
+            npm add -D cypress-wait-until
+            npm add -D faker 
       - run:
           name: Run Cypress tests
           command: |
