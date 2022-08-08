@@ -15,7 +15,6 @@ slack-fail-post-step: &slack-fail-post-step
         
 jobs:
   cypress-tests:
-    working_directory: ~/project
     docker:
       - image: cimg/base:stable
 
