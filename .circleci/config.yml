@@ -41,11 +41,8 @@ jobs:
 workflows:
   tests:
     jobs:
-      - cypress-tests:
-          <<: *slack-fail-post-step
-          filters:
-            branches:
-              only: main
+      - cypress-tests
+        
 
 
 
