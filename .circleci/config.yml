@@ -15,8 +15,6 @@ slack-fail-post-step: &slack-fail-post-step
         
 jobs:
   cypress-tests:
-    working_directory: ./TLS_E2E_Automation
-  
 
     docker:
       - image: cimg/base:2021.04
@@ -42,6 +40,8 @@ jobs:
       - run:
           name: Run Cypress tests
           command: |
+            pwd
+            cd TLS_E2E_Automation
             npx cypress run  --env ENV=dev --spec 'cypress/e2e/ACCESSIBILITY/Home.cy.js'
 
 
