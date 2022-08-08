@@ -27,7 +27,9 @@ jobs:
       # install dependencies
       - run:
           name: install dependencies
-          command: npm install
+          command: |
+              cd TLS_E2E_Automation 
+              npm install
       # save any changes to the cache
       - save_cache:
           key: v1-deps-{{ checksum "package.json" }}
