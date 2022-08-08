@@ -28,6 +28,7 @@ jobs:
           command: |
             cd ~
             curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+            sudo apt-get install npm
       
       - restore_cache:
           key: v1-deps-{{ checksum "package.json" }}
