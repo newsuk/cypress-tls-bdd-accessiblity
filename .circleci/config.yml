@@ -22,6 +22,8 @@ jobs:
     steps:
     
       - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
       - run:
           name: Install Node.js
           command: |
@@ -36,12 +38,17 @@ jobs:
           command: |
               cd TLS_E2E_Automation 
               npm install
+      - save_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+          paths:
+            - node_modules
       
       - run:
           name: Run Cypress tests
           command: |
             pwd
             cd TLS_E2E_Automation
+            pwd
             npx cypress run  --env ENV=dev --spec 'cypress/e2e/ACCESSIBILITY/Home.cy.js'
 
 
