@@ -22,13 +22,7 @@ jobs:
     steps:
     
       - checkout
-      - run:
-          name: Install Cypress 
-          command: |
-            nvm current node -v 
-            yarn add cypress --dev
-            yarn add -D cypress-wait-until
-            yarn add -D faker 
+      
       
       - restore_cache:
           key: v1-deps-{{ checksum "package.json" }}
@@ -51,7 +45,13 @@ jobs:
           paths:
             - node_modules
 
-     
+      - run:
+          name: Install Cypress 
+          command: |
+            nvm current node -v 
+            yarn add cypress --dev
+            yarn add -D cypress-wait-until
+            yarn add -D faker 
       - run:
           name: Run Cypress tests
           command: |
