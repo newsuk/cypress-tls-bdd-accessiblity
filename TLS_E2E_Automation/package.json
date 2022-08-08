@@ -1,0 +1,42 @@
+{
+  "name": "tls_e2e_automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "test": "cypress",
+  "scripts": {
+    "cypress:open": "./node_modules/.bin/cypress open",
+    "cypress:run-dev": "./node_modules/.bin/cypress run --env ENV=dev",
+    "cypress:open-dev": "./node_modules/.bin/cypress open --env ENV=dev",
+    "cypress:run-staging": "./node_modules/.bin/cypress run --env ENV=staging",
+    "cypress:open-staging": "./node_modules/.bin/cypress open --env ENV=staging",
+    "cypress:run-prod": "./node_modules/.bin/cypress run --env ENV=prod",
+    "cypress:open-prod": "./node_modules/.bin/cypress open --env ENV=prod"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cucumber-html-reporter": "^5.5.0",
+    "cypress": "^10.3.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-wait-until": "^1.7.2",
+    "multiple-cucumber-html-reporter": "^1.20.0"
+  },
+  "dependencies": {
+    "axe-core": "^4.4.2",
+    "cucumber": "^6.0.5",
+    "cypress-axe": "^1.0.0",
+    "cypress-waitfor": "^1.1.0",
+    "eslint": "^8.15.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "./cypress/e2e",
+    "nonGlobalStepDefinitions": true,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "reports",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  }
+}

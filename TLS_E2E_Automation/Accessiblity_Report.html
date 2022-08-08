@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Accessiblity Tests </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <style>
+       table.table-bordered {
+  border: 1px solid black;
+  margin-top: 20px;
+}
+
+table.table-bordered>tbody>tr>th {
+  border: 1px solid black;
+}
+
+table.table-bordered>tbody>tr>td {
+  border: 1px solid black;
+}
+
+
+        </style>  
+
+</head>
+<body style="background-color: rgb(238, 224, 232)">
+
+    <div class="container">
+        <h3 style="color: lightcoral"><center>Accessiblity Test Report TLS</center></h3>
+        <br />
+        <div id="jsonOutput">
+        
+        </div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    const today = new Date();
+
+	const date = today.getFullYear() + '-' + ( today.getMonth() + 1 ) + '-' + today.getDate();
+	const dir = './' + date;
+
+    var files = [
+    dir + '/Login_Page.json',
+    dir + '/CurrentIssue_Page.json'
+    ];
+    for (let i = 0; i < files.length; i++) {
+        
+      fetch(files[i])
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (jsonOutput) {
+            fileNAME = files[i].split('/')[2].replace('.json','').replace('_', ' ');
+            alert(fileNAME)
+            tableData = appendData(jsonOutput, fileNAME);
+            last(tableData, fileNAME);
+
+           
+        })
+        .catch(function (err) {
+            console.log('error: ' + err);
+        });
+    }
+    
+    function last(tableData, fileNAME){
+    
+        var th = document.createElement("h3");
+            th.style.color = 'SlateBlue';
+            th.style.textAlign = 'center'
+            th.innerHTML = fileNAME;
+        
+        var employeedivcontainer = document.getElementById("jsonOutput");
+        employeedivcontainer.appendChild(th);
+        employeedivcontainer.appendChild(tableData);
+
+}
+   
+        function escapeHtml(unsafe)
+        {
+            var text = document.createTextNode(unsafe);
+            var p = document.createElement('p');
+            p.appendChild(text);
+            return p.innerHTML;
+       
+        }
+
+    function appendData(jsonOutput, fileNAME)
+    {
+       
+        var tablecolumns = [];
+        for (var i = 0; i < jsonOutput.length; i++) {
+            for (var key in jsonOutput[i]) {
+                if (tablecolumns.indexOf(key) === -1) {
+                    tablecolumns.push(key);
+                }
+            }
+        }
+
+        //Creating html table and adding class to it
+        var tableData = document.createElement("table");
+        tableData.classList.add("table");
+       // tableData.classList.add("table-striped");
+        tableData.classList.add("table-bordered");
+        tableData.classList.add("table-hover")
+
+        //Creating header of the HTML table using
+        //tr
+        var tr = tableData.insertRow(-1);
+
+        for (var i = 0; i < tablecolumns.length; i++) {
+            //header
+            var th = document.createElement("th");
+            th.style.color = 'green';
+            document.body.appendChild(th);
+            //th.innerHTML = fileNAME;
+            th.innerHTML = tablecolumns[i];
+            tr.appendChild(th);
+        }
+
+        // Add  JSON data in table as tr or rows
+        for (var i = 0; i < jsonOutput.length; i++) {
+            tr = tableData.insertRow(-1);
+            for (var j = 0; j < tablecolumns.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = escapeHtml(jsonOutput[i][tablecolumns[j]]);
+            }
+        }
+
+        //Final step , append html table to the container div
+       return tableData;
+    
+       
+    }
+
+
+
+</script>
