@@ -31,25 +31,17 @@ jobs:
             sudo apt-get install -y nodejs
             sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
 
-            
-      
-      - restore_cache:
-          key: v1-deps-{{ checksum "package.json" }}
       # install dependencies
       - run:
           name: install dependencies
           command: |
               cd TLS_E2E_Automation 
               npm install
-      # save any changes to the cache
-      - save_cache:
-          key: v1-deps-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+    
       - run:
           name: Run Cypress tests
           command: |
-            npx cypress run  --spec "$( circleci tests glob cypress/e2e/ACCESSIBILITY/*.js | circleci tests split --split-by=filesize | paste -sd "," -)"
+            npx cypress run  --spec "$( circleci tests glob TLS_E2E_Automation/cypress/e2e/ACCESSIBILITY/Home.cy.js | circleci tests split --split-by=filesize | paste -sd "," -)"
       - store_artifacts:
           path: cypress/screenshots
           
