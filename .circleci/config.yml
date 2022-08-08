@@ -20,6 +20,9 @@ jobs:
 
     steps:
       - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+      
       # install dependencies
       - run:
           name: install dependencies
