@@ -15,13 +15,14 @@ slack-fail-post-step: &slack-fail-post-step
         
 jobs:
   cypress-tests:
+    working_directory: ./TLS_E2E_Automation
   
 
     docker:
       - image: cimg/base:2021.04
 
     steps:
-     
+    
       - checkout
       - run:
           name: Install Node.js
@@ -37,7 +38,7 @@ jobs:
           command: |
               cd TLS_E2E_Automation 
               npm install
-      - working_directory: ./TLS_E2E_Automation/
+      
       - run:
           name: Run Cypress tests
           command: |
