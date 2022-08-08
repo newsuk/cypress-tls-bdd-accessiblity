@@ -18,7 +18,7 @@ jobs:
   
 
     docker:
-      - image: ubuntu-2004:202201-02
+      - image: cimg/base:2021.04
 
     steps:
       - checkout
