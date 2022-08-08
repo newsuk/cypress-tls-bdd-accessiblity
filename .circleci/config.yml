@@ -12,6 +12,7 @@ slack-fail-post-step: &slack-fail-post-step
         event: fail
         template: basic_fail_1
         channel: C03SQRV07R8
+        
 jobs:
   cypress-tests:
     working_directory: ~/project
