@@ -22,18 +22,13 @@ jobs:
 
     steps:
       - checkout
-      - restore_cache:
-          key: v1-deps-{{ checksum "package.json" }}
       
       # install dependencies
       - run:
           name: install dependencies
           command: npm install
       # save any changes to the cache
-      - save_cache:
-          key: v1-deps-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+     
       - run:
           name: Run Cypress tests
           command: |
