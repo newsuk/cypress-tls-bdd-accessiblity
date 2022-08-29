@@ -15,39 +15,53 @@ slack-fail-post-step: &slack-fail-post-step
         
 jobs:
   cypress-tests:
-  
 
     docker:
       - image: cimg/base:2021.04
 
     steps:
-     
+    
       - checkout
+      
+      
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
       - run:
           name: Install Node.js
           command: |
             cd ~
             curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
             sudo apt-get install -y nodejs
-            
-      
-      - restore_cache:
-          key: v1-deps-{{ checksum "package.json" }}
+            sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+
       # install dependencies
       - run:
           name: install dependencies
           command: |
               cd TLS_E2E_Automation 
               npm install
-      # save any changes to the cache
       - save_cache:
           key: v1-deps-{{ checksum "package.json" }}
           paths:
             - node_modules
+
+      - run:
+          name: Install Cypress 
+          command: |
+            pwd
+            cd TLS_E2E_Automation
+            npm add cypress --dev
+            npm add -D cypress-wait-until
+            npm add -D faker 
       - run:
           name: Run Cypress tests
           command: |
-            npx cypress run  --spec "$( circleci tests glob cypress/e2e/PERFORMANCE/Perfromance.cy.js | circleci tests split --split-by=filesize | paste -sd "," -)"
+            pwd
+            cd TLS_E2E_Automation
+            pwd
+            npx cypress run  --env ENV=dev --spec 'cypress/e2e/PERFORMANCE/Perfromance.cy.js'
+
+
       - store_artifacts:
           path: cypress/screenshots
           
@@ -56,3 +70,11 @@ workflows:
     jobs:
       - cypress-tests
         
+
+
+
+
+
+
+
+
