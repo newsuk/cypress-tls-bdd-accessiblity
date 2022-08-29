@@ -44,7 +44,7 @@ module.exports = ( on ) => {
 	
 	  on('task', {
 		lighthouse: lighthouse((lighthouseReport) => { 
-		  fs.writeFileSync('cypress/.run/lhreport.html', ReportGenerator.generateReport(lighthouseReport.lhr, 'html')); 
+		  fs.writeFileSync('cypress/screenshots/lhreport.html', ReportGenerator.generateReport(lighthouseReport.lhr, 'html')); 
 		}),
 		pa11y: pa11y(), 
 	  });
