@@ -18,16 +18,17 @@
   "devDependencies": {
     "cucumber-html-reporter": "^5.5.0",
     "cypress": "^10.3.0",
+    "cypress-audit": "^1.1.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-wait-until": "^1.7.2",
+    "lighthouse": "^9.6.6",
     "multiple-cucumber-html-reporter": "^1.20.0"
   },
   "dependencies": {
     "axe-core": "^4.4.2",
     "cucumber": "^6.0.5",
     "cypress-axe": "^1.0.0",
-    "cypress-waitfor": "^1.1.0",
-    "eslint": "^8.15.0"
+    "cypress-waitfor": "^1.1"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "./cypress/e2e",
