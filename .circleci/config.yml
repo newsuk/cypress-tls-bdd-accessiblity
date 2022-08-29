@@ -24,3 +24,57 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+
+version: 2.1
+orbs:
+  slack: circleci/slack@4.1
+slack-fail-post-step: &slack-fail-post-step
+  context:
+    - swing-cypress-ui-api-slack
+  post-steps:
+    - slack/notify:
+        branch_pattern: .+
+        event: fail
+        template: basic_fail_1
+        channel: C039YF77KMY
+jobs:
+  cypress-tests:
+    working_directory: ~/project
+    machine: true
+    resource_class: nukengprod/pubsys-circleci-runner-dev
+    parallelism: 2
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+      # install dependencies
+      - run:
+          name: install dependencies
+          command: npm install
+      # save any changes to the cache
+      - save_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Run Cypress tests
+          command: |
+            npx cypress run  --spec "$( circleci tests glob cypress/integration/*.feature | circleci tests split --split-by=filesize | paste -sd "," -)"
+      - store_artifacts:
+          path: cypress/screenshots
+workflows:
+  tests:
+    jobs:
+      - cypress-tests:
+          <<: *slack-fail-post-step
+          filters:
+            branches:
+              only: main
+
+
+
+
+
+
+
+
