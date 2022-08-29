@@ -64,6 +64,7 @@ jobs:
 
       - store_artifacts:
           path: cypress/screenshots
+                cypress/.run/ilhreport.html
           
 workflows:
   tests:
