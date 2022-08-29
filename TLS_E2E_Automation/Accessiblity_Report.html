@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>Accessiblity Tests </title>
+    <meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -43,18 +47,22 @@ table.table-bordered>tbody>tr>td {
 	const dir = './' + date;
 
     var files = [
-    dir + '/Login_Page.json',
-    dir + '/CurrentIssue_Page.json'
+    dir + '/Home_Page.json',
+    dir + '/CurrentIssue_Page.json',
+    dir + '/Article_Page.json',
+    dir + '/Topics_LongReads_Page.json',
+    dir + '/Categories_Page.json',
+    dir + '/Archive_Page1.json'
     ];
     for (let i = 0; i < files.length; i++) {
-        
+        alert(files[i]) 
       fetch(files[i])
         .then(function (response) {
             return response.json();
         })
         .then(function (jsonOutput) {
             fileNAME = files[i].split('/')[2].replace('.json','').replace('_', ' ');
-            alert(fileNAME)
+           // alert(fileNAME)
             tableData = appendData(jsonOutput, fileNAME);
             last(tableData, fileNAME);
 
@@ -102,7 +110,7 @@ table.table-bordered>tbody>tr>td {
         //Creating html table and adding class to it
         var tableData = document.createElement("table");
         tableData.classList.add("table");
-       // tableData.classList.add("table-striped");
+        tableData.classList.add("table-striped");
         tableData.classList.add("table-bordered");
         tableData.classList.add("table-hover")
 
@@ -115,7 +123,6 @@ table.table-bordered>tbody>tr>td {
             var th = document.createElement("th");
             th.style.color = 'green';
             document.body.appendChild(th);
-            //th.innerHTML = fileNAME;
             th.innerHTML = tablecolumns[i];
             tr.appendChild(th);
         }

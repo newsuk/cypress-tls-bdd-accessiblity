@@ -1,0 +1,434 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Validations on Header and Footer",
+    "line": 1,
+    "id": "validations-on-header-and-footer",
+    "tags": [],
+    "uri": "genericPage.feature",
+    "elements": [
+      {
+        "id": "validations-on-header-and-footer;verify-social-media-buttons-and-links-are-visible-on-header",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Verify Social media buttons and links are visible on Header",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 4
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "duration": 3147000000,
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Validate the Social media icons and its links",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;verify-subscribe,login-button-and-search-icon-are-visible",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Verify Subscribe,Login button and search icon are visible",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 8
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Validate Subscribe,Login button and search icon are visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;verify-archive-icon-is-visible",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Verify Archive icon is visible",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 11
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "Validate Archive icon is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;verify-shop-icon-is-visible",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "Verify Shop icon is visible",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 14
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "Validate Shop icon is visible",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;verify-explore-on-header",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Verify Explore on Header",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 17
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "Validate Explore title",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;verify-explore-categories",
+        "keyword": "Scenario",
+        "line": 21,
+        "name": "Verify Explore Categories",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 20
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 22,
+            "name": "Validate Explore title and categories",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;verify-some-links-in-the-new-to-the-tls?-page",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "Verify some links in the NEW TO THE TLS? page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 25,
+            "name": "User navigates to new to tls page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "Validate all links in the page",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;valiate-footer-logo-and-its-main-topics",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "Valiate Footer logo and its main topics",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 28
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "Valiate Footer logo and its topics",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;validate-terms-and-conditions",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Validate Terms and conditions",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 31
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "Validate Terms and conditions, Privacy and Cookie",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;validate-podcasts",
+        "keyword": "Scenario",
+        "line": 36,
+        "name": "Validate Podcasts",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 35
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 37,
+            "name": "Validate Apple Podcasts, Spotify and Google Podcasts",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;validate-aboutus",
+        "keyword": "Scenario",
+        "line": 39,
+        "name": "Validate Aboutus",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 38
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 40,
+            "name": "Validate page is navigates to Aboutus and its has header and logo",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-header-and-footer;validate-the-utags-and-tealium-check",
+        "keyword": "Scenario",
+        "line": 42,
+        "name": "Validate the Utags and Tealium check",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 41
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 3,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (http://localhost:49421/__cypress/tests?p=cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/genericPage.feature:554:6)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 43,
+            "name": "Validate Utag data values",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 44,
+            "name": "Validate appropriate Tealium JS is loading for each environment in home page",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

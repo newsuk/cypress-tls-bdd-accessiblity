@@ -1,4 +1,6 @@
 const { defineConfig } = require( 'cypress' );
+//const ReportGenerator = require('lighthouse/lighthouse-core/report/report-generator'); 
+//const ReportGenerator = require('lighthouse/report/generator/report-generator');
 
 module.exports = defineConfig( {
 	projectId: 'prise6',
@@ -20,6 +22,22 @@ module.exports = defineConfig( {
 		// We've imported your old cypress plugins here.
 		// You may want to clean this up later by importing these.
 		setupNodeEvents( on, config ) {
+			/*on('before:browser:launch', (browser, launchOptions) => {
+
+		prepareAudit(launchOptions); 
+		if (browser.name === 'chrome' && browser.isHeadless) {
+		  launchOptions.args.push('--disable-gpu');
+		  return launchOptions;
+		}
+	  });
+	
+	  on('task', {
+		lighthouse: lighthouse((lighthouseReport) => { 
+		  fs.writeFileSync('build/cypress/lhreport.html', ReportGenerator.generateReport(lighthouseReport.lhr, 'html')); 
+		}),
+		pa11y: pa11y(), 
+	  });*/
+
 			return require( './cypress/plugins/index.js' )( on, config );
 		},
 		excludeSpecPattern: [ '*.js', '*.md' ],

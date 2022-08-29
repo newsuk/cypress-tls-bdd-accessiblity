@@ -23,7 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
+//import '@cypress-audit/lighthouse/commands';
+import 'cypress-audit/commands';
+export {};
 // Page Elements
 const HOME_PAGE_TLS_LOGO = '.tls-header-navigation__logo';
 const PAGE_TITLE = 'TLS';
@@ -125,6 +127,13 @@ Cypress.Commands.add( 'validateUtagsDataValuesForGuestUser', () => {
 			expect( win.utag_data.registration_type ).to.equal( GUEST );
 		} );
 } );
+
+Cypress.Commands.add( 'navigateToPage', (page) => {
+	cy.url().then(url => {
+		cy.visit(url + page)
+	});
+});
+
 
 Cypress.Commands.add( 'logger', ( reporter = {} ) => {
 	cy.window( { log: false } )

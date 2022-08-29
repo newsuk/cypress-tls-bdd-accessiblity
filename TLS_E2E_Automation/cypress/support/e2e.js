@@ -35,7 +35,7 @@ before( () => {
 		//Corresponded environment url is picked
 		const url = Cypress.env( `${ environment }_url` );
 		//Load the URL
-		cy.visit( url );
+		//cy.visit( "https://glebbahmutov.com/blog/" );
 		//Accept the cookie banner
 		cy.acceptCookieBanner();
 		Cypress.Cookies.defaults( {
