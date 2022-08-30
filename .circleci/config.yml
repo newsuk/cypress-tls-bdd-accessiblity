@@ -66,7 +66,7 @@ jobs:
             echo "my artifact file" > /tmp/art-1
              mkdir /tmp/artifacts
       - store_artifacts:
-          path: /tmp/art-1
+          path: cypress/screenshots
           destination: artifact-file
       - store_artifacts:
           path: cypress/screenshots
