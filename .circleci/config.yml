@@ -19,7 +19,7 @@ jobs:
     executor: lighthouse-check/default
     steps:
       - lighthouse-check/audit:
-          urls: https://the-tls.co.uk/
+          urls: https://www.google.com/
       - lighthouse-check/validate-status:
           minAccessibilityScore: '50'
           minBestPracticesScore: '50'
