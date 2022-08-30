@@ -3,6 +3,7 @@
 version: 2.1
 orbs:
   slack: circleci/slack@4.1
+  lighthouse-check: foo-software/lighthouse-check@0.0.8
 slack-fail-post-step: &slack-fail-post-step
   context:
     - swing-cypress-ui-api-slack
@@ -14,6 +15,17 @@ slack-fail-post-step: &slack-fail-post-step
         channel: C03SQRV07R8
         
 jobs:
+  test: 
+    executor: lighthouse-check/default
+    steps:
+      - lighthouse-check/audit:
+          urls: https://the-tls.co.uk/
+      - lighthouse-check/validate-status:
+          minAccessibilityScore: '50'
+          minBestPracticesScore: '50'
+          minPerformanceScore: '99'
+          minProgressiveWebAppScore: '50'
+          minSeoScore: '50'
   cypress-tests:
 
     docker:
@@ -76,6 +88,7 @@ workflows:
   tests:
     jobs:
       - cypress-tests
+      - test
         
 
 
