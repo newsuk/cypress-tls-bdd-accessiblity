@@ -20,6 +20,9 @@ jobs:
     steps:
       - lighthouse-check/audit:
           urls: https://www.google.com/
+      - slack/notify:
+          channel: C03SQRV07R8
+          
       - lighthouse-check/validate-status:
           minAccessibilityScore: '50'
           minBestPracticesScore: '50'
