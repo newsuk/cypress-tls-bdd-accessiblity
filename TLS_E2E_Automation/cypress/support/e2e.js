@@ -19,6 +19,7 @@
  * Internal dependencies
  */
 import './commands';
+import '@bahmutov/cy-api';
 /**
  * External dependencies
  */
@@ -26,8 +27,10 @@ import 'cypress-axe';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-
+const environment = Cypress.env( 'ENV' );
 before( () => {
+	if(environment!='healthcheck')
+	{
 	if ( Cypress.config( 'firstRun' ) ) {
 		cy.log( 'Open the TLS Home page for environment =>' + Cypress.env( 'ENV' ) );
 		//Fetch the environment from the command line
@@ -53,6 +56,7 @@ before( () => {
 		Cypress.config( 'firstRun', false );
 		cy.log( 'TLS Home page for environment =>' + Cypress.env( 'ENV' ) + 'loaded' );
 	}
+}
 } );
 
 beforeEach( () => {
@@ -60,10 +64,16 @@ beforeEach( () => {
 } );
 
 after( () => {
+	if(environment!='healthcheck')
+	{
 	cy.log( 'Test Secenario Completed' );
 	Cypress.config( 'firstRun', true );
+	}
 } );
 
 afterEach( () => {
+	if(environment!='healthcheck')
+	{
 	cy.log( 'Test Completed' );
+	}
 } );

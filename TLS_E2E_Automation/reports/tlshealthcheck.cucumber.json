@@ -1,0 +1,33 @@
+[
+  {
+    "description": "As a user, I am checking production site is stable",
+    "keyword": "Feature",
+    "name": "Validating TLS production site",
+    "line": 2,
+    "id": "validating-tls-production-site",
+    "tags": [],
+    "uri": "tlshealthcheck.feature",
+    "elements": [
+      {
+        "id": "validating-tls-production-site;validate-tls-home-page",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Validate TLS home page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I am validating tls home page",
+            "result": {
+              "status": "passed",
+              "duration": 7359000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
