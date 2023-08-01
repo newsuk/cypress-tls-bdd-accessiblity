@@ -15,19 +15,19 @@ Then( 'I am validating tls home page', () => {
 	cy.validateTlsHomePage();
 } );
 
-Then( 'I am validating tls Archive page', () => {
+Then( 'I am validating tls archive page', () => {
 	cy.validateTlsArchivePage();
 } );
 
-Then( 'I am validating tls NewToTheTLS page', () => {
+Then( 'I am validating tls new to the tls page', () => {
 	cy.validateNewToTheTLSPage();
 } );
 
-Then( 'I am validating tls Highlights page', () => {
+Then('I am validating tls highlights page', () => {
 	cy.validateHighlightsPage();
 } );
 
-Then( 'I am validating tls LongReads page', () => {
+Then( 'I am validating tls long reads page', () => {
 	cy.validateLongReadsPage();
 } );
 
