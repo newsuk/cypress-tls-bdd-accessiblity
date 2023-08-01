@@ -23,7 +23,87 @@
             "name": "I am validating tls home page",
             "result": {
               "status": "passed",
-              "duration": 7359000000
+              "duration": 3981000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-archive-page",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Validate TLS Archive page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I am validating tls Archive page",
+            "result": {
+              "status": "passed",
+              "duration": 3254000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-newtothetls-page",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Validate TLS NewToTheTLS page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "I am validating tls NewToTheTLS page",
+            "result": {
+              "status": "passed",
+              "duration": 1910000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-highlights-page",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Validate TLS Highlights page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I am validating tls Highlights page",
+            "result": {
+              "status": "passed",
+              "duration": 1376000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-longreads-page",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "Validate TLS LongReads Page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "I am validating tls LongReads page",
+            "result": {
+              "status": "passed",
+              "duration": 771000000
             }
           }
         ]
