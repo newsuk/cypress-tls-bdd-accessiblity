@@ -14,7 +14,7 @@ module.exports = defineConfig( {
 		prod_url: 'https://www.the-tls.co.uk/',
 	},
 	viewportWidth: 1200,
-	viewportHeight: 660,
+	viewportHeight: 670,
 	e2e: {
 		// We've imported your old cypress plugins here.
 		// You may want to clean this up later by importing these.
