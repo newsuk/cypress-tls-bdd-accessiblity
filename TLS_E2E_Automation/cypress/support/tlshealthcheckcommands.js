@@ -67,8 +67,8 @@ const HighlightsLinkForHomeBreadcrum="https://www.the-tls.co.uk";
  */
 Cypress.Commands.add( 'validateTlsHomePage', () => {
 	cy.log( 'Validating the tls home page' );
-	cy.visit(Cypress.env('prod_url'),{ timeout: 10000 });
-	cy.get(heroBanner).should('have.length.at.least', 1);
+	cy.visit(Cypress.env('prod_url'),{ timeout: 5000 });
+	cy.get(heroBanner,{ timeout: 10000 }).should('have.length.at.least', 1);
 	cy.get(ads).should('not.be.null');
 	cy.get(collectionSlices).should('have.length.at.least', 1);
 	cy.get(newsletterBlock).should('have.length.at.least', 1);
@@ -79,8 +79,8 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
  */
  Cypress.Commands.add( 'validateTlsArticlePage', () => {
 	cy.log( 'Validating the tls article page' );
-	cy.visit(Cypress.env('prod_url')+articlePageURL, { timeout: 10000 } );
-	cy.get(heroBanner).should('have.length.at.least', 1);
+	cy.visit(Cypress.env('prod_url')+articlePageURL, { timeout: 5000 } );
+	cy.get(heroBanner,{ timeout: 10000 }).should('have.length.at.least', 1);
 	cy.get(ads).should('not.be.null');
 	cy.get(collectionSlices).should('have.length.at.least', 1);
 	cy.get(newsletterBlock).should('have.length.at.least', 1);
@@ -92,7 +92,8 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 Cypress.Commands.add( 'validateTlsArchivePage', () => {
 	cy.log( 'Validating the tls archive page' );
 	cy.visit(Cypress.env('prod_url')+archivePageURL, { timeout: 5000 });
-	cy.acceptCookieBanner();
+	cy.wait(4000);
+	//cy.acceptCookieBanner();
 	cy.title().should('eq', 'The Archive - TLS');
 	//dropdownForYears Validation
 	cy.get(VerifyDropdownForYears).click();

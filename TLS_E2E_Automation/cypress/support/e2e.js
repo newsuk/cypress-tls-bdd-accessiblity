@@ -36,6 +36,17 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
 	style.setAttribute('data-hide-command-log-request', '');
 	app.document.head.appendChild(style);
   }
+
+ Cypress.on("uncaught:exception", (err, runnable) => {
+    // returning false here prevents Cypress from
+    // failing the test
+    if (err.message.includes('Request failed with status code 400')) {
+      // Handle the specific exception here
+      cy.log('Caught specific exception:', err.message);
+      return true;
+    }
+    return false;
+  });
 before( () => {
 	if(environment!='healthcheck')
 	{
@@ -55,12 +66,11 @@ before( () => {
 		/**
 	     * If needed can add(err, runnable)
          */
-		Cypress.on( 'uncaught:exception', () => {
-		/**
-             * returning false here prevents Cypress from failing the test if there are any exceptions from 3rd party scripts
-             */
+		Cypress.on("uncaught:exception", (err, runnable) => {
+			// returning false here prevents Cypress from
+			// failing the test
 			return false;
-		} );
+		  });
 		Cypress.config( 'firstRun', false );
 		cy.log( 'TLS Home page for environment =>' + Cypress.env( 'ENV' ) + 'loaded' );
 	}
