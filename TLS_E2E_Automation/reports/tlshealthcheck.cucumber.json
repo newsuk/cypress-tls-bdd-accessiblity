@@ -20,10 +20,10 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 6,
-            "name": "I am validating tls home page",
+            "name": "I validate tls home page",
             "result": {
               "status": "passed",
-              "duration": 3981000000
+              "duration": 3572000000
             }
           }
         ]
@@ -40,19 +40,19 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "I am validating tls Archive page",
+            "name": "I validate tls archive page",
             "result": {
               "status": "passed",
-              "duration": 3254000000
+              "duration": 7356000000
             }
           }
         ]
       },
       {
-        "id": "validating-tls-production-site;validate-tls-newtothetls-page",
+        "id": "validating-tls-production-site;validate-tls-new-to-the-tls-page",
         "keyword": "Scenario",
         "line": 11,
-        "name": "Validate TLS NewToTheTLS page",
+        "name": "Validate TLS New To The TLS page",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -60,10 +60,10 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 12,
-            "name": "I am validating tls NewToTheTLS page",
+            "name": "I validate tls new to the tls page",
             "result": {
               "status": "passed",
-              "duration": 1910000000
+              "duration": 3185000000
             }
           }
         ]
@@ -80,10 +80,10 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 15,
-            "name": "I am validating tls Highlights page",
+            "name": "I validate tls highlights page",
             "result": {
               "status": "passed",
-              "duration": 1376000000
+              "duration": 3128000000
             }
           }
         ]
@@ -100,10 +100,10 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 18,
-            "name": "I am validating tls LongReads page",
+            "name": "I validate tls long reads page",
             "result": {
               "status": "passed",
-              "duration": 771000000
+              "duration": 1779000000
             }
           }
         ]

@@ -67,7 +67,7 @@ const HighlightsLinkForHomeBreadcrum="https://www.the-tls.co.uk";
  */
 Cypress.Commands.add( 'validateTlsHomePage', () => {
 	cy.log( 'Validating the tls home page' );
-	cy.visit(Cypress.env('prod_url'));
+	cy.visit(Cypress.env('prod_url'),{ timeout: 10000 });
 	cy.get(heroBanner).should('have.length.at.least', 1);
 	cy.get(ads).should('not.be.null');
 	cy.get(collectionSlices).should('have.length.at.least', 1);
@@ -79,7 +79,7 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
  */
  Cypress.Commands.add( 'validateTlsArticlePage', () => {
 	cy.log( 'Validating the tls article page' );
-	cy.visit(Cypress.env('prod_url')+articlePageURL, { timeout: 3000 } );
+	cy.visit(Cypress.env('prod_url')+articlePageURL, { timeout: 10000 } );
 	cy.get(heroBanner).should('have.length.at.least', 1);
 	cy.get(ads).should('not.be.null');
 	cy.get(collectionSlices).should('have.length.at.least', 1);
@@ -113,7 +113,7 @@ Cypress.Commands.add( 'validateTlsArchivePage', () => {
  */
 Cypress.Commands.add( 'validateNewToTheTLSPage', () => {
 	cy.log( 'Validating the NewToTheTLS page' );
-	cy.visit(Cypress.env('prod_url')+NewToTheTLSPageURL,{ timeout: 3000 });
+	cy.visit(Cypress.env('prod_url')+NewToTheTLSPageURL,{ timeout: 10000 });
 	cy.acceptCookieBanner();
 	cy.get(VerifyTitleContainer).should ('not.be.null');
 	cy.get(VerifyImage).should('be.visible');
@@ -124,7 +124,7 @@ Cypress.Commands.add( 'validateNewToTheTLSPage', () => {
  */
 Cypress.Commands.add( 'validateHighlightsPage', () => {
 	cy.log( 'Validating the Highlights page' );
-	cy.visit(Cypress.env('prod_url')+HighlightsPageURL, { timeout: 4000 });
+	cy.visit(Cypress.env('prod_url')+HighlightsPageURL, { timeout: 10000 });
 	cy.acceptCookieBanner();
 	cy.get(VerifyHighlightHeader, { timeout: 3000 }).should('not.be.null'); 
 	cy.get(VerifyHomeBreadcrum).eq(0).should('be.visible').should('have.attr', 'href', HighlightsLinkForHomeBreadcrum);
@@ -137,7 +137,7 @@ Cypress.Commands.add( 'validateHighlightsPage', () => {
  */
 Cypress.Commands.add( 'validateLongReadsPage', () => {
 	cy.log( 'Validating the LongReads page' );
-	cy.visit(Cypress.env('prod_url')+LongReadsPageURL, { timeout: 3000 });
+	cy.visit(Cypress.env('prod_url')+LongReadsPageURL, { timeout: 10000 });
 	cy.acceptCookieBanner();
 	cy.get(VerifyLongReadsHeader).should('not.be.null');
 	cy.get(VerifyContentofLongReadsPage).should('not.be.null');

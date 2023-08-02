@@ -15,6 +15,7 @@ module.exports = defineConfig( {
 	},
 	viewportWidth: 1200,
 	viewportHeight: 660,
+	"pageLoadTimeout": 10000,
 	e2e: {
 		// We've imported your old cypress plugins here.
 		// You may want to clean this up later by importing these.
