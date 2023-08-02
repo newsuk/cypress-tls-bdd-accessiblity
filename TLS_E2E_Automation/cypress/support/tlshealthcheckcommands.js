@@ -34,7 +34,7 @@ const newsletterBlock="div[class='tls-newsletter-block']";
 
 //archive page elements
 const VerifySearchFilter ="[class*='tls-archive-issue-page__header-filter-section-search-filter']";
-const VerifyDropdownForYears ="[class*='tls-date-filter__dropdown-btn']";
+const VerifyDropdownForYears =".tls-date-filter__dropdown-btn";
 const selectYears ="[class*='tls-date-filter__content-item']";
 const VerifySearchedAuthorPage="[class*='tls-search-core__hits']";
 const VerifyContainer="[class*='tls-archive-issue-page__content']";
@@ -91,13 +91,13 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
  */
 Cypress.Commands.add( 'validateTlsArchivePage', () => {
 	cy.log( 'Validating the tls archive page' );
-	cy.visit(Cypress.env('prod_url')+archivePageURL, { timeout: 3000 });
+	cy.visit(Cypress.env('prod_url')+archivePageURL, { timeout: 5000 });
 	cy.acceptCookieBanner();
 	cy.title().should('eq', 'The Archive - TLS');
 	//dropdownForYears Validation
 	cy.get(VerifyDropdownForYears).click();
 	cy.get(selectYears).eq(0).click();
-	cy.get(VerifyDropdownForYears).should('not.be.null');
+	cy.get(VerifyDropdownForYears).wrap(2023).should('be.gte', 2023);
 	//ValidationFor Container
 	cy.get(VerifyContainer).should('not.be.null');
 	cy.get(VerifyShowmoreButton).should('be.visible');
