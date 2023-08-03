@@ -84,6 +84,19 @@ const VerifyHomeBreadcrum=".tls-category__breadcrumbs > a";
 const VerifyLongReadsHeader="[class*='tls-aggregation tls-aggregation--large']";
 const VerifyContentofLongReadsPage="[class*='tls-aggregation-page__article-list']";
 
+//TLS Author page
+const verifyAuthorName="[class*='tls-aggregation-page__author-details-name']";
+
+//TLS Category page
+const verifyCategoryName="[class*='tls-collections-header__title']";
+const verifyCategorySubMenu="[class*='tls-aggregation-page__categorySubmenu']";
+const verifyCategoryBreadCrumbs="[class*='tls-category__breadcrumbs']";
+
+
+//TLS search Page 
+const verifySearchPageResults ="[class*='tls-search-core__hits']";
+const verifySearchBar="[class*='ais-SearchBox']";
+
 //url elements
 const buyPageURL="buy";
 const subscriptionPageURL="https://www.the-tls.co.uk/subscription";
@@ -98,6 +111,9 @@ const NewToTheTLSPageURL="new-to-the-tls/";
 const HighlightsPageURL="categories/highlights/";
 const LongReadsPageURL="topics/long-reads/";
 const HighlightsLinkForHomeBreadcrum="https://www.the-tls.co.uk";
+const authorPageURL="authors/david-herd/";
+const categoryPageURL="categories/culture/";
+const searchPageURL="/?s";
 
 /**
  * Author : Balaji Krishnan
@@ -257,4 +273,50 @@ Cypress.Commands.add( 'validateLongReadsPage', () => {
 	cy.get(VerifyContentofLongReadsPage).should('be.visible');
 	cy.get(VerifyShowmoreButton).should('be.visible');
 } );
+
+/**
+
+Author : Kavinprabu S M
+validate the TLS Author page
+*/
+Cypress.Commands.add('validateAuthorPage', () => {
+	cy.log('Validating TLS Author page');
+	cy.visit(Cypress.env('prod_url')+authorPageURL,{timeout: 10000});
+	cy.acceptCookieBanner();
+	cy.get(verifyAuthorName).should('have.text', 'David Herd');
+});
+
+/**
+
+Author : Kavinprabu S M
+validate the TLS Category page
+*/
+Cypress.Commands.add('validateCategoryPage', () => {
+	cy.log('Validating TLS Category page');
+	cy.visit(Cypress.env('prod_url')+categoryPageURL,{timeout: 10000});
+	cy.acceptCookieBanner();
+	cy.get(verifyCategoryName).should('have.text', 'Culture');
+	cy.get(verifyCategorySubMenu).should('be.visible');
+	cy.get(verifyCategoryBreadCrumbs).should('exist');
+});
+
+/**
+
+Author : Kavinprabu S M
+validate the TLS Search page
+*/
+Cypress.Commands.add('validateSearchPage', () => {
+	cy.log('Validating TLS Search page');
+	cy.visit(Cypress.env('prod_url')+searchPageURL,{timeout: 10000});
+	cy.acceptCookieBanner();
+	cy.get(verifySearchBar).should('be.visible');
+	cy.get(verifySearchPageResults,{ timeout: 3000 }).should('exist');
+});
+
+
+
+
+
+
+
 
