@@ -42,3 +42,19 @@ Then('I validate TLS category page', () => {
 Then('I validate TLS search page', () => {
 	cy.validateSearchPage();
 } );
+
+Then( 'I validate tls article page', () => {
+	cy.validateTlsArticlePage();
+} );
+
+Then( 'I validate tls buy page', () => {
+  cy.validateTlsBuyPage();
+}) ;
+
+Then( 'I validate tls current-issue page', () => {
+  cy.validateTlsCurrentIssuePage();
+}) ;
+
+Then( 'I validate tls header-footer page', () => {
+ cy.validateTlsHeaderFooter();
+});
