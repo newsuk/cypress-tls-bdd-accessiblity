@@ -60,7 +60,6 @@ class genericPage {
 	 */
 	static validateHomePageHasSocialMediaButtonsAndLinks() {
 		const socialMedias = [ TWITTER, FACEBOOK, INSTAGRAM ];
-
 		//Check all the social medias
 		socialMedias.forEach( ( socialMedia ) => {
 			cy.get( HOME_PAGE_SOCIAL_MEDIA_BUTTONS + socialMedia + ']', { timeout: 5000 } ).scrollIntoView().should( 'be.visible' );
@@ -89,7 +88,6 @@ class genericPage {
      */
 	static validateArchiveTitle() {
 		cy.acceptCookieBanner();
-
 		//Navigates to the categories, history page , url append with 404 error page
 		cy.get( ARCHIVE_TITLE, { timeout: 4000 } ).invoke( 'text' ).then( ( value ) => {
 			expect( value ).to.eq( ARCHIVE_TITLE_NAME );
@@ -97,7 +95,6 @@ class genericPage {
 			cy.acceptCookieBanner();
 			cy.url().should( 'include', ARCHIVE_TITLE_NAME.toLocaleLowerCase() );
 		} );
-
 		cy.log( 'Successfully validated to Archive title and its link' );
 	}
 
@@ -107,7 +104,6 @@ class genericPage {
      */
 	static validateShopOnTitle() {
 		cy.acceptCookieBanner();
-
 		//Navigates to the categories, history page , url append with 404 error page
 		cy.get( SHOP_TITLE, { timeout: 4000 } ).invoke( 'text' ).then( ( value ) => {
 			expect( value ).to.eq( SHOP_TITLE_NAME );
@@ -117,7 +113,6 @@ class genericPage {
 				} );
 			} );
 		} );
-
 		cy.log( 'Successfully validated to Shop title and its link' );
 	}
 	/**
@@ -138,11 +133,9 @@ class genericPage {
 		cy.acceptCookieBanner();
 		cy.get( EXPLORE_TITLE ).invoke( 'text' ).should( 'include', EXPLORE );
 		cy.acceptCookieBanner();
-
 		//Validate  all categories of Explore
 		const exploreCategories = [ NEW_TO_THE_TLS, HIGHLIGHTS, LONGREADS, LISTEN ];
 		let count = 0;
-
 		//Iterate all the categories of Explore and validate it is properly naivagates to their link
 		exploreCategories.forEach( ( exploreCategory ) => {
 			cy.get( EXPLORE_TITLE ).click();
@@ -155,7 +148,6 @@ class genericPage {
 			count++;
 			cy.clickTLSLogo();
 		} );
-
 		cy.log( 'Successfully validated to Explore Categories' );
 	}
 
@@ -167,11 +159,9 @@ class genericPage {
 		cy.acceptCookieBanner();
 		cy.get( EXPLORE_TITLE ).invoke( 'text' ).should( 'include', EXPLORE );
 		cy.get( EXPLORE_TITLE ).click();
-
 		//Navigate to NEW to TLS and verify using the location
 		cy.get( EXPLORE_CATEGORIES ).eq( 0 ).click();
 		cy.location( 'pathname' ).should( 'eq', NEW_TO_THE_TLS_SITE );
-
 		cy.log( 'Successfully navigated to NEW TO TLS' );
 	}
 
@@ -181,7 +171,6 @@ class genericPage {
      */
 	static validateNEWTOTLSPageLinks() {
 		this.navigateToExploreCategoryNEWTOTLS();
-
 		//Create as key value pair
 		const newToTlsLinks = {
 			'our podcast': OUR_PODCAST_LINK,
@@ -189,11 +178,9 @@ class genericPage {
 			'Mary Beard': MARY_BEARD_LINK,
 			'click here': CLICK_HERE_LINK,
 		};
-
 		//Iterate each values
 		for ( const [ key, value ] of Object.entries( newToTlsLinks ) ) {
 			cy.acceptCookieBanner();
-
 			//Click each links and check it is navigate to proper page
 			cy.get( NEW_TO_THE_TLS_LINKS, { timeout: 50000 } ).contains( key ).click();
 			cy.log( `${ key }: ${ value }` );
@@ -202,7 +189,6 @@ class genericPage {
 			cy.log( 'Verified our' + key + ' link' );
 			cy.go( 'back' );
 		}
-
 		cy.log( 'Successfully validated all links NEW TO TLS page' );
 	}
 	/**
@@ -239,7 +225,6 @@ class genericPage {
 		cy.get( TC_HEADER ).invoke( 'text' ).should( 'eq', TERMSCONDITIONS );
 		cy.clickTLSLogo();
 		cy.scrollTo( 'bottom' );
-
 		//Click on Privavy
 		cy.get( FOOTER_TC_MENU ).eq( 1 ).click();
 		//Validate proper page is navigated
@@ -256,7 +241,6 @@ class genericPage {
 		cy.scrollTo( 'bottom' );
 		cy.acceptCookieBanner();
 		cy.get( TLS_PODCST_HEADER ).invoke( 'text' ).should( 'eq', 'Subscribe to the podcast' );
-
 		//Validate the podcas menu
 		const footerPodcast = [ GOOGLE_PODCASTS, SPOTIFY, APPLE_PODCASTS ];
 		for ( let i = 0; i < footerPodcast.length; i++ ) {
@@ -285,4 +269,5 @@ class genericPage {
 		cy.log( 'Verified that user is able to see About us and TLS logo on About us page' );
 	}
 }
+
 export default genericPage;

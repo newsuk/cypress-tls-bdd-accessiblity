@@ -26,9 +26,8 @@
             "line": 3,
             "name": "User clicks on TLS Logo",
             "result": {
-              "status": "failed",
-              "duration": 3855000000,
-              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (cypress/support/commands.js:81:4)"
+              "status": "passed",
+              "duration": 16481000000
             }
           },
           {
@@ -37,7 +36,8 @@
             "line": 6,
             "name": "User Navigate to irrelavant page",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 3271000000
             }
           },
           {
@@ -46,7 +46,8 @@
             "line": 7,
             "name": "404 Error should display",
             "result": {
-              "status": "skipped"
+              "status": "passed",
+              "duration": 144000000
             }
           }
         ]
@@ -66,7 +67,6 @@
             "name": "User clicks on TLS Logo",
             "result": {
               "status": "failed",
-              "duration": 1000000,
               "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (cypress/support/commands.js:81:4)"
             }
           },

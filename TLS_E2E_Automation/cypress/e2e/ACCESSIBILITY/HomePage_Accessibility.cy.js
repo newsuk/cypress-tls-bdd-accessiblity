@@ -31,7 +31,6 @@ function terminalLog( violations ) {
 
 describe( 'Accessiblity', () => {
 	before( function() {
-		//cy.visit( 'http://localhost:9999/' );
 		cy.injectAxe();
 	} );
 

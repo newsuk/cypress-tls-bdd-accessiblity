@@ -28,15 +28,18 @@ class topicsPage {
 		//Click on Explore button
 		cy.get( EXPLORE, { timeout: 3000 } ).click();
 	}
+
 	static clickLongreadsButton() {
 		//Click on Longreads button
 		cy.get( LONGREADS ).click();
 	}
+
 	static validateUrlOfTheLongreadsPage() {
 		//Validate the URL of Longreads page
 		cy.url().should( 'include', PATH );
 		cy.log( 'User is naviagted Longreads Topics page' );
 	}
+
 	/**
       * Author : Roopa
       * Validate Title and Description of the page
@@ -48,6 +51,7 @@ class topicsPage {
 		cy.get( DESCRIPTION ).invoke( 'text' ).should( 'not.be.empty' );
 		cy.log( 'Title and Description of the page is validated' );
 	}
+
 	/**
       * Author : Roopa
       * Valiadte article name, Image, byline inside aggregation page
@@ -98,17 +102,16 @@ class topicsPage {
 			}
 		} );
 	}
+
 	/**
 	 * Author :Roopa
 	 * Showmore functionality
 	 */
 	static verifyShowmore() {
 		cy.scrollTo( 'bottom' );
-
 		//Scroll to bottom of page
 		cy.get( SHOW_MORE_BUTTON ).scrollIntoView( { timeout: 3000 } );
 		cy.get( SEARCH_RESULTS_CORE_HIT ).should( 'have.length', 10 );
-
 		//Click on show more and check pages are appended
 		cy.get( SHOW_MORE_BUTTON ).scrollIntoView( { timeout: 3000 } ).click( { force: true } );
 		cy.scrollTo( 'top' );
@@ -119,4 +122,5 @@ class topicsPage {
 		cy.log( 'Show more is working as expected' );
 	}
 }
+
 export default topicsPage;

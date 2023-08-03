@@ -187,6 +187,7 @@ class homePage {
 		cy.get( HERO_BLOCK_LARGE_IMAGE_BANNER ).find( HERO_BLOCK_LARGE_IMAGE_IMAGE_BELOW ).should( 'have.length', 2 );
 		cy.log( 'Below Hero block has 2 image are displayed' );
 	}
+
 	/**
 	 * Author:Nithya
 	 * Validate the Document, Window and Decibel
@@ -210,7 +211,6 @@ class homePage {
 		//cy.get( PODCASTS_ADS ).scrollIntoView();
 		cy.waitUntil( () => cy.get( PODCASTS_SLICE ).should( 'be.visible' ) );
 		cy.log( 'Validation completed for podcast Ads  section' );
-
 		//Verify the podcast has the header which has the link
 		cy.get( PODCASTS_HEADER ).eq( 0 ).should( 'have.text', 'The TLS podcast' );
 		cy.get( PODCASTS_HEADER ).eq( 0 )
@@ -225,11 +225,9 @@ class homePage {
 		//Verify the it has title
 		cy.get( PODCAST_CENTRE_TITLE ).eq( 0 ).should( 'have.text', 'The TLS Podcast' );
 		cy.log( 'Validation completed for podcast title' );
-
 		//Verify standfirst
 		cy.get( PODCAST_CENTRE_HEADER_STANDFIRST ).eq( 0 ).should( 'be.visible' );
 		cy.log( 'Validation completed for standfirst' );
-
 		//Verify the podcast has image
 		cy.get( PODCAST_CENTRE_HEADER_IMG ).eq( 0 ).invoke( 'attr', 'style' ).then( ( value ) => {
 			//Fetch the url and check the image
@@ -240,7 +238,6 @@ class homePage {
 			} );
 		} );
 		cy.log( 'Podcast has an image' );
-
 		//Verify date format
 		cy.get( PODCAST_CENTRE_DATE_LINE ).eq( 0 ).invoke( 'text' ).then( ( date ) => {
 			const dayjs = require( 'dayjs' );
@@ -249,6 +246,7 @@ class homePage {
 		} );
 		cy.log( 'Podcast has an proper date format' );
 	}
+
 	/**
 	 * Author:Nithya
 	 * Validate the Podcast Article Title , standfirst
@@ -256,10 +254,6 @@ class homePage {
 	static valdiatePodcastArticleTitleStandfirst() {
 		cy.scrollTo( 'center' );
 		cy.acceptCookieBanner();
-
-		//Verify the Podacast Article Title
-		//cy.get( PODCASTS_ADS ).should( 'be.visible' );
-		//cy.acceptCookieBanner();
 		cy.get( PODCASTS_ARTICLE ).eq( 0 ).find( PODCASTS_ARTICLE_TITLE ).should( 'have.attr', 'href' ).then( ( href ) => {
 			cy.request( href )
 				.then( ( response ) => {
@@ -267,7 +261,6 @@ class homePage {
 				} );
 		} );
 		cy.log( 'Successfully completed Podcast Article title' );
-
 		// Verify podcast Article standfirst
 		cy.get( PODCASTS_ARTICLE ).eq( 0 ).find( PODCASTS_ARTICLE_STANDFIRST ).scrollIntoView().should( 'be.visible' );
 		cy.log( 'Successfully completed Podcast Article standfirst' );
@@ -278,21 +271,17 @@ class homePage {
 	 * Validate left block and center collections
 	 */
 	static validateLeftblockCollections() {
-		//cy.acceptCookieBanner();
-		//cy.scrollTo( 'center' );
 		cy.log( 'Enters' );
 		//Validate left block headline
 		cy.get( LEFTBLOCK_COLLECTIONS ).eq( 0 )
 			.find( LEFTBLOCK_COLLECTIONS_WRAPPER )
 			.find( LEFTBLOCK_COLLECTIONS_HEADLINE ).eq( 0 ).scrollIntoView().should( 'be.visible' );
 		cy.log( 'Successfully Left block collections headline' );
-
 		//validate left block standfirst
 		cy.get( LEFTBLOCK_COLLECTIONS ).eq( 0 )
 			.find( LEFTBLOCK_COLLECTIONS_WRAPPER )
 			.find( LEFTBLOCK_COLLECTIONS_STANDFIRST ).eq( 0 ).scrollIntoView().should( 'be.visible' );
 		cy.log( 'Successfully Left block collections standfirst' );
-
 		//Validate left block series links
 		cy.get( LEFTBLOCK_COLLECTIONS_WRAPPER_SERIES ).eq( 0 )
 			.should( 'have.attr', 'href' ).then( ( href ) => {
@@ -302,9 +291,7 @@ class homePage {
 					} );
 			} );
 		cy.log( 'Successfully Left block collections series links' );
-
 		//check for (5 elements, due to taking taking for image testing) images have loaded, If the status is 200 element is visible
-
 		for ( let intialValue = 0; intialValue < 3; intialValue++ ) {
 			cy.get( COLLECTIONS_IMAGES_LINK ).eq( intialValue )
 				.should( 'have.attr', 'href' ).then( ( href ) => {
@@ -314,11 +301,8 @@ class homePage {
 						} );
 				} );
 		}
-
 		cy.log( 'Successfully left block collections images links' );
-
 		//Validate Homepage collections article label
-
 		for ( let intialValue = 0; intialValue < 3; intialValue++ ) {
 			cy.get( COLLECTIONS_ARTICLE_LABEL ).eq( intialValue )
 				.should( 'have.attr', 'href' ).then( ( href ) => {
@@ -328,14 +312,11 @@ class homePage {
 						} );
 				} );
 		}
-
 		cy.log( 'Successfully centre block collections article label' );
-
 		//Validate Homepage collections article standfirst
 		cy.get( CENTER_COLLECTION_STANDFIRST ).eq( 0 )
 			.should( 'be.visible' );
 		cy.log( 'Successfully centre block collections article standfirst' );
-
 		// Validate Homepage collections article byline
 		cy.get( CENTER_COLLECTION_BY ).eq( 0 )
 			.should( 'be.visible' );
@@ -349,13 +330,11 @@ class homePage {
 		cy.get( ADS_SECTION ).then( ( $btn ) => {
 			expect( $btn.attr( ID ).startsWith( GOOGLE_ADS_IFRAME ) );
 		} );
-
 		//Center Billboard Ad
 		cy.scrollTo( 'center' );
 		cy.get( ADS_SECTION1 ).then( ( $btn ) => {
 			expect( $btn.attr( ID ).startsWith( GOOGLE_ADS_IFRAME ) );
 		} );
-
 		//Bottom Billboard Ad
 		cy.scrollTo( 'bottom' );
 		cy.get( ADS_SECTION2 ).then( ( $btn ) => {

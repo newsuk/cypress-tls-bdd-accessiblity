@@ -47,7 +47,8 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
     }
     return false;
   });
-before( () => {
+
+  before( () => {
 	if(environment!='healthcheck')
 	{
 	if ( Cypress.config( 'firstRun' ) ) {
@@ -57,12 +58,9 @@ before( () => {
 		//Corresponded environment url is picked
 		const url = Cypress.env( `${ environment }_url` );
 		//Load the URL
-		//cy.visit( "https://glebbahmutov.com/blog/" );
+		cy.visit(url);
 		//Accept the cookie banner
 		cy.acceptCookieBanner();
-		Cypress.Cookies.defaults( {
-			preserve: /main_.*/,
-		} );
 		/**
 	     * If needed can add(err, runnable)
          */
@@ -78,7 +76,6 @@ before( () => {
 } );
 
 beforeEach( () => {
-	//cy.acceptCookieBanner( { timeout: 3000 } );
 } );
 
 after( () => {

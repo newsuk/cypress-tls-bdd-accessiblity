@@ -22,6 +22,7 @@ Feature: Validations on Article page
     Scenario: Verify the Article has content with side bar details like (Read issue,Review,Keep Reading etc)
         When User click on second article from Home page
         Then Validate the Article has content and other details
+        
     @sanity
     Scenario: Validate the Utags and Tealium check
         Then Validate Utag data values
