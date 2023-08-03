@@ -33,17 +33,22 @@ const ads="div[id*='ads']";
 const collectionSlices="div[class*='slices']";
 const newsletterBlock="div[class='tls-newsletter-block']";
 //aticle page elements
+const homePageArtilce=':nth-child(2) > .tls-card-horizontal-medium__content > .tls-card-headline > .tls-card-headline__title';
 const paywallBanner='.tls-subscriptions-block';
 const articleHeadline='.tls-headline';
+
 //buy page elements
 const PacksSection='.subscription-container';
-const subscribeNowButtonForPrintAndDigitalPack='.best-value > .has-utag';
-const subscribeNowButtonForPrintPack='.print > .has-utag';
-const subscribeNowButtonForDigitalPack='.digital > .has-utag';
+const subscribeNowButtonForPrintAndDigitalPack='.has-utag';
+const subscribeNowButton='.best-value > .has-utag';
 const printAndDigitalPrice='.best-value > .price';
 const printPrice='.print > .price';
 const DigitalPrice='.digital > .price';
 const digitalTerms='.digital > .terms';
+const subscriptionPageHeading='.sc-iBEsjs > .sc-caSCKo';
+const emailAddress='#email';
+const password='#password';
+const continueButton='#account-setup-continue';
 //current-issue page elements
 const currentIssueImage='.tls-contents-page__issue-image';
 const PreviousIssueButton='.tls-contents-page__issue-pagination-wrapper > a.tls-link';
@@ -58,13 +63,13 @@ const tlsLogoOnFooter='.tls-footer__logo';
 const followUsContainerOnFooter='.tls-footer__follow-us__container';
 
 //url elements
-const articlePageURL="articles/brexit-deal-eu-meg-russell-lisa-james-stefaan-de-rynck-adam-fagan-stun-van-kessel-philip-cunliffe-book-review-emily-jones/";
 const buyPageURL="buy";
-const subscriptionPageURLForPrintAndDigitalPack="https://www.the-tls.co.uk/subscription?pc=TLS228KRT8P";
-const subscriptionPageURLForPrintAPack="https://www.the-tls.co.uk/subscription?pc=TLS24551GHJ";
-const subscriptionPageURLForDigitalPack="https://www.the-tls.co.uk/subscription?pc=TLS26XC3R7Z";
+const subscriptionPageURL="https://www.the-tls.co.uk/subscription";
 const currentIssuePageURL="issues/current-issue/";
 const searchPageURL="https://www.the-tls.co.uk?s";
+const continueButtonText="Continue";
+const subscribeNowButtonText="Subscribe now";
+const subscriptionPageTitle="Account set up";
 
 /**
  * validate the TLS home page
@@ -82,14 +87,21 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 /**
  * validate the TLS article page
  */
- Cypress.Commands.add( 'validateTlsArticlePage', () => {
+ Cypress.Commands.add('validateTlsArticlePage', () => {
 	cy.log( 'Validating the tls article page' );
-	cy.visit(Cypress.env('prod_url')+articlePageURL,{ timeout: 10000 });
+	cy.visit(Cypress.env('prod_url'));
 	cy.acceptCookieBanner();
-	cy.get(ads,{ timeout: 5000 }).should('be.visible').should('not.be.null');
-	cy.get(paywallBanner).should('not.be.null');
-    cy.get(articleHeadline).should('not.be.null');
-	cy.get(newsletterBlock).should('not.be.null');
+	cy.get(homePageArtilce).then(function($elem) {
+	let headline = $elem.text()
+	cy.get(homePageArtilce).click();
+	cy.acceptCookieBanner();
+	cy.get(articleHeadline).should('be.visible').should('have.text',headline);
+})
+	cy.acceptCookieBanner();
+	cy.get(ads,{ timeout: 10000 }).should('be.visible').should('not.be.null');
+	cy.get(paywallBanner).should('be.visible').should('not.be.null');
+    cy.get(articleHeadline).should('be.visible').should('not.be.null');
+	cy.get(newsletterBlock).should('be.visible').should('not.be.null');
 } );
 
 /**
@@ -100,13 +112,20 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 	cy.visit(Cypress.env('prod_url')+buyPageURL,{ timeout: 10000 });
 	cy.acceptCookieBanner();
 	cy.get(PacksSection).should('not.be.empty');
-	cy.get(subscribeNowButtonForPrintAndDigitalPack).should('have.attr', 'href',subscriptionPageURLForPrintAndDigitalPack);
-	cy.get(subscribeNowButtonForPrintPack).should('have.attr', 'href', subscriptionPageURLForPrintAPack);
-	cy.get(subscribeNowButtonForDigitalPack).should('have.attr', 'href', subscriptionPageURLForDigitalPack);
+	cy.get(subscribeNowButtonForPrintAndDigitalPack).each(($button) => {
+		cy.wrap($button).should('have.text',subscribeNowButtonText).should('have.attr', 'href')
+		.and('include',subscriptionPageURL);
+	  });
 	cy.get(printAndDigitalPrice).should('be.visible');
 	cy.get(printPrice).should('be.visible');
 	cy.get(DigitalPrice).should('be.visible');
     cy.get(digitalTerms).should('be.visible');
+	cy.get(subscribeNowButton).click();
+	cy.acceptCookieBanner();
+    cy.get(subscriptionPageHeading).should('be.visible').should('have.text', subscriptionPageTitle);
+	cy.get(emailAddress).should('be.visible');
+	cy.get(password).should('be.visible');
+	cy.get(continueButton).should('be.visible').should('have.text', continueButtonText)
  } );
 
  /**
@@ -118,7 +137,7 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 	cy.acceptCookieBanner();
 	cy.get(currentIssueImage).should('be.visible');
 	cy.get(PreviousIssueButton).click();
-	cy.get(currentIssueDate).should('not.be.empty');
+	cy.get(currentIssueDate).should('be.visible').should('not.be.empty');
  } );
 
  /**
@@ -132,7 +151,7 @@ Cypress.Commands.add( 'validateTlsHeaderFooter', () => {
 	cy.get(loginButtonOnHeader).should('be.visible');
 	cy.get(searchButtonOnHeader).should('be.visible').should('have.attr', 'href', searchPageURL);
 	cy.get(tlsLogoOnHeader).should('be.visible');
-	cy.get(footerContainer).should('not.be.empty');
+	cy.get(footerContainer).should('be.visible').should('not.be.empty');
 	cy.get(tlsLogoOnFooter).should('be.visible');
-	cy.get(followUsContainerOnFooter).should('not.be.empty');
+	cy.get(followUsContainerOnFooter).should('be.visible').should('not.be.empty');
 } );
