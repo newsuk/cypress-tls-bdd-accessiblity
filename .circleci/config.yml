@@ -4,15 +4,15 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.1
   lighthouse-check: foo-software/lighthouse-check@0.0.8
-slack-fail-post-step: &slack-fail-post-step
-  context:
-    - swing-cypress-ui-api-slack
-  post-steps:
-    - slack/notify:
-        branch_pattern: .+
-        event: fail
-        template: basic_fail_1
-        channel: C03SQRV07R8
+# slack-fail-post-step: &slack-fail-post-step
+#   context:
+#     - swing-cypress-ui-api-slack
+#   post-steps:
+#     - slack/notify:
+#         branch_pattern: .+
+#         event: fail
+#         template: basic_fail_1
+#         channel: C03SQRV07R8
         
 jobs:
   test: 
@@ -37,8 +37,8 @@ jobs:
     steps:
     
       - checkout
-      # - restore_cache:
-      #     key: v1-deps-{{ checksum "package.json" }}
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
       - run:
           name: Install Node.js
           command: |
@@ -53,10 +53,10 @@ jobs:
           command: |
               cd TLS_E2E_Automation 
               npm install
-      # - save_cache:
-      #     key: v1-deps-{{ checksum "package.json" }}
-      #     paths:
-      #       - node_modules
+      - save_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+          paths:
+            - node_modules
 
       - run:
           name: Install Cypress 
