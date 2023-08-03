@@ -43,3 +43,14 @@ Then('I validate tls long reads page', () => {
 	cy.validateLongReadsPage();
 } );
 
+Then('I validate TLS author page', () => {
+	cy.validateAuthorPage();
+} );
+
+Then('I validate TLS category page', () => {
+	cy.validateCategoryPage();
+} );
+
+Then('I validate TLS search page', () => {
+	cy.validateSearchPage();
+} );

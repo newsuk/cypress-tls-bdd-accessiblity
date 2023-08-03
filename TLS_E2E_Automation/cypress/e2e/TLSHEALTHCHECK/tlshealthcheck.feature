@@ -27,3 +27,12 @@ As a user, I am checking production site is stable
 
     Scenario: Validate TLS LongReads Page
         Then I validate tls long reads page
+
+    Scenario: Validate TLS author page 
+        Then I validate TLS author page
+
+    Scenario: Validate TLS category page 
+        Then I validate TLS category page
+
+    Scenario: Validate TLS search page 
+        Then I validate TLS search page
