@@ -121,17 +121,14 @@ class subscriptionPage {
 		cy.get( SUBHEADING_OF_FAQS ).should( 'have.text', TEXT_ON_THE_SUBHEADING_OF_FAQS );
 		cy.get( FAQ__PANEL ).should( 'not.be.empty' );
 		cy.log( 'Verified heading and sub-heading of FAQs' );
-
 		//Validating the FAQ's which are there in buy page//
 		cy.get( QUESTION_FAQ_PANEL ).should( 'have.text', TEXT_QUESTION_FAQ_PANEL );
 		cy.get( ANSWER_FAQ_PANEL ).should( 'be.visible' ).should( 'not.be.empty' );
-
 		//Validating the see all FAQ's button
 		cy.get( SEE_ALL_FAQS_BUTTON ).click();
 		//Validating the URL of frequently asked questions page
 		cy.url().should( 'include', URL_OF_FREQUENTLY_ASKED_QUESTION_PAGE );
 		cy.log( 'User is naviagted to frequently asked questions page' );
-
 		//Validating the Frequently Asked Questions page//
 		cy.acceptCookieBanner();
 		cy.get( HEADING_OF_FAQS_PAGE ).should( 'have.text', TEXT_HEADING_OF_FAQS_PAGE );
@@ -141,6 +138,7 @@ class subscriptionPage {
 		cy.scrollTo( 'top' );
 		cy.log( 'FAQs section of the Subscription page is validated' );
 	}
+
 	/**
      * Author : Roopa
      * Validate the Print pack
@@ -149,30 +147,25 @@ class subscriptionPage {
 		//validating whole pack is getting displayed or not
 		cy.acceptCookieBanner();
 		cy.get( PRINT_PACK ).should( 'be.visible' ).should( 'not.be.empty' );
-
 		//Validating the Image
 		cy.get( PRINT_IMG ).should( 'be.visible' );
 		cy.get( PRINT_HEADDING ).should( 'be.visible' ).should( 'contain', PRINT_HEADING_TEXT );
 		cy.get( PRINT_SUBHEADDING ).should( 'be.visible' ).should( 'contain', PRINT_SUBHEADING_TEXT );
-
 		//Validating the Subscription includes
 		cy.acceptCookieBanner();
 		cy.get( PRINT_LABEL ).should( 'be.visible' );
 		cy.get( PRINT_LABEL_INCLUDES1 ).should( 'be.visible' ).should( 'have.text', PRINT_LABEL_INCLUDES1_TEXT1 );
 		cy.get( PRINT_LABEL_INCLUDES2 ).should( 'be.visible' ).should( 'have.text', PRINT_LABEL_INCLUDES2_TEXT2 );
-
 		//Validating the price details
 		cy.get( PRINT_PRICE ).should( 'be.visible' ).should( 'contain', PRINT_PRICE_TEXT );
 		cy.get( PRINT_TERMS ).should( 'be.visible' ).should( 'contain', PRINT_TERMS_TEXT );
-
-		//Validating the Subscribe-now button - In TLS lower env nginx server error is there, will run this TC after fixing the Issue
-		//cy.get( PRINT_SUBSCRIBE ).should( 'be.visible' ).click();
-
+		//Validating the Subscribe-now button 
 		cy.log( 'Successfully verified the Print offer pack' );
 		cy.go( 'back' );
 		cy.acceptCookieBanner();
 		cy.scrollTo( 'top' );
 	}
+
 	/**
      * Author : Roopa
      * Validate the Print and Digital pack
@@ -181,14 +174,11 @@ class subscriptionPage {
 		//Validating the tagline//
 		cy.acceptCookieBanner();
 		cy.get( PRINT_AND_DIGITAL_TAGLINE ).should( 'be.visible' ).should( 'contain', PRINT_AND_DIGITAL_TAGLINE_TEXT );
-
 		//Validating the Image//
 		cy.get( PRINT_AND_DIGITAL_IMG ).should( 'be.visible' );
-
 		//Validating the type of the pack//
 		cy.get( PRINT_AND_DIGITAL_HEADDING ).should( 'be.visible' ).should( 'contain', PRINT_AND_DIGITAL_HEADING_TEXT );
 		cy.get( PRINT_AND_DIGITAL_SUBHEADDING ).should( 'be.visible' ).should( 'contain', PRINT_AND_DIGITAL_SUBHEADING_TEXT );
-
 		//Validating the Subscription includes//
 		cy.get( PRINT_AND_DIGITAL_LABEL ).should( 'be.visible' );
 		const text = [ PRINT_AND_DIGITAL_LABEL_INCLUDES_TEXT1, PRINT_AND_DIGITAL_LABEL_INCLUDES_TEXT2, PRINT_AND_DIGITAL_LABEL_INCLUDES_TEXT3, PRINT_AND_DIGITAL_LABEL_INCLUDES_TEXT4, PRINT_AND_DIGITAL_LABEL_INCLUDES_TEXT5 ];
@@ -198,10 +188,7 @@ class subscriptionPage {
 		//Validating the price deatils//
 		cy.get( PRINT_AND_DIGITAL_PRICE ).should( 'be.visible' ).should( 'contain', PRINT_AND_DIGITAL_PRICE_TEXT );
 		cy.get( PRINT_AND_DIGITAL_TERMS ).should( 'be.visible' ).should( 'contain', PRINT_AND_DIGITAL_TERMS_TEXT );
-
-		//Validating the Subscribe now button - In TLS lower env nginx server error is there, will run this TC after fixing the Issue
-		//cy.get( PRINT_AND_DIGITAL_SUBSCRIBE ).should( 'be.visible' ).click();
-
+		//Validating the Subscribe now button 
 		cy.log( 'Print and Digital offer pack has all the elements' );
 		cy.go( 'back' );
 		cy.acceptCookieBanner();
@@ -216,24 +203,18 @@ class subscriptionPage {
 		//validating whole pack is getting displayed or not
 		cy.acceptCookieBanner();
 		cy.get( DIGITAL_PACK ).should( 'be.visible' );
-
 		//Validating the Image
 		cy.get( DIGITAL_IMG ).should( 'be.visible' );
 		cy.get( DIGITAL_HEADDING ).should( 'be.visible' ).should( 'contain', DIGITAL_HEADING_TEXT );
 		cy.get( DIGITAL_SUBHEADDING ).should( 'be.visible' ).should( 'contain', DIGITAL_SUBHEADING_TEXT );
-
 		//Validating the Subscription includes
 		cy.get( DIGITAL_LABEL ).should( 'be.visible' );
 		cy.get( DIGITAL_LABEL_INCLUDES1 ).should( 'be.visible' ).should( 'have.text', DIGITAL_LABEL_INCLUDES_TEXT1 );
 		cy.get( DIGITAL_LABEL_INCLUDES2 ).should( 'be.visible' ).should( 'have.text', DIGITAL_LABEL_INCLUDES_TEXT2 );
-
 		//Validating the price details
 		cy.get( DIGITAL_PRICE ).should( 'be.visible' ).should( 'contain', DIGITAL_PRICE_TEXT );
 		cy.get( DIGITAL_TERMS ).should( 'be.visible' ).should( 'contain', DIGITAL_TERMS_TEXT );
-
-		//Validating the Subscribe now button - In TLS lower env nginx server error is there, will run this TC after fixing the Issue
-		//cy.get( DIGITAL_SUBSCRIBE ).should( 'be.visible' ).click();
-
+		//Validating the Subscribe now button
 		cy.log( 'Successfully verified the Digital offer pack' );
 		cy.go( 'back' );
 		cy.acceptCookieBanner();

@@ -15,12 +15,18 @@ module.exports = defineConfig( {
 	},
 	viewportWidth: 1200,
 	viewportHeight: 670,
+	viewportHeight: 660,
+	pageLoadTimeout: 10000,
+	"retries": {
+		"runMode": 1,
+		"openMode": 0
+	  },
+	  "trashAssetsBeforeRuns": true,
 	e2e: {
 		// We've imported your old cypress plugins here.
 		// You may want to clean this up later by importing these.
 		setupNodeEvents( on, config ) {
 			/*on('before:browser:launch', (browser, launchOptions) => {
-
 		prepareAudit(launchOptions); 
 		if (browser.name === 'chrome' && browser.isHeadless) {
 		  launchOptions.args.push('--disable-gpu');

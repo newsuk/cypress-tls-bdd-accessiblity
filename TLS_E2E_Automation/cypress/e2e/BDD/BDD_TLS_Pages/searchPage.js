@@ -80,7 +80,6 @@ class searchPage {
 				const regex = new RegExp( EXPECTED_RESULT_VALUE_1 + KEITH_MILLER + EXPECTED_RESULT_VALUE_2 );
 				expect( value ).to.match( regex );
 			} );
-
 		cy.log( 'Search by Author Name is working as expected' );
 		expect( cy.get( AUTHOR_NAME_IN_LINE )
 			.invoke( 'text' )
@@ -125,19 +124,18 @@ class searchPage {
 		expect( cy.get( SEARCH_RESULTS_CORE ).eq( 0 ).contains( BROKEN_PROMISES ) );
 		cy.log( 'Validation completed for the verify the Article Name using search bar' );
 	}
+
 	/**
 	 * Author :Nithya
 	 * Showmore functionality
 	 */
 	static verifyShowmore() {
 		cy.scrollTo( 'bottom' );
-
 		//Scroll to bottom of page
 		cy.get( SHOW_MORE_BUTTON ).scrollIntoView( { timeout: 3000 } );
 		//Check default count
 		const beforeClickShowMore = Cypress.$( SEARCH_RESULTS_CORE_HIT ).length;
 		expect( beforeClickShowMore ).to.eq( 20 );
-
 		//Click on show more and check pages are appended
 		cy.get( SHOW_MORE_BUTTON ).click( { force: true } );
 		cy.reload();

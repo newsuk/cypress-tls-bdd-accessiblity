@@ -59,19 +59,16 @@ class archivePage {
 	 */
 	static validateYearFilterDropDown() {
 		cy.acceptCookieBanner();
-
 		//Check year filter drop down is visible
 		cy.get( YEAR_FILTER_DROP_DOWN ).should( 'be.visible' );
 		cy.get( YEAR_FILTER_DROP_DOWN ).click();
 		let count = 0;
-
 		//Check that we have upto pre2016 from 2022
 		DEFALUT_YEARS.forEach( ( year ) => {
 			cy.get( YEAR_VALUE_LABEL ).eq( count ).invoke( 'text' ).should( 'eq', year );
 			cy.get( YEAR_VALUE_LABEL ).eq( count ).click( { force: true } );
 			//Once the year is selected, check that label should be in active
 			cy.get( YEAR_LABEL_ACTIVE ).scrollIntoView().should( 'have.length', 1 );
-
 			count++;
 		} );
 		cy.log( 'Year Filter drop down is validated' );
@@ -83,13 +80,10 @@ class archivePage {
 	 */
 	static validateSearchFilter() {
 		cy.acceptCookieBanner();
-
 		//Check search is visible
 		cy.get( SEARCH_FILTER ).should( 'be.visible' );
-
 		//Enter the text
 		cy.get( SEARCH_FILTER ).type( 'Beautiful {enter} ' );
-
 		//Validate the search all displayed
 		cy.get( SEARCH_CORE ).invoke( 'text' ).should( 'eq', 'Back to all issues in the Archive' );
 		cy.get( SEARCH_RESUTLS )

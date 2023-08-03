@@ -24,6 +24,7 @@ Feature: Validations on Content page
    
     Scenario:Validate Contents section
         Then Validate Contents section
+        
     @sanity
     Scenario: Validate appropriate Tealium JS is loading for each environment in content page
         Then Validate appropriate Tealium JS is loading for each environment in single content page
