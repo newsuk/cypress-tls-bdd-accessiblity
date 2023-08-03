@@ -54,6 +54,19 @@ const VerifyHomeBreadcrum=".tls-category__breadcrumbs > a";
 const VerifyLongReadsHeader="[class*='tls-aggregation tls-aggregation--large']";
 const VerifyContentofLongReadsPage="[class*='tls-aggregation-page__article-list']";
 
+//TLS Author page
+const verifyAuthorName="[class*='tls-aggregation-page__author-details-name']";
+
+//TLS Category page
+const verifyCategoryName="[class*='tls-collections-header__title']";
+const verifyCategorySubMenu="[class*='tls-aggregation-page__categorySubmenu']";
+const verifyCategoryBreadCrumbs="[class*='tls-category__breadcrumbs']";
+
+
+//TLS search Page 
+const verifySearchPageResults ="[class*='tls-search-core__hits']";
+const verifySearchBar="[class*='ais-SearchBox']";
+
 //url elements
 const articlePageURL="articles/brexit-deal-eu-meg-russell-lisa-james-stefaan-de-rynck-adam-fagan-stun-van-kessel-philip-cunliffe-book-review-emily-jones/";
 const archivePageURL="archive/";
@@ -61,6 +74,9 @@ const NewToTheTLSPageURL="new-to-the-tls/";
 const HighlightsPageURL="categories/highlights/";
 const LongReadsPageURL="topics/long-reads/";
 const HighlightsLinkForHomeBreadcrum="https://www.the-tls.co.uk";
+const authorPageURL="authors/david-herd/";
+const categoryPageURL="categories/culture/";
+const searchPageURL="/?s";
 
 /**
  * validate the TLS home page
@@ -144,4 +160,36 @@ Cypress.Commands.add( 'validateLongReadsPage', () => {
 	cy.get(VerifyContentofLongReadsPage).should('not.be.null');
 	cy.get(VerifyShowmoreButton).should('be.visible');
 } );
+
+Cypress.Commands.add('validateAuthorPage', () => {
+	cy.log('Validating TLS Author page');
+	cy.visit(Cypress.env('prod_url')+authorPageURL,{timeout: 10000});
+	cy.acceptCookieBanner();
+	cy.get(verifyAuthorName).should('have.text', 'David Herd');
+});
+
+
+Cypress.Commands.add('validateCategoryPage', () => {
+	cy.log('Validating TLS Category page');
+	cy.visit(Cypress.env('prod_url')+categoryPageURL,{timeout: 10000});
+	cy.acceptCookieBanner();
+	cy.get(verifyCategoryName).should('have.text', 'Culture');
+	cy.get(verifyCategorySubMenu).should('be.visible');
+	cy.get(verifyCategoryBreadCrumbs).should('exist');
+});
+
+Cypress.Commands.add('validateSearchPage', () => {
+	cy.log('Validating TLS Search page');
+	cy.visit(Cypress.env('prod_url')+searchPageURL,{timeout: 10000});
+	cy.acceptCookieBanner();
+	cy.get(verifySearchBar).should('be.visible');
+	cy.get(verifySearchPageResults,{ timeout: 3000 }).should('exist');
+});
+
+
+
+
+
+
+
 
