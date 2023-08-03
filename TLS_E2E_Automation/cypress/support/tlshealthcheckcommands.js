@@ -161,6 +161,11 @@ Cypress.Commands.add( 'validateLongReadsPage', () => {
 	cy.get(VerifyShowmoreButton).should('be.visible');
 } );
 
+/**
+
+Author : Kavinprabu S M
+validate the TLS Author page
+*/
 Cypress.Commands.add('validateAuthorPage', () => {
 	cy.log('Validating TLS Author page');
 	cy.visit(Cypress.env('prod_url')+authorPageURL,{timeout: 10000});
@@ -168,7 +173,11 @@ Cypress.Commands.add('validateAuthorPage', () => {
 	cy.get(verifyAuthorName).should('have.text', 'David Herd');
 });
 
+/**
 
+Author : Kavinprabu S M
+validate the TLS Category page
+*/
 Cypress.Commands.add('validateCategoryPage', () => {
 	cy.log('Validating TLS Category page');
 	cy.visit(Cypress.env('prod_url')+categoryPageURL,{timeout: 10000});
@@ -178,6 +187,11 @@ Cypress.Commands.add('validateCategoryPage', () => {
 	cy.get(verifyCategoryBreadCrumbs).should('exist');
 });
 
+/**
+
+Author : Kavinprabu S M
+validate the TLS Search page
+*/
 Cypress.Commands.add('validateSearchPage', () => {
 	cy.log('Validating TLS Search page');
 	cy.visit(Cypress.env('prod_url')+searchPageURL,{timeout: 10000});
