@@ -3,7 +3,8 @@ Feature: Validating TLS production site
 As a user, I am checking production site is stable
 
     Scenario: Validate TLS home page
-        Then I Validate tls home page
+        Then I validate tls home page
+
     Scenario: Validate TLS article page
         Then I validate tls article page  
      

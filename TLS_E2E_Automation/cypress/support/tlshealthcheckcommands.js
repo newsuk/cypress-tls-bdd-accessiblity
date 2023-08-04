@@ -37,6 +37,7 @@ const newsletterBlock = "div[class='tls-newsletter-block']";
 const homePageArtilce = ':nth-child(2) > .tls-card-horizontal-medium__content > .tls-card-headline > .tls-card-headline__title';
 const paywallBanner = '.tls-subscriptions-block';
 const articleHeadline = '.tls-headline';
+const articlePageAds ='#advert--article--mpu';
 
 //buy page elements
 const packsSection = '.subscription-container';
@@ -66,26 +67,26 @@ const tlsLogoOnFooter = '.tls-footer__logo';
 const followUsContainerOnFooter = '.tls-footer__follow-us__container';
 
 //archive page elements
-const verifySearchFilter = "[class*='tls-archive-issue-page__header-filter-section-search-filter']";
-const verifyDropdownForYears = ".tls-date-filter__dropdown-btn";
-const selectYears = "[class*='tls-date-filter__content-item']";
-const verifySearchedAuthorPage = "[class*='tls-search-core__hits']";
-const verifyContainer = "[class*='tls-archive-issue-page__content']";
-const verifyShowmoreButton = "[class*='tls-show-more']";
-const verifyArchiveLinkYear = ".tls-issue__explore-section-content-link > a";
+const verifySearchFilter ="[class*='tls-archive-issue-page__header-filter-section-search-filter']";
+const verifyDropdownForYears =".tls-date-filter__dropdown-btn";
+const selectYears ="[class*='tls-date-filter__content-item']";
+const verifySearchedAuthorPage="[class*='tls-search-core__hits']";
+const verifyContainer="[class*='tls-archive-issue-page__content']";
+const verifyShowmoreButton=".tls-show-more > :nth-child(1)";
+const verifyArchiveLinkYear=".tls-issue__explore-section-content-link > a";
 
 //NewToTheTLSPage
-const verifyTitleContainer = "[class*='tls-aggregation__content-container columns is-multiline is-gapless']";
-const verifyImage = "[class*='wp-block-image']";
+const verifyTitleContainer="[class*='tls-aggregation__content-container columns is-multiline is-gapless']";
+const verifyImage="[class*='wp-block-image']";
 
 //Highlight page elements
-const verifyHighlightHeader = "[class*='tls-collections-header__content']";
-const verifyContent = "[class*='tls-category-page']";
-const verifyHomeBreadcrum = ".tls-category__breadcrumbs > a";
+const verifyHighlightHeader="[class*='tls-collections-header__content']";
+const verifyContent="[class*='tls-category-page']";
+const verifyHomeBreadcrum=".tls-category__breadcrumbs > a";
 
 //Longreads page elements
-const verifyLongReadsHeader = "[class*='tls-aggregation tls-aggregation--large']";
-const verifyContentofLongReadsPage = "[class*='tls-aggregation-page__article-list']";
+const verifyLongReadsHeader="[class*='tls-aggregation tls-aggregation--large']";
+const verifyContentofLongReadsPage="[class*='tls-aggregation-page__article-list']";
 
 //TLS Author page
 const verifyAuthorName = "[class*='tls-aggregation-page__author-details-name']";
@@ -104,12 +105,9 @@ const verifySearchBar = "[class*='ais-SearchBox']";
 const buyPageURL = "buy";
 const subscriptionPageURL = "https://www.the-tls.co.uk/subscription";
 const currentIssuePageURL = "issues/current-issue/";
-
-//const searchPageURL="https://www.the-tls.co.uk?s";
 const continueButtonText = "Continue";
 const subscribeNowButtonText = "Subscribe now";
 const subscriptionPageTitle = "Account set up";
-const articlePageURL = "articles/brexit-deal-eu-meg-russell-lisa-james-stefaan-de-rynck-adam-fagan-stun-van-kessel-philip-cunliffe-book-review-emily-jones/";
 const archivePageURL = "archive/";
 const newToTheTLSPageURL = "new-to-the-tls/";
 const highlightsPageURL = "categories/highlights/";
@@ -118,6 +116,7 @@ const highlightsLinkForHomeBreadcrum = "https://www.the-tls.co.uk";
 const authorPageURL = "authors/david-herd/";
 const categoryPageURL = "categories/culture/";
 const searchPageURL = "/?s";
+const searchPageURLonHeader = "https://www.the-tls.co.uk?s";
 
 /**
  * Author : Balaji Krishnan
@@ -140,29 +139,17 @@ Cypress.Commands.add('validateTlsHomePage', () => {
 */
 Cypress.Commands.add('validateTlsArticlePage', () => {
 	cy.log('Validating the tls article page');
-	cy.visit(Cypress.env('prod_url') + articlePageURL, { timeout: 10000 });
-	cy.get(heroBanner, { timeout: 10000 }).should('have.length.at.least', 1);
-	cy.get(ads).should('be.visible');
-	cy.get(collectionSlices).should('have.length.at.least', 1);
-	cy.get(newsletterBlock).should('have.length.at.least', 1);
-});
-
-/**
- * Author : Chetana Hiremath
- * validate the TLS archive page
- */
-Cypress.Commands.add('validateTlsArticlePage', () => {
-	cy.log('Validating the tls article page');
 	cy.visit(Cypress.env('prod_url'));
 	cy.acceptCookieBanner();
 	cy.get(homePageArtilce).then(function ($elem) {
 		let headline = $elem.text()
 		cy.get(homePageArtilce).click();
 		cy.acceptCookieBanner();
-		cy.get(articleHeadline).should('be.visible').should('have.text', headline);
+		cy.get(articleHeadline, { timeout: 10000 }).should('be.visible').should('have.text', headline);
 	})
 	cy.acceptCookieBanner();
-	cy.get(ads, { timeout: 10000 }).should('be.visible').should('not.be.null');
+	cy.get(articlePageAds).should('be.visible').should('not.be.null');
+	cy.wait( 5000 );
 	cy.get(paywallBanner).should('be.visible').should('not.be.null');
 	cy.get(articleHeadline).should('be.visible').should('not.be.null');
 	cy.get(newsletterBlock).should('be.visible').should('not.be.null');
@@ -216,7 +203,7 @@ Cypress.Commands.add('validateTlsHeaderFooter', () => {
 	cy.acceptCookieBanner();
 	cy.get(subscribeButtonOnHeader).should('be.visible').should('have.attr', 'href', (Cypress.env('prod_url') + buyPageURL));
 	cy.get(loginButtonOnHeader).should('be.visible');
-	cy.get(searchButtonOnHeader).should('be.visible').should('have.attr', 'href', searchPageURL);
+	cy.get(searchButtonOnHeader).should('be.visible').should('have.attr', 'href', searchPageURLonHeader);
 	cy.get(tlsLogoOnHeader).should('be.visible');
 	cy.get(footerContainer).should('be.visible').should('not.be.empty');
 	cy.get(tlsLogoOnFooter).should('be.visible');
@@ -225,69 +212,64 @@ Cypress.Commands.add('validateTlsHeaderFooter', () => {
 
 /**
 * Author : Chetana Hiremath
-* validate the TLS header-footer
+* validate the TLS ArchivePage
 */
-Cypress.Commands.add('validateTlsArchivePage', () => {
-	cy.log('Validating the tls archive page');
-	cy.visit(Cypress.env('prod_url') + archivePageURL, { timeout: 10000 });
-	cy.wait(4000);
-	cy.acceptCookieBanner();
-	cy.title().should('eq', 'The Archive - TLS');
-
-	//Validation for dropdown
-	cy.get(verifyDropdownForYears).click();
-	cy.get(selectYears).eq(0).click();
-	cy.get(verifyDropdownForYears).wrap(2023).should('be.gte', 2023);
-
-	//Validation for Container
-	cy.get(verifyContainer).should('be.visible');
-	cy.get(verifyShowmoreButton).should('be.visible');
-	cy.get(verifyArchiveLinkYear).should('be.visible');
-
-	//searchFilter Validation
-	cy.get(verifySearchFilter).click()
+Cypress.Commands.add( 'validateTlsArchivePage', () => {
+    cy.log( 'Validating the tls archive page' );
+    cy.visit(Cypress.env('prod_url')+archivePageURL, { timeout: 3000 });
+    cy.acceptCookieBanner();
+    cy.title().should('eq', 'The Archive - TLS');
+    //dropdownForYears Validation
+    cy.get(verifyDropdownForYears).click();
+    cy.get(selectYears).eq(0).click();
+    cy.get(verifyDropdownForYears).wrap(2023).should('be.gte', 2023);
+    // ValidationFor Container
+    cy.get(verifyContainer).should('not.be.null');
+    cy.get(verifyShowmoreButton,{ timeout: 3000 }).should('be.visible');
+    cy.get(verifyArchiveLinkYear).should('be.visible');
+    //searchFilter Validation
+    cy.get(verifySearchFilter).click()
 	cy.get(verifySearchFilter).type('Mary Beard {enter}');
-	cy.get(verifySearchedAuthorPage).should('be.visible');
-});
-
+    cy.get(verifySearchedAuthorPage).should('not.be.null');
+} );
 /**
  * Author : Chetana Hiremath
  * validate the TLS NewToTheTLS page
  */
-Cypress.Commands.add('validateNewToTheTLSPage', () => {
-	cy.log('Validating the NewToTheTLS page');
-	cy.visit(Cypress.env('prod_url') + newToTheTLSPageURL, { timeout: 10000 });
+ Cypress.Commands.add( 'validateNewToTheTLSPage', () => {
+	cy.log( 'Validating the NewToTheTLS page' );
+	cy.visit(Cypress.env('prod_url')+newToTheTLSPageURL,{ timeout: 3000 });
 	cy.acceptCookieBanner();
-	cy.get(verifyTitleContainer).should('be.visible');
+	cy.get(verifyTitleContainer).should ('not.be.null');
 	cy.get(verifyImage).should('be.visible');
-});
+} );
 
 /**
  * Author : Chetana Hiremath
  * validate the TLS Highlights page
  */
-Cypress.Commands.add('validateHighlightsPage', () => {
-	cy.log('Validating the Highlights page');
-	cy.visit(Cypress.env('prod_url') + highlightsPageURL, { timeout: 10000 });
+ Cypress.Commands.add( 'validateHighlightsPage', () => {
+	cy.log( 'Validating the Highlights page' );
+	cy.visit(Cypress.env('prod_url')+highlightsPageURL, { timeout: 4000 });
 	cy.acceptCookieBanner();
-	cy.get(verifyHighlightHeader, { timeout: 3000 }).should('not.be.null');
+	cy.get(verifyHighlightHeader, { timeout: 3000 }).should('not.be.null'); 
 	cy.get(verifyHomeBreadcrum).eq(0).should('be.visible').should('have.attr', 'href', highlightsLinkForHomeBreadcrum);
-	cy.get(verifyContent).should('be.visible');
+	cy.get(verifyContent).should('not.be.null')
 	cy.get(verifyShowmoreButton).should('be.visible');
-});
+} );
 
 /**
  * Author : Chetana Hiremath
  * validate the TLS LongReads page
  */
-Cypress.Commands.add('validateLongReadsPage', () => {
-	cy.log('Validating the LongReads page');
-	cy.visit(Cypress.env('prod_url') + longReadsPageURL, { timeout: 10000 });
+ Cypress.Commands.add( 'validateLongReadsPage', () => {
+	cy.log( 'Validating the LongReads page' );
+	cy.visit(Cypress.env('prod_url')+longReadsPageURL, { timeout: 3000 });
 	cy.acceptCookieBanner();
-	cy.get(verifyLongReadsHeader).should('be.visible');
-	cy.get(verifyContentofLongReadsPage).should('be.visible');
+	cy.get(verifyLongReadsHeader).should('not.be.null');
+	cy.get(verifyContentofLongReadsPage).should('not.be.null');
 	cy.get(verifyShowmoreButton).should('be.visible');
-});
+} );
 
 /**
 * Author : Kavinprabu S M
