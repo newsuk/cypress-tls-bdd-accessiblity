@@ -55,7 +55,6 @@ const verifyLongReadsHeader="[class*='tls-aggregation tls-aggregation--large']";
 const verifyContentofLongReadsPage="[class*='tls-aggregation-page__article-list']";
 
 //url elements
-const articlePageURL="articles/brexit-deal-eu-meg-russell-lisa-james-stefaan-de-rynck-adam-fagan-stun-van-kessel-philip-cunliffe-book-review-emily-jones/";
 const archivePageURL="archive/";
 const newToTheTLSPageURL="new-to-the-tls/";
 const highlightsPageURL="categories/highlights/";
