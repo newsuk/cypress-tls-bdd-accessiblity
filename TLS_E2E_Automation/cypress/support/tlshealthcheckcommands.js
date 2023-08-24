@@ -124,6 +124,7 @@ const followUsContainerOnFooter='.tls-footer__follow-us__container';
  */
 Cypress.Commands.add( 'validateTlsHomePage', () => {
 	cy.log( 'Validating the tls home page' );
+	cy.wait(1000);
 	cy.waitUntil(() =>cy.visit(Cypress.env('prod_url'),{ timeout: 20000 }));
 	cy.acceptCookieBanner();
 	cy.waitUntil(() => cy.get(heroBanner,{ timeout: 5000 }).should('have.length.at.least', 1));
