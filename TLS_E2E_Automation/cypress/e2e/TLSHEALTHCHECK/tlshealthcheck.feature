@@ -20,14 +20,14 @@ As a user, I am checking production site is stable
     Scenario: Validate TLS author page 
         Then I validate TLS author page
 
+    Scenario: Validate TLS buy page
+        Then I validate tls buy page
+
     Scenario: Validate TLS category page 
         Then I validate TLS category page
 
     Scenario: Validate TLS search page 
         Then I validate TLS search page
-
-    # Scenario: Validate TLS buy page
-    #     Then I validate tls buy page
 
     Scenario: Validate TLS current-issue page
         Then I validate tls current-issue page  
