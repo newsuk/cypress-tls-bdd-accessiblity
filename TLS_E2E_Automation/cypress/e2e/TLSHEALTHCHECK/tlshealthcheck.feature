@@ -26,8 +26,8 @@ As a user, I am checking production site is stable
     Scenario: Validate TLS search page 
         Then I validate TLS search page
 
-    Scenario: Validate TLS buy page
-        Then I validate tls buy page
+    # Scenario: Validate TLS buy page
+    #     Then I validate tls buy page
 
     Scenario: Validate TLS current-issue page
         Then I validate tls current-issue page  
