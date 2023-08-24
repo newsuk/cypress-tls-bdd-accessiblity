@@ -29,13 +29,11 @@ jobs:
           minPerformanceScore: '99'
           minProgressiveWebAppScore: '50'
           minSeoScore: '50'
-  cypress-tests:
-
+  
+  production-health-check-tests:
     docker:
       - image: cimg/base:2021.04
-
     steps:
-    
       - checkout
       - restore_cache:
           key: v1-deps-{{ checksum "package.json" }}
@@ -46,7 +44,46 @@ jobs:
             curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
             sudo apt-get install -y nodejs
             sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-
+      # install dependencies
+      - run:
+          name: Install Dependencies
+          command: |
+              cd TLS_E2E_Automation 
+              npm install
+      - save_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run:
+          name: Install Cypress 
+          command: |
+            pwd
+            cd TLS_E2E_Automation
+            npm add cypress --dev 
+      - run:
+          name: Run Production Health check tests
+          command: |
+            pwd
+            cd TLS_E2E_Automation
+            pwd
+            npm run cypress:run-healthcheck
+      - store_artifacts:
+          path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
+  
+  cypress-tests:
+    docker:
+      - image: cimg/base:2021.04
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-deps-{{ checksum "package.json" }}
+      - run:
+          name: Install Node.js
+          command: |
+            cd ~
+            curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
       # install dependencies
       - run:
           name: install dependencies
@@ -57,7 +94,6 @@ jobs:
           key: v1-deps-{{ checksum "package.json" }}
           paths:
             - node_modules
-
       - run:
           name: Install Cypress 
           command: |
@@ -83,13 +119,14 @@ jobs:
           destination: artifact-file
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/screenshots
-        
+              
           
 workflows:
   tests:
     jobs:
       - cypress-tests
       - test
+      - production-health-check-tests
         
 
 
