@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import '@bahmutov/cy-api';
+import 'cypress-wait-until';
 /// <reference types="cypress" />
 
 //home page elements
@@ -125,7 +126,7 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 	cy.log( 'Validating the tls home page' );
 	cy.visit(Cypress.env('prod_url'),{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(heroBanner,{ timeout: 5000 }).should('have.length.at.least', 1);
+	cy.waitUntil(() => cy.get(heroBanner,{ timeout: 5000 }).should('have.length.at.least', 1));
 	cy.get(collectionSlices,{ timeout: 5000 }).should('have.length.at.least', 1);
 	cy.get(newsletterBlock,{ timeout: 5000 }).should('have.length.at.least', 1);
 	cy.log( 'Successfully validated the tls home page' );
@@ -139,12 +140,12 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 	cy.log('Validating the tls article page');
 	cy.visit(Cypress.env('prod_url'),{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(homePageArtilce).then(function ($elem) {
+	cy.waitUntil(() =>cy.get(homePageArtilce).then(function ($elem) {
 		let headline = $elem.text()
 		cy.get(homePageArtilce,{ timeout: 5000 }).click();
 		cy.acceptCookieBanner();
 		cy.get(articleHeadline,{ timeout: 5000 }).should('be.visible').should('have.text', headline);
-	})
+	}))
 	cy.acceptCookieBanner();
 	cy.get(ads, { timeout: 5000 }).should('be.visible').should('not.be.null');
 	cy.get(paywallBanner,{ timeout: 5000 }).should('be.visible').should('not.be.null');
@@ -161,7 +162,7 @@ Cypress.Commands.add( 'validateTlsArchivePage', () => {
 	cy.log( 'Validating the tls archive page' );
 	cy.visit(Cypress.env('prod_url')+archivePageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.title().should('eq', 'The Archive - TLS');
+	cy.waitUntil(() =>cy.title().should('eq', 'The Archive - TLS'));
 	//dropdownForYears Validation
 	cy.get(verifyDropdownForYears,{ timeout: 5000 }).click();
 	cy.get(selectYears,{ timeout: 5000 }).eq(0).click();
@@ -185,7 +186,7 @@ Cypress.Commands.add( 'validateNewToTheTLSPage', () => {
 	cy.log( 'Validating the NewToTheTLS page' );
 	cy.visit(Cypress.env('prod_url')+newToTheTLSPageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(verifyTitleContainer,{ timeout: 5000 }).should('be.visible');
+	cy.waitUntil(() =>cy.get(verifyTitleContainer,{ timeout: 5000 }).should('be.visible'));
 	cy.get(verifyImage,{ timeout: 5000 }).should('be.visible');
 	cy.log( 'Successfully validated new to the tls page' );
 } );
@@ -198,7 +199,7 @@ Cypress.Commands.add( 'validateHighlightsPage', () => {
 	cy.log( 'Validating the TLS Highlights page' );
 	cy.visit(Cypress.env('prod_url')+highlightsPageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(verifyHighlightHeader, { timeout: 5000 }).should('not.be.null'); 
+	cy.waitUntil(() =>cy.get(verifyHighlightHeader, { timeout: 5000 }).should('not.be.null')); 
 	cy.get(verifyHomeBreadcrum,{ timeout: 5000 }).eq(0).should('be.visible').should('have.attr', 'href', highlightsLinkForHomeBreadcrum);
 	cy.get(verifyContent,{ timeout: 5000 }).should('be.visible');
 	cy.get(verifyShowmoreButton,{ timeout: 5000 }).should('be.visible');
@@ -213,7 +214,7 @@ Cypress.Commands.add( 'validateLongReadsPage', () => {
 	cy.log( 'Validating the TLS LongReads page' );
 	cy.visit(Cypress.env('prod_url')+longReadsPageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(verifyLongReadsHeader,{ timeout: 5000 }).should('be.visible');
+	cy.waitUntil(() =>cy.get(verifyLongReadsHeader,{ timeout: 5000 }).should('be.visible'));
 	cy.get(verifyContentofLongReadsPage,{ timeout: 5000 }).should('be.visible');
 	cy.get(verifyShowmoreButton,{ timeout: 5000 }).should('be.visible');
 	cy.log( 'Successfully validated the tls long reads page' );
@@ -227,7 +228,7 @@ Cypress.Commands.add('validateAuthorPage', () => {
 	cy.log('Validating TLS Author page');
 	cy.visit(Cypress.env('prod_url')+authorPageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(verifyAuthorName,{ timeout: 5000 }).should('have.text', authorName);
+	cy.waitUntil(() =>cy.get(verifyAuthorName,{ timeout: 5000 }).should('have.text', authorName));
 	cy.log( 'Successfully validated the tls author page' );
 });
 
@@ -239,7 +240,7 @@ Cypress.Commands.add('validateCategoryPage', () => {
 	cy.log('Validating TLS Category page');
 	cy.visit(Cypress.env('prod_url')+categoryPageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(verifyCategoryName,{ timeout: 5000 }).should('have.text', categoryName);
+	cy.waitUntil(() =>cy.get(verifyCategoryName,{ timeout: 5000 }).should('have.text', categoryName));
 	cy.get(verifyCategorySubMenu,{ timeout: 5000 }).should('be.visible');
 	cy.get(verifyCategoryBreadCrumbs,{ timeout: 5000 }).should('exist');
 	cy.log( 'Successfully validated the tls category page' );
@@ -253,7 +254,7 @@ Cypress.Commands.add('validateSearchPage', () => {
 	cy.log('Validating TLS Search page');
 	cy.visit(Cypress.env('prod_url')+searchPageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(verifySearchBar,{ timeout: 5000 }).should('be.visible');
+	cy.waitUntil(() =>cy.get(verifySearchBar,{ timeout: 5000 }).should('be.visible'));
 	cy.get(verifySearchPageResults,{ timeout: 3000 }).should('exist');
 	cy.log( 'Successfully validated the tls search page' );
 });
@@ -266,7 +267,7 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.log( 'Validating the tls buy page' );
 	cy.visit(Cypress.env('prod_url')+buyPageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(PacksSection,{ timeout: 5000 }).should('not.be.empty');
+	cy.waitUntil(() =>cy.get(PacksSection,{ timeout: 5000 }).should('not.be.empty'));
 	cy.get(subscribeNowButtonForPrintAndDigitalPack).each(($button) => {
 		cy.wrap($button).should('have.text',subscribeNowButtonText).should('have.attr', 'href')
 		.and('include',subscriptionPageURL);
@@ -292,7 +293,7 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.log( 'Validating the tls current-Issue page' );
 	cy.visit(Cypress.env('prod_url')+currentIssuePageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(currentIssueImage,{ timeout: 5000 }).should('be.visible');
+	cy.waitUntil(() =>cy.get(currentIssueImage,{ timeout: 5000 }).should('be.visible'));
 	cy.get(PreviousIssueButton).click();
 	cy.get(currentIssueDate,{ timeout: 5000 }).should('be.visible').should('not.be.empty');
 	cy.log( 'Successfully validated the tls current issue page' );
@@ -306,7 +307,7 @@ Cypress.Commands.add( 'validateTlsHeaderFooter', () => {
 	cy.log( 'Validating the tls header-footer' );
 	cy.visit(Cypress.env('prod_url'),{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(subscribeButtonOnHeader,{ timeout: 5000 }).should('be.visible').should('have.attr', 'href', (Cypress.env('prod_url')+buyPageURL));
+	cy.waitUntil(() =>cy.get(subscribeButtonOnHeader,{ timeout: 5000 }).should('be.visible').should('have.attr', 'href', (Cypress.env('prod_url')+buyPageURL)));
 	cy.get(loginButtonOnHeader).should('be.visible');
 	cy.get(searchButtonOnHeader).should('be.visible').should('have.attr', 'href', searchPageHrefURL);
 	cy.get(tlsLogoOnHeader).should('be.visible');
