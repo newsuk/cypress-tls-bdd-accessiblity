@@ -23,7 +23,7 @@
             "name": "I validate tls home page",
             "result": {
               "status": "passed",
-              "duration": 6608000000
+              "duration": 12956000000
             }
           }
         ]
@@ -43,7 +43,7 @@
             "name": "I validate tls archive page",
             "result": {
               "status": "passed",
-              "duration": 9911000000
+              "duration": 9676000000
             }
           }
         ]
@@ -63,7 +63,7 @@
             "name": "I validate tls new to the tls page",
             "result": {
               "status": "passed",
-              "duration": 3787000000
+              "duration": 5186000000
             }
           }
         ]
@@ -83,7 +83,7 @@
             "name": "I validate tls highlights page",
             "result": {
               "status": "passed",
-              "duration": 2103000000
+              "duration": 2122000000
             }
           }
         ]
@@ -103,7 +103,7 @@
             "name": "I validate tls long reads page",
             "result": {
               "status": "passed",
-              "duration": 1882000000
+              "duration": 2286000000
             }
           }
         ]
@@ -123,7 +123,7 @@
             "name": "I validate TLS author page",
             "result": {
               "status": "passed",
-              "duration": 1041000000
+              "duration": 1590000000
             }
           }
         ]
@@ -143,7 +143,7 @@
             "name": "I validate TLS category page",
             "result": {
               "status": "passed",
-              "duration": 1595000000
+              "duration": 2152000000
             }
           }
         ]
@@ -163,7 +163,7 @@
             "name": "I validate TLS search page",
             "result": {
               "status": "passed",
-              "duration": 2430000000
+              "duration": 5588000000
             }
           }
         ]
@@ -183,7 +183,7 @@
             "name": "I validate tls buy page",
             "result": {
               "status": "passed",
-              "duration": 7563000000
+              "duration": 8441000000
             }
           }
         ]
@@ -203,7 +203,7 @@
             "name": "I validate tls current-issue page",
             "result": {
               "status": "passed",
-              "duration": 5560000000
+              "duration": 11273000000
             }
           }
         ]
@@ -223,7 +223,7 @@
             "name": "I validate tls header-footer page",
             "result": {
               "status": "passed",
-              "duration": 3469000000
+              "duration": 7096000000
             }
           }
         ]
