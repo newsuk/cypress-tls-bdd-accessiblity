@@ -124,7 +124,7 @@ const followUsContainerOnFooter='.tls-footer__follow-us__container';
  */
 Cypress.Commands.add( 'validateTlsHomePage', () => {
 	cy.log( 'Validating the tls home page' );
-	cy.visit(Cypress.env('prod_url'),{ timeout: 20000 });
+	cy.waitUntil(() =>cy.visit(Cypress.env('prod_url'),{ timeout: 20000 }));
 	cy.acceptCookieBanner();
 	cy.waitUntil(() => cy.get(heroBanner,{ timeout: 5000 }).should('have.length.at.least', 1));
 	cy.get(collectionSlices,{ timeout: 5000 }).should('have.length.at.least', 1);
@@ -291,7 +291,7 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
  */
   Cypress.Commands.add( 'validateTlsCurrentIssuePage', () => {
 	cy.log( 'Validating the tls current-Issue page' );
-	cy.visit(Cypress.env('prod_url')+currentIssuePageURL,{ timeout: 20000 });
+	cy.waitUntil(() =>cy.visit(Cypress.env('prod_url')+currentIssuePageURL,{ timeout: 20000 }));
 	cy.acceptCookieBanner();
 	cy.waitUntil(() =>cy.get(currentIssueImage,{ timeout: 5000 }).should('be.visible'));
 	cy.get(PreviousIssueButton).click();
