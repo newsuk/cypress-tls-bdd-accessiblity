@@ -124,7 +124,6 @@ const followUsContainerOnFooter='.tls-footer__follow-us__container';
  */
 Cypress.Commands.add( 'validateTlsHomePage', () => {
 	cy.log( 'Validating the tls home page' );
-	cy.wait(1000);
 	cy.waitUntil(() =>cy.visit(Cypress.env('prod_url'),{ timeout: 20000 }));
 	cy.acceptCookieBanner();
 	cy.waitUntil(() => cy.get(heroBanner,{ timeout: 5000 }).should('have.length.at.least', 1));
@@ -269,10 +268,10 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.visit(Cypress.env('prod_url')+buyPageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
 	cy.waitUntil(() =>cy.get(PacksSection,{ timeout: 5000 }).should('not.be.empty'));
-	cy.get(subscribeNowButtonForPrintAndDigitalPack).each(($button) => {
+	cy.waitUntil(()=>cy.get(subscribeNowButtonForPrintAndDigitalPack).each(($button) => {
 		cy.wrap($button).should('have.text',subscribeNowButtonText).should('have.attr', 'href')
 		.and('include',subscriptionPageURL);
-	  });
+	  }));
 	cy.get(printAndDigitalPrice).should('be.visible');
 	cy.get(printPrice).should('be.visible');
 	cy.get(DigitalPrice).should('be.visible');
