@@ -64,7 +64,11 @@ jobs:
             npm run cypress:run-healthcheck
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
-          path: TLS_E2E_Automation/cypress/videos
+      - store_artifacts:
+        path: TLS_E2E_Automation/cypress/videos
+    when: on_fail
+    requires:
+      - notify-failure
       - slack/notify:
           channel: C05PJHA3NTD    
   
