@@ -99,7 +99,7 @@ const printAndDigitalPrice='.best-value > .price';
 const printPrice='.print > .price';
 const DigitalPrice='.digital > .price';
 const digitalTerms='.digital > .terms';
-const subscriptionPageHeading='.sc-iBEsjs > .sc-caSCKo';
+const subscriptionPageHeading='h1[class*="caSCKo"]';
 const emailAddress='#email';
 const password='#password';
 const continueButton='#account-setup-continue';
@@ -278,7 +278,7 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
     cy.get(digitalTerms).should('be.visible');
 	cy.get(subscribeNowButton,{ timeout: 5000 }).click();
 	cy.acceptCookieBanner();
-    cy.waitUntil(()=>cy.get(subscriptionPageHeading,{ timeout: 5000 }).should('be.visible').should('have.text', subscriptionPageTitle));
+    cy.waitUntil(()=>cy.get(subscriptionPageHeading,{ timeout: 5000 }).should('be.visible').contains(subscriptionPageTitle));
 	cy.get(emailAddress).should('be.visible');
 	cy.get(password).should('be.visible');
 	cy.get(continueButton).should('be.visible').should('have.text', continueButtonText)

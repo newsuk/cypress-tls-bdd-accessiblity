@@ -23,16 +23,16 @@
             "name": "I validate tls home page",
             "result": {
               "status": "passed",
-              "duration": 6995000000
+              "duration": 4667000000
             }
           }
         ]
       },
       {
-        "id": "validating-tls-production-site;validate-tls-archive-page",
+        "id": "validating-tls-production-site;validate-tls-buy-page",
         "keyword": "Scenario",
         "line": 8,
-        "name": "Validate TLS Archive page",
+        "name": "Validate TLS buy page",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -40,19 +40,19 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 9,
-            "name": "I validate tls archive page",
+            "name": "I validate tls buy page",
             "result": {
               "status": "passed",
-              "duration": 10838000000
+              "duration": 7379000000
             }
           }
         ]
       },
       {
-        "id": "validating-tls-production-site;validate-tls-new-to-the-tls-page",
+        "id": "validating-tls-production-site;validate-tls-archive-page",
         "keyword": "Scenario",
         "line": 11,
-        "name": "Validate TLS New To The TLS page",
+        "name": "Validate TLS Archive page",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -60,19 +60,19 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 12,
-            "name": "I validate tls new to the tls page",
+            "name": "I validate tls archive page",
             "result": {
               "status": "passed",
-              "duration": 2711000000
+              "duration": 6309000000
             }
           }
         ]
       },
       {
-        "id": "validating-tls-production-site;validate-tls-highlights-page",
+        "id": "validating-tls-production-site;validate-tls-new-to-the-tls-page",
         "keyword": "Scenario",
         "line": 14,
-        "name": "Validate TLS Highlights page",
+        "name": "Validate TLS New To The TLS page",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -80,19 +80,19 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 15,
-            "name": "I validate tls highlights page",
+            "name": "I validate tls new to the tls page",
             "result": {
               "status": "passed",
-              "duration": 3818000000
+              "duration": 2468000000
             }
           }
         ]
       },
       {
-        "id": "validating-tls-production-site;validate-tls-longreads-page",
+        "id": "validating-tls-production-site;validate-tls-highlights-page",
         "keyword": "Scenario",
         "line": 17,
-        "name": "Validate TLS LongReads Page",
+        "name": "Validate TLS Highlights page",
         "tags": [],
         "type": "scenario",
         "steps": [
@@ -100,10 +100,30 @@
             "arguments": [],
             "keyword": "Then ",
             "line": 18,
+            "name": "I validate tls highlights page",
+            "result": {
+              "status": "passed",
+              "duration": 2122000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-longreads-page",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "Validate TLS LongReads Page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
             "name": "I validate tls long reads page",
             "result": {
               "status": "passed",
-              "duration": 1702000000
+              "duration": 1902000000
             }
           }
         ]
@@ -123,7 +143,7 @@
             "name": "I validate tls article page",
             "result": {
               "status": "passed",
-              "duration": 7999000000
+              "duration": 7838000000
             }
           }
         ]
@@ -131,7 +151,7 @@
       {
         "id": "validating-tls-production-site;validate-tls-category-page",
         "keyword": "Scenario",
-        "line": 23,
+        "line": 26,
         "name": "Validate TLS category page",
         "tags": [],
         "type": "scenario",
@@ -139,11 +159,11 @@
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 24,
+            "line": 27,
             "name": "I validate TLS category page",
             "result": {
               "status": "passed",
-              "duration": 1475000000
+              "duration": 1572000000
             }
           }
         ]
@@ -151,7 +171,7 @@
       {
         "id": "validating-tls-production-site;validate-tls-search-page",
         "keyword": "Scenario",
-        "line": 26,
+        "line": 29,
         "name": "Validate TLS search page",
         "tags": [],
         "type": "scenario",
@@ -159,31 +179,11 @@
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 27,
+            "line": 30,
             "name": "I validate TLS search page",
             "result": {
               "status": "passed",
-              "duration": 2351000000
-            }
-          }
-        ]
-      },
-      {
-        "id": "validating-tls-production-site;validate-tls-buy-page",
-        "keyword": "Scenario",
-        "line": 29,
-        "name": "Validate TLS buy page",
-        "tags": [],
-        "type": "scenario",
-        "steps": [
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 30,
-            "name": "I validate tls buy page",
-            "result": {
-              "status": "passed",
-              "duration": 8590000000
+              "duration": 2530000000
             }
           }
         ]
@@ -203,7 +203,7 @@
             "name": "I validate tls current-issue page",
             "result": {
               "status": "passed",
-              "duration": 5167000000
+              "duration": 3785000000
             }
           }
         ]
@@ -223,7 +223,7 @@
             "name": "I validate tls header-footer page",
             "result": {
               "status": "passed",
-              "duration": 3224000000
+              "duration": 3857000000
             }
           }
         ]
