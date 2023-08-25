@@ -64,7 +64,7 @@ const highlightsLinkForHomeBreadcrum="https://www.the-tls.co.uk";
 const authorPageURL="authors/david-herd/";
 const categoryPageURL="categories/culture/";
 const buyPageURL="buy";
-const subscriptionPageURL="https://www.the-tls.co.uk/signup";
+const subscriptionPageURL="https://www.the-tls.co.uk/subscription";
 const currentIssuePageURL="issues/current-issue/";
 const searchPageHrefURL="https://www.the-tls.co.uk?s";
 const searchPageURL="?s";
@@ -277,7 +277,6 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.get(DigitalPrice).should('be.visible');
     cy.get(digitalTerms).should('be.visible');
 	cy.get(subscribeNowButton,{ timeout: 5000 }).click();
-	cy.wait(2000);
 	cy.acceptCookieBanner();
     cy.waitUntil(()=>cy.get(subscriptionPageHeading,{ timeout: 5000 }).should('be.visible').should('have.text', subscriptionPageTitle));
 	cy.get(emailAddress).should('be.visible');
