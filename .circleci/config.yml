@@ -65,7 +65,6 @@ jobs:
       - slack/notify:
             event: fail
             channel: C05PJHA3NTD
-            template: basic_fail_1
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
