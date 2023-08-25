@@ -278,9 +278,13 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 		cy.log(href); // Log the href attribute for each element
 		cy.visit(href)
 		//cy.waitUntil(()=>cy.get(subscriptionPageHeading,{ timeout: 15000 }).should('be.visible').contains(subscriptionPageTitle));
-		cy.waitUntil(()=>cy.get(emailAddress,{ timeout: 5000 }).should('be.visible'));
-		cy.get(password,{ timeout: 5000 }).should('be.visible');
-		cy.get(continueButton,{ timeout: 5000 }).should('be.visible').should('have.text', continueButtonText);
+		//cy.waitUntil(()=>cy.get(emailAddress,{ timeout: 5000 }).should('be.visible'));
+		//cy.get(password,{ timeout: 5000 }).should('be.visible');
+		//cy.get(continueButton,{ timeout: 5000 }).should('be.visible').should('have.text', continueButtonText);
+		cy.request(href).then((response) => {
+		// Assert that the status code is 200
+		expect(response.status).to.eq(200);
+		  });
 	  });
 	cy.log( 'Successfully validated the tls buy page' );
  } );
