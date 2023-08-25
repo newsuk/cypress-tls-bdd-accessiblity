@@ -62,11 +62,6 @@ jobs:
             cd TLS_E2E_Automation
             pwd
             npm run cypress:run-healthcheck
-      - run:
-          name: Send Slack Notification on Failure
-          command: |
-          # Your command to send Slack notification here
-          # Example: Use the Slack orb to send a notification
       - slack/notify:
             event: fail
             channel: C05PJHA3NTD
