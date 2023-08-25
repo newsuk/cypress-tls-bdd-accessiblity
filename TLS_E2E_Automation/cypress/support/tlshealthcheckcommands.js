@@ -64,7 +64,7 @@ const highlightsLinkForHomeBreadcrum="https://www.the-tls.co.uk";
 const authorPageURL="authors/david-herd/";
 const categoryPageURL="categories/culture/";
 const buyPageURL="buy";
-const subscriptionPageURL="https://www.the-tls.co.uk/signup";
+const subscriptionPageURL="https://www.the-tls.co.uk";
 const currentIssuePageURL="issues/current-issue/";
 const searchPageHrefURL="https://www.the-tls.co.uk?s";
 const searchPageURL="?s";
@@ -93,7 +93,7 @@ const articleHeadline='.tls-headline';
 
 //buy page elements
 const PacksSection='.subscription-container';
-const subscribeNowButtonForPrintAndDigitalPack='.has-utag';
+const subscribeNowButtonForAllCategory='a[class*="has-utag primary"]';
 const subscribeNowButton='.best-value > .has-utag';
 const printAndDigitalPrice='.best-value > .price';
 const printPrice='.print > .price';
@@ -267,21 +267,20 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.log( 'Validating the tls buy page' );
 	cy.visit(Cypress.env('prod_url')+buyPageURL,{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.waitUntil(() =>cy.get(PacksSection,{ timeout: 5000 }).should('not.be.empty'));
-	cy.waitUntil(()=>cy.get(subscribeNowButtonForPrintAndDigitalPack).each(($button) => {
-		cy.wrap($button).should('have.text',subscribeNowButtonText).should('have.attr', 'href')
-		.and('include',subscriptionPageURL);
-	  }));
 	cy.get(printAndDigitalPrice).should('be.visible');
 	cy.get(printPrice).should('be.visible');
 	cy.get(DigitalPrice).should('be.visible');
     cy.get(digitalTerms).should('be.visible');
-	cy.get(subscribeNowButton,{ timeout: 5000 }).click();
-	// cy.acceptCookieBanner();
-    //cy.waitUntil(()=>cy.get(subscriptionPageHeading,{ timeout: 5000 }).should('be.visible').contains(subscriptionPageTitle));
-	// cy.waitUntil(()=>cy.get(emailAddress,{ timeout: 5000 }).should('be.visible'));
-	// cy.get(password,{ timeout: 5000 }).should('be.visible');
-	// cy.get(continueButton,{ timeout: 5000 }).should('be.visible').should('have.text', continueButtonText)
+	cy.waitUntil(() =>cy.get(PacksSection,{ timeout: 5000 }).should('not.be.empty'));
+	cy.get(subscribeNowButtonForAllCategory).each(($element) => {
+		const href = $element.attr('href');
+		cy.log(href); // Log the href attribute for each element
+		cy.visit(href)
+		cy.waitUntil(()=>cy.get(subscriptionPageHeading,{ timeout: 5000 }).should('be.visible').contains(subscriptionPageTitle));
+		cy.waitUntil(()=>cy.get(emailAddress,{ timeout: 5000 }).should('be.visible'));
+		cy.get(password,{ timeout: 5000 }).should('be.visible');
+		cy.get(continueButton,{ timeout: 5000 }).should('be.visible').should('have.text', continueButtonText);
+	  });
 	cy.log( 'Successfully validated the tls buy page' );
  } );
 
