@@ -4,9 +4,9 @@ version: 2.1
 orbs:
   slack: circleci/slack@4.1
   lighthouse-check: foo-software/lighthouse-check@0.0.8
-# slack-fail-post-step: &slack-fail-post-step
-#   context:
-#     - swing-cypress-ui-api-slack
+slack-fail-post-step: &slack-fail-post-step
+  context:
+    - tls-production-health-check-context
 #   post-steps:
 #     - slack/notify:
 #         branch_pattern: .+
