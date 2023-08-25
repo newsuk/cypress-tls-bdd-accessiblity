@@ -64,14 +64,9 @@ jobs:
             npm run cypress:run-healthcheck
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
-      - store_artifacts:
           path: TLS_E2E_Automation/cypress/videos
-    post-steps:
       - slack/notify:
-         branch_pattern: .+
-         event: fail
-         template: basic_fail_1
-         channel: C05PJHA3NTD
+          channel: C05PJHA3NTD    
   
   cypress-tests:
     docker:
