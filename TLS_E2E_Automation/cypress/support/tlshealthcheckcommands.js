@@ -277,7 +277,7 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.get(DigitalPrice).should('be.visible');
     cy.get(digitalTerms).should('be.visible');
 	cy.get(subscribeNowButton,{ timeout: 5000 }).click();
-	cy.acceptCookieBanner();
+	// cy.acceptCookieBanner();
     cy.waitUntil(()=>cy.get(subscriptionPageHeading,{ timeout: 5000 }).should('be.visible').contains(subscriptionPageTitle));
 	cy.get(emailAddress).should('be.visible');
 	cy.get(password).should('be.visible');
