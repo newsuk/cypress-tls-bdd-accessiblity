@@ -116,7 +116,7 @@ const searchButtonOnHeader='.tls-header-navigation__search-icon > a';
 const tlsLogoOnHeader='.tls-header-navigation__logo';
 const footerContainer='.tls-footer__body-container-wrapper';
 const tlsLogoOnFooter='.tls-footer__logo';
-const followUsContainerOnFooter='.tls-footer__follow-us__container123';
+const followUsContainerOnFooter='.tls-footer__follow-us__container';
 
 /**
  * Author : Balaji Krishnan
