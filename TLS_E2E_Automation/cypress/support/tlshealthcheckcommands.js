@@ -94,7 +94,7 @@ const articleHeadline='.tls-headline';
 //buy page elements
 const PacksSection='.subscription-container';
 const subscribeNowButtonForAllCategory='a[class*="has-utag primary"]';
-const subscribeNowButton='.best-value > .has-utag';
+const subscribeButton='span[class*="subscribe"] > a';
 const printAndDigitalPrice='.best-value > .price';
 const printPrice='.print > .price';
 const DigitalPrice='.digital > .price';
@@ -265,9 +265,10 @@ Cypress.Commands.add('validateSearchPage', () => {
  */
 Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.log( 'Validating the tls buy page' );
-	cy.visit(Cypress.env('prod_url')+buyPageURL,{ timeout: 20000 });
+	cy.visit(Cypress.env('prod_url'),{ timeout: 20000 });
 	cy.acceptCookieBanner();
-	cy.get(printAndDigitalPrice).should('be.visible');
+	cy.get(subscribeButton).click();
+	cy.get(printAndDigitalPrice,{ timeout: 5000 }).should('be.visible');
 	cy.get(printPrice).should('be.visible');
 	cy.get(DigitalPrice).should('be.visible');
     cy.get(digitalTerms).should('be.visible');
