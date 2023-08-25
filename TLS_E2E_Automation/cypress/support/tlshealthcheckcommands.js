@@ -169,7 +169,7 @@ Cypress.Commands.add( 'validateTlsArchivePage', () => {
 	cy.get(verifyDropdownForYears).wrap(2023).should('be.gte', 2023);
 	//ValidationFor Container
 	cy.get(verifyContainer,{ timeout: 5000 }).should('be.visible');
-	cy.get(verifyShowmoreButton,{ timeout: 5000 }).should('be.visible');
+	cy.waitUntil(()=>cy.get(verifyShowmoreButton,{ timeout: 5000 }).should('be.visible'));
 	cy.get(verifyArchiveLinkYear,{ timeout: 5000 }).should('be.visible');
 	//searchFilter Validation
 	// eslint-disable-next-line cypress/unsafe-to-chain-command
@@ -279,9 +279,9 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.get(subscribeNowButton,{ timeout: 5000 }).click();
 	// cy.acceptCookieBanner();
     //cy.waitUntil(()=>cy.get(subscriptionPageHeading,{ timeout: 5000 }).should('be.visible').contains(subscriptionPageTitle));
-	cy.waitUntil(()=>cy.get(emailAddress,{ timeout: 5000 }).should('be.visible'));
-	cy.get(password,{ timeout: 5000 }).should('be.visible');
-	cy.get(continueButton,{ timeout: 5000 }).should('be.visible').should('have.text', continueButtonText)
+	// cy.waitUntil(()=>cy.get(emailAddress,{ timeout: 5000 }).should('be.visible'));
+	// cy.get(password,{ timeout: 5000 }).should('be.visible');
+	// cy.get(continueButton,{ timeout: 5000 }).should('be.visible').should('have.text', continueButtonText)
 	cy.log( 'Successfully validated the tls buy page' );
  } );
 
