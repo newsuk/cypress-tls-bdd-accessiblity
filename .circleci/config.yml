@@ -65,7 +65,7 @@ jobs:
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
-          path: TLS_E2E_Automation/cypress/productionhealthchecksvideos
+          path: TLS_E2E_Automation/cypress/videos
   
   cypress-tests:
     docker:
