@@ -66,11 +66,7 @@ jobs:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/videos
-    when: on_fail
-    requires:
-      - notify-failure
-      - slack/notify:
-          channel: C05PJHA3NTD    
+   
   
   cypress-tests:
     docker:
@@ -129,6 +125,7 @@ workflows:
       - cypress-tests
       - test
       - production-health-check-tests
+          
         
 
 
