@@ -2,7 +2,7 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 orbs:
-  # slack: circleci/slack@4.1
+  slack: circleci/slack@4.1
   lighthouse-check: foo-software/lighthouse-check@0.0.8
 # slack-fail-post-step: &slack-fail-post-step
 #   context:
@@ -62,9 +62,9 @@ jobs:
             cd TLS_E2E_Automation
             pwd
             npm run cypress:run-healthcheck
-      # - slack/notify:
-      #       event: fail
-      #       channel: C05PJHA3NTD
+      - slack/notify:
+            event: fail
+            channel: C05PJHA3NTD
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
