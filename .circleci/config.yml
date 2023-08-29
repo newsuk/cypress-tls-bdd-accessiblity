@@ -30,7 +30,7 @@ jobs:
   #         minProgressiveWebAppScore: '50'
   #         minSeoScore: '50'
   
-  production-health-check-tests:
+  staging-health-check-tests:
     machine: true
     resource_class: nukengprod/pubsys-circleci-runner-dev
     # docker:
@@ -58,7 +58,7 @@ jobs:
             npm add cypress --dev 
             npm add -D cypress-wait-until
       - run:
-          name: Run Production Health check tests
+          name: Run staging health check tests
           command: |
             pwd
             cd TLS_E2E_Automation
@@ -127,7 +127,7 @@ workflows:
     jobs:
       # - cypress-tests
       # - test
-      - production-health-check-tests:
+      - staging-health-check-tests:
           <<: *slack-fail-post-step
           
         
