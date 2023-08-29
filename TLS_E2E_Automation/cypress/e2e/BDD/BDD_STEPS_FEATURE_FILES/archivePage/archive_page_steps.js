@@ -16,6 +16,7 @@ Given( 'User clicks on TLS Logo', () => {
 	cy.clickTLSLogo();
 	cy.acceptCookieBanner();
 } );
+
 When( 'Navigate to  archive page', () => {
 	archivePage.navigateToArchivePage();
 } );

@@ -68,6 +68,4 @@ module.exports = ( on ) => {
 			fs.writeFile( 'cypress/.run/results.json', JSON.stringify( results ) );
 		}
 	} );
-
-	
 };

@@ -1,0 +1,248 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Validations on Topics page",
+    "line": 1,
+    "id": "validations-on-topics-page",
+    "tags": [],
+    "uri": "topicPage.feature",
+    "elements": [
+      {
+        "id": "validations-on-topics-page;validate-title-and-description-of-the-page",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Validate title and description of the page",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 8
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User is clicks on TLS logo",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User clicks on explore button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "User clicks on longread button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Validate the user is navigated to longread topics page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "Validate title and description of the page",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-topics-page;valiadte-article-name,-image,-byline,-label-and-card-subheadline-inside-aggregation-page",
+        "keyword": "Scenario",
+        "line": 12,
+        "name": "Valiadte article name, Image, byline, label and card subheadline inside aggregation page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User is clicks on TLS logo",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User clicks on explore button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "User clicks on longread button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Validate the user is navigated to longread topics page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 13,
+            "name": "Valiadte article name, Image, byline, label and card subheadline inside aggregation page",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-topics-page;validate-show-more-button-and-its-count",
+        "keyword": "Scenario",
+        "line": 15,
+        "name": "Validate Show more button and Its count",
+        "tags": [
+          {
+            "name": "@focus",
+            "line": 14
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User is clicks on TLS logo",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 3000ms: Expected to find element: `.tls-header-navigation__logo`, but never found it.\n    at Context.eval (cypress/support/commands.js:81:4)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User clicks on explore button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "User clicks on longread button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Validate the user is navigated to longread topics page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 16,
+            "name": "Validate show more button and its count",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-topics-page;check-if-tealium-js-is-loading-as-expected",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Check if Tealium JS is loading as expected",
+        "tags": [
+          {
+            "name": "@sanity",
+            "line": 17
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User is clicks on TLS logo",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User clicks on explore button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 6,
+            "name": "User clicks on longread button",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "Validate the user is navigated to longread topics page",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "Validate tealium JS is loading as expected",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

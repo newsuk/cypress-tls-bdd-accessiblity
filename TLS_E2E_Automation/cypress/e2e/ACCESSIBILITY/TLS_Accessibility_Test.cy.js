@@ -19,7 +19,6 @@ function logViolations( violations ) {
 			message: `[${ violation.help }](${ violation.helpUrl })`,
 
 		};
-		//Cypress.log( log );
 
 		violation.nodes.forEach( ( { target } ) => {
 			Cypress.log( {
@@ -40,7 +39,6 @@ const terminalLog = ( violations ) => {
 		
 	);
 
-	//cy.log( 'log', violations );
 	const violationData = violations.map(
 		( { id, impact, tags, description, nodes, help, helpUrl } ) => ( {
 			NO_ISSUES : nodes.length,
@@ -54,13 +52,10 @@ const terminalLog = ( violations ) => {
 		} ) );
 	
 	cy.task( 'table',violationData );
-
 	//Create the directory with current date
 	const today = new Date();
-
 	const date = today.getFullYear() + '-' + ( today.getMonth() + 1 ) + '-' + today.getDate();
 	const dir = './' + date;
-
 	cy.writeFile( dir + '/' + fileName + '.json', violationData );
 };
 
@@ -116,7 +111,5 @@ describe( 'Accessiblity testing for ALL pages', () => {
 		cy.injectAxe();
 		fileName = 'Archive_Page';
 		cy.checkA11y( null, null, logViolations );
-	} );
-
-	
+	} );	
 } );

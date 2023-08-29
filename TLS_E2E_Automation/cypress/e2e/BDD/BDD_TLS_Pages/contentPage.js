@@ -73,7 +73,6 @@ class contentPage {
 			const dayjs = require( 'dayjs' );
 			const parsed = dayjs( currentIssueDate, DATE_FORMAT );
 			expect( parsed.format( DATE_FORMAT ) ).to.eq( currentIssueDate );
-
 			cy.writeIntoFile( PAGE_ELEMENT_FILE_PATH, { currentIssuePageDate: currentIssueDate } );
 		} );
 
@@ -122,13 +121,11 @@ class contentPage {
 		cy.get( HOME_PAGE_ISSUE_BLOCK_CONTENTS_PAGE ).click();
 		cy.acceptCookieBanner();
 		this.validateToCurrentIssuePage();
-
 		//Validate date in home page and date in Current Issue should be same
 		cy.get( ISSUE_DATE ).eq( 0 ).invoke( 'text' ).then( ( currentIssueDate ) => {
 			const dayjs = require( 'dayjs' );
 			const parsed = dayjs( currentIssueDate, DATE_FORMAT );
 			expect( parsed.format( DATE_FORMAT ) ).to.eq( currentIssueDate );
-
 			cy.readFile( PAGE_ELEMENT_FILE_PATH ).its( 'homepagedate' ).should( 'eq', currentIssueDate );
 		} );
 		cy.log( 'Validation completed for View Content page and Current Issue page shouldbe same and its dates' );
@@ -207,5 +204,6 @@ class contentPage {
 		} );
 	}
 }
+
 export default contentPage;
 

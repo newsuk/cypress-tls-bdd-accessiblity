@@ -6,7 +6,6 @@ module.exports = defineConfig( {
 	projectId: 'prise6',
 	firstRun: true,
 	chromeWebSecurity: false,
-
 	env: {
 		dev_url: 'https://www.dev-the-tls.co.uk/',
 		staging_url: 'https://www.staging-the-tls.co.uk/',
@@ -14,16 +13,20 @@ module.exports = defineConfig( {
 		uat_url: 'http://nu-ecs-wp-tls-uat.elb.iha-dev.ntch.co.uk/',
 		prod_url: 'https://www.the-tls.co.uk/',
 	},
-
 	viewportWidth: 1200,
 	viewportHeight: 660,
-
+	pageLoadTimeout: 25000,
+	"retries": {
+		"runMode": 1,
+		"openMode": 0
+	  },
+	  "trashAssetsBeforeRuns": true,
+	  video: true,
 	e2e: {
 		// We've imported your old cypress plugins here.
 		// You may want to clean this up later by importing these.
 		setupNodeEvents( on, config ) {
 			/*on('before:browser:launch', (browser, launchOptions) => {
-
 		prepareAudit(launchOptions); 
 		if (browser.name === 'chrome' && browser.isHeadless) {
 		  launchOptions.args.push('--disable-gpu');
@@ -37,7 +40,6 @@ module.exports = defineConfig( {
 		}),
 		pa11y: pa11y(), 
 	  });*/
-
 			return require( './cypress/plugins/index.js' )( on, config );
 		},
 		excludeSpecPattern: [ '*.js', '*.md' ],

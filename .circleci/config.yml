@@ -2,17 +2,17 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 orbs:
-  slack: circleci/slack@4.1
+  # slack: circleci/slack@4.1
   lighthouse-check: foo-software/lighthouse-check@0.0.8
-slack-fail-post-step: &slack-fail-post-step
-  context:
-    - swing-cypress-ui-api-slack
-  post-steps:
-    - slack/notify:
-        branch_pattern: .+
-        event: fail
-        template: basic_fail_1
-        channel: C03SQRV07R8
+# slack-fail-post-step: &slack-fail-post-step
+#   context:
+#     - tls-production-health-check-context
+#   post-steps:
+#     - slack/notify:
+#         branch_pattern: .+
+#         event: fail
+#         template: basic_fail_1
+#         channel: C03SQRV07R8
         
 jobs:
   test: 
@@ -20,8 +20,8 @@ jobs:
     steps:
       - lighthouse-check/audit:
           urls: https://www.google.com/
-      - slack/notify:
-          channel: C03SQRV07R8
+      # - slack/notify:
+      #     channel: C03SQRV07R8
           
       - lighthouse-check/validate-status:
           minAccessibilityScore: '50'
@@ -29,16 +29,54 @@ jobs:
           minPerformanceScore: '99'
           minProgressiveWebAppScore: '50'
           minSeoScore: '50'
+  
+  production-health-check-tests:
+    docker:
+      - image: cimg/base:2023.08
+    steps:
+      - checkout
+      - run:
+          name: Install Node.js
+          command: |
+            cd ~
+            curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+      # install dependencies
+      - run:
+          name: Install Dependencies
+          command: |
+              cd TLS_E2E_Automation 
+              npm install
+      - run:
+          name: Install Cypress 
+          command: |
+            pwd
+            cd TLS_E2E_Automation
+            npm add cypress --dev 
+            npm add -D cypress-wait-until
+      - run:
+          name: Run Production Health check tests
+          command: |
+            pwd
+            cd TLS_E2E_Automation
+            pwd
+            npm run cypress:run-healthcheck
+      # - slack/notify:
+      #       event: fail
+      #       channel: C05PJHA3NTD
+      - store_artifacts:
+          path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
+      - store_artifacts:
+          path: TLS_E2E_Automation/cypress/videos
+      
+   
+  
   cypress-tests:
-
     docker:
       - image: cimg/base:2021.04
-
     steps:
-    
       - checkout
-      
-      
       - restore_cache:
           key: v1-deps-{{ checksum "package.json" }}
       - run:
@@ -48,7 +86,6 @@ jobs:
             curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
             sudo apt-get install -y nodejs
             sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-
       # install dependencies
       - run:
           name: install dependencies
@@ -59,7 +96,6 @@ jobs:
           key: v1-deps-{{ checksum "package.json" }}
           paths:
             - node_modules
-
       - run:
           name: Install Cypress 
           command: |
@@ -85,13 +121,15 @@ jobs:
           destination: artifact-file
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/screenshots
-        
+              
           
 workflows:
   tests:
     jobs:
       - cypress-tests
       - test
+      - production-health-check-tests
+          
         
 
 

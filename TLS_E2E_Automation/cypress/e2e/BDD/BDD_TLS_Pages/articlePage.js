@@ -45,7 +45,6 @@ class articlePage {
 		cy.get( HOME_PAGE_SECOND_ARTICLE ).then( ( articleName ) => {
 			cy.writeIntoFile( PAGE_ELEMENT_FILE_PATH, articleName.text() );
 		} );
-
 		//Click the 2nd article
 		cy.get( HOME_PAGE_SECOND_ARTICLE ).click();
 		cy.acceptCookieBanner();
@@ -73,10 +72,8 @@ class articlePage {
 	static validateArticleCategorySepartorAndType() {
 		//Validate the Article type has value
 		cy.get( ARTICLE_LABEL_CATEGORY ).invoke( 'text' ).should( 'not.be.empty' );
-
 		//Validate  the Separator is exists
 		cy.get( ARTICLE_LABEL_SEPARATOR ).should( 'be.visible' ).contains( SEPARATOR );
-
 		//Validate the Article Type has value
 		cy.get( ARTICLE_LABEL_ARTICLE_TYPE ).invoke( 'text' ).should( 'not.be.empty' );
 		cy.log( ' Valdiation completed for Article category, separator and type' );
@@ -90,10 +87,8 @@ class articlePage {
 		//Validate the Article Title
 		cy.acceptCookieBanner();
 		cy.get( ARTICLE_PAGE_HEADLINE ).invoke( 'text' ).should( 'not.be.empty' );
-
 		//Validate the Subtitle;
 		cy.get( ARTICLE_SUB_TITLE ).invoke( 'text' ).should( 'not.be.empty' );
-
 		//Validate the Authorname and prefix by
 		cy.get( ARTICLE_AUTHOR_NAME ).invoke( 'text' ).should( 'not.be.empty' );
 		cy.get( ARTICLE_AUTHOR_NAME_WITH_BY ).invoke( 'text' ).then( ( value ) => {
@@ -112,7 +107,6 @@ class articlePage {
 	 */
 	static validateArticlePageHasSocialMediaButtons() {
 		const socialMedias = [ TWITTER, FACEBOOK, EMAIL ];
-
 		//Check all the social medias
 		socialMedias.forEach( ( socialMedia ) => {
 			cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS + socialMedia + ']', { timeout: 5000 } ).eq( 0 ).scrollIntoView().should( 'be.visible' );
@@ -129,7 +123,6 @@ class articlePage {
 		cy.acceptCookieBanner();
 		cy.get( ARTICLE_BODY ).should( 'be.visible' ).should( 'not.be.empty' );
 		cy.log( 'Verified Article body' );
-
 		//Valiadte the Read this Issue sidebar//
 		cy.get( SIDE_BAR_REVIEW ).then( ( $ele ) => {
 			if ( $ele.find( SIDE_BAR_CONTENT ).length > 0 ) {
@@ -165,7 +158,6 @@ class articlePage {
 				cy.log( 'Long reads sidebar is not exist' );
 			}
 		} );
-
 		//Validate the keep reading button
 		cy.get( KEEP_READING_OPTION ).should( 'be.visible' );
 		cy.log( 'Keep reading is exist and Verified' );
