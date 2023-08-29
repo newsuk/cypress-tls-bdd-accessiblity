@@ -6,6 +6,7 @@ module.exports = defineConfig( {
 	projectId: 'prise6',
 	firstRun: true,
 	chromeWebSecurity: false,
+	screenshotsFolder: 'cypress/productionhealthcheckscreenshots',
 	env: {
 		dev_url: 'https://www.dev-the-tls.co.uk/',
 		staging_url: 'https://www.staging-the-tls.co.uk/',
