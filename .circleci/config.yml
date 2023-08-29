@@ -67,6 +67,8 @@ jobs:
       - slack/notify:
             event: fail
             channel: C05PJHA3NTD
+            message: "Job $CIRCLE_JOB_NAME in workflow $CIRCLE_WORKFLOW_NAME failed."
+            token: $SLACK_TOKEN
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
