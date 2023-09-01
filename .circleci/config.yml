@@ -30,7 +30,7 @@ jobs:
   #         minProgressiveWebAppScore: '50'
   #         minSeoScore: '50'
   
-  staging-health-check-tests:
+  production-health-check-tests:
     machine: true
     resource_class: nukengprod/pubsys-circleci-runner-dev
     # docker:
@@ -58,7 +58,7 @@ jobs:
             npm add cypress --dev 
             npm add -D cypress-wait-until
       - run:
-          name: Run staging health check tests
+          name: Run production health check tests
           command: |
             pwd
             cd TLS_E2E_Automation
@@ -68,6 +68,9 @@ jobs:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/videos
+      - store_artifacts:
+          path:  TLS_E2E_Automation/cypress/cucumberreports/cucumber-htmlreport.html/index.html
+
       
    
   
@@ -127,7 +130,7 @@ workflows:
     jobs:
       # - cypress-tests
       # - test
-      - staging-health-check-tests:
+      - production-health-check-tests:
           <<: *slack-fail-post-step
           
         
