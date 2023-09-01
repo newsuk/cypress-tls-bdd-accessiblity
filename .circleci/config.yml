@@ -69,7 +69,7 @@ jobs:
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/videos
       - store_artifacts:
-          path:  TLS_E2E_Automation/cypress/cucumberreports/cucumber-htmlreport.html/index.html
+          path:  TLS_E2E_Automation/cypress/cucumberreports/cucumber-htmlreport.html
 
       
    
