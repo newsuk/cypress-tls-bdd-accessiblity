@@ -65,13 +65,14 @@ jobs:
             pwd
             npm run cypress:run-healthcheck
       - run :
-          name: Generating cucumber report 
+          name: Generating cucmber report
+          when: always 
           command : |
             pwd
             cd TLS_E2E_Automation
             pwd
             node ./cypress/support/cucumberreport.js
-
+            
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
@@ -138,8 +139,8 @@ workflows:
     jobs:
       # - cypress-tests
       # - test
-      - production-health-check-tests:
-          <<: *slack-fail-post-step
+      - production-health-check-tests
+          #<<: *slack-fail-post-step
           
         
 
