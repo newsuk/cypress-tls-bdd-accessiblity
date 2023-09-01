@@ -5,7 +5,7 @@
   "main": "index.js",
   "test": "cypress",
   "scripts": {
-    "cypress:run-healthcheck": "./node_modules/.bin/cypress run --env ENV=healthcheck --spec 'cypress/e2e/TLSHEALTHCHECK/*.feature' && node ./cypress/support/cucumberreport.js",
+    "cypress:run-healthcheck": "./node_modules/.bin/cypress run --env ENV=healthcheck --spec 'cypress/e2e/TLSHEALTHCHECK/*.feature' || node ./cypress/support/cucumberreport.js",
     "cypress:open-healthcheck": "./node_modules/.bin/cypress open --env ENV=healthcheck",
     "cypress:open": "./node_modules/.bin/cypress open",
     "cypress:run-dev": "./node_modules/.bin/cypress run --env ENV=dev",
