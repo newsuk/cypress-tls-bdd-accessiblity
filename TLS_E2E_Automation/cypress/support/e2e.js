@@ -21,6 +21,7 @@
 import './commands';
 import '@bahmutov/cy-api';
 import 'cypress-wait-until';
+import "cypress-cucumber-attach-screenshots-to-failed-steps";
 require('cypress-wait-until')
 /**
  * External dependencies
@@ -38,6 +39,8 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
 	style.setAttribute('data-hide-command-log-request', '');
 	app.document.head.appendChild(style);
   }
+
+
 
  Cypress.on("uncaught:exception", (err, runnable) => {
     // returning false here prevents Cypress from
@@ -88,9 +91,15 @@ after( () => {
 	}
 } );
 
-afterEach( () => {
-	if(environment!='healthcheck')
-	{
-	cy.log( 'Test Completed' );
-	}
-} );
+// afterEach( () => {
+// 	if(environment!='healthcheck')
+// 	{
+// 	cy.log( 'Test Completed' );
+// 	}
+// } 
+
+
+
+// );
+
+  
