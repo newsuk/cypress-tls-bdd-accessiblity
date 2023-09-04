@@ -144,8 +144,8 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 		let headline = $elem.text()
 		cy.log(headline);
 		cy.get(homePageArtilce,{ timeout: 5000 }).click();
-		//cy.acceptCookieBanner();
-		cy.get(articleHeadline,{ timeout: 5000 }).should('be.visible').should('have.text', "test");
+		cy.acceptCookieBanner();
+		cy.get(articleHeadline,{ timeout: 5000 }).should('be.visible').should('have.text', headline);
 	}))
 	cy.acceptCookieBanner();
 	cy.get(ads, { timeout: 5000 }).should('be.visible').should('not.be.null');
