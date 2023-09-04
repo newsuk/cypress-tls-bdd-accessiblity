@@ -11,7 +11,6 @@ slack-fail-post-step: &slack-fail-post-step
     - slack/notify:
         branch_pattern: .+
         event: always
-        file: TLS_E2E_Automation/cypress/cucmberReport.tar
         template: basic_fail_1
         channel: C05PJHA3NTD
         
@@ -175,7 +174,7 @@ workflows:
     jobs:
       # - cypress-tests
       # - test
-      - production-health-check-tests
+      - production-health-check-tests:
           <<: *slack-fail-post-step
           
         
