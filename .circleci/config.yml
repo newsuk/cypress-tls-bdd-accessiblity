@@ -64,6 +64,7 @@ jobs:
             cd TLS_E2E_Automation
             pwd
             npm run cypress:run-healthcheck
+
       - run :
           name: Generating cucmber report
           when: always 
@@ -72,13 +73,22 @@ jobs:
             cd TLS_E2E_Automation
             pwd
             node ./cypress/support/cucumberreport.js
+      -run :      
+          name: Compressing Report
+          when: always
+          commmand: |
+            pwd
+            cd TLS_E2E_Automation
+            pwd
+            tar -cvzf cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
+
             
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/videos
       - store_artifacts:
-          path:  TLS_E2E_Automation/cypress/cucumberreports/cucumber-htmlreport.html
+          path:  cucmberReport.tar
          
 
       

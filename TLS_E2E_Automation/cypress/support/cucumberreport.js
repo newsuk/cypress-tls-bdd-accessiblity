@@ -4,7 +4,7 @@ const report = require("multiple-cucumber-html-reporter");
 
 report.generate({
 jsonDir: "cypress/cucumber-json", 
-reportPath: "cucumber-htmlreport.html",
+reportPath: "cypress/cucumberreports/cucumber-htmlreport.html",
 pageTitle:"TLS Healthcheck",
 reportName:"TLS Healthcheck Report",
 displayDuration:true,
