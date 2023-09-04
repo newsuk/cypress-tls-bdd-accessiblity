@@ -104,7 +104,7 @@ jobs:
                   ]
                 }
               ]
-            }'
+            }' https://hooks.slack.com/services/your/slack/webhook/url
 
             
       - store_artifacts:
