@@ -73,14 +73,13 @@ jobs:
             cd TLS_E2E_Automation
             pwd
             node ./cypress/support/cucumberreport.js
-      - run :      
+      -run :      
           name: Compressing Report
-          when: always
-          command: |
+          commmand: |
             pwd
             cd TLS_E2E_Automation
             pwd
-            tar -cvzf cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
+            tar -cvzf ./cypress/cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
 
             
       - store_artifacts:
@@ -88,7 +87,7 @@ jobs:
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/videos
       - store_artifacts:
-          path:  cucmberReport.tar
+          path:  TLS_E2E_Automation/cypress/cucmberReport.tar
          
 
       

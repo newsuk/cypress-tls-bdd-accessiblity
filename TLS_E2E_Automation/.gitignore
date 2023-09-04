@@ -8,3 +8,4 @@
 /cypress/cucumber-json/
 /cypress/productionhealthcheckscreenshots/
 /cypress/videos/
+/cypress/cucmberReport.tar/
