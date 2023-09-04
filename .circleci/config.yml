@@ -74,9 +74,9 @@ jobs:
             cd TLS_E2E_Automation
             pwd
             node ./cypress/support/cucumberreport.js
-      -run :      
+      - run :      
           name: Compressing Report
-          commmand: |
+          command: |
             pwd
             cd TLS_E2E_Automation
             pwd
