@@ -74,15 +74,14 @@ jobs:
             pwd
             tar -cvzf ./cypress/cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
 
-sending reports to slack:
+  sending reports to slack:
      docker:
-  - image: python:3.8
-   steps:
+       - image: python:3.8
+     steps:
 
       - run:
           name: Send Cucumber report to Slack
-
-           command: |
+          command: |
             if [ "${CIRCLE_JOB}" == "build" ]; then
               # Build job succeeded
               SLACK_MESSAGE="Build succeeded! :white_check_mark:"
@@ -136,7 +135,7 @@ workflows:
       # - test
       - production-health-check-tests:
           <<: *slack-fail-post-step
-      - sending reports to slack:    
+      - sending reports to slack   
           
         
 
