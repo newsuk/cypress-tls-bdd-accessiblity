@@ -96,12 +96,11 @@ jobs:
       - run:
           name: Print Slack Webhook URL
           command: |
-            source $BASH_ENV
+            
             echo "Slack Webhook URL: $SLACK_WEBHOOK_URL"
       - run:
           name: Send Cucumber report to Slack
           command: |
-            source $BASH_ENV  
             pwd
             cd TLS_E2E_Automation
             pwd
