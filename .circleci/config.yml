@@ -87,17 +87,22 @@ jobs:
      steps:
       
       - checkout
+       # Fetch the SLACK_WEBHOOK_URL environment variable
+      - run:
+          name: Set Environment Variable for Slack Webhook URL
+          command: echo "export SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}" >> $BASH_ENV
       - run:
           name: Send Cucumber report to Slack
           command: |
+            source $BASH_ENV  
             pwd
             cd TLS_E2E_Automation
             pwd
             curl -X POST -H 'Content-type: application/json' --data '{
               "channel": "C05PJHA3NTD",
               "username": "CircleCI",
-              "text": "Cucumber test report is available!",
-            }' https://hooks.slack.com/services/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
+              "text": "Sending test text from circle using slack webhook",
+            }' $SLACK_WEBHOOK_URL
             
       
          

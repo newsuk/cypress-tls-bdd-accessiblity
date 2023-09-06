@@ -15,6 +15,7 @@ module.exports = defineConfig( {
 		beta_url: 'https://beta.the-tls.co.uk/',
 		uat_url: 'http://nu-ecs-wp-tls-uat.elb.iha-dev.ntch.co.uk/',
 		prod_url: 'https://www.the-tls.co.uk/',
+		SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/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"
 	},
 	viewportWidth: 1200,
 	viewportHeight: 660,
