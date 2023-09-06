@@ -83,7 +83,7 @@ jobs:
 
   sending reports to slack:
      docker:
-      - image: python:3.8
+      - image: circleci/node:14
      steps:
       
       - checkout
