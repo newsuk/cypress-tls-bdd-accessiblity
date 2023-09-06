@@ -92,17 +92,6 @@ jobs:
           command: |
             pwd
             cd TLS_E2E_Automation
-            pwd
-            if [ "${CIRCLE_JOB}" == "build" ]; then
-              # Build job succeeded
-              SLACK_MESSAGE="Build succeeded! :white_check_mark:"
-              SLACK_COLOR="#36a64f"
-            else
-              # Build job failed
-              SLACK_MESSAGE="Build failed! :x:"
-              SLACK_COLOR="#ff0000"
-            fi
-
             curl -X POST -H 'Content-type: application/json' --data '{
               "channel": "C05PJHA3NTD",
               "username": "CircleCI",
