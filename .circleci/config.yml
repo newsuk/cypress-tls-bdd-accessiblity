@@ -10,25 +10,17 @@ slack-fail-post-step: &slack-fail-post-step
   post-steps:
     - slack/notify:
         branch_pattern: .+
-        event: always
+        event: fail
         template: basic_fail_1
+        mentions: '@stdev'
+        channel: C05PJHA3NTD
+    - slack/notify:
+        branch_pattern: .+
+        event: pass
+        template: success_tagged_deploy_1
         channel: C05PJHA3NTD
         
 jobs:
-  # test: 
-  #   executor: lighthouse-check/default
-  #   steps:
-  #     - lighthouse-check/audit:
-  #         urls: https://www.google.com/
-  #     # - slack/notify:
-  #     #     channel: C03SQRV07R8
-          
-  #     - lighthouse-check/validate-status:
-  #         minAccessibilityScore: '50'
-  #         minBestPracticesScore: '50'
-  #         minPerformanceScore: '99'
-  #         minProgressiveWebAppScore: '50'
-  #         minSeoScore: '50'
   
   production-health-check-tests:
     machine: true
@@ -57,6 +49,7 @@ jobs:
             cd TLS_E2E_Automation
             npm add cypress --dev 
             npm add -D cypress-wait-until
+
       - run:
           name: Run production health check tests
           command: |
@@ -81,9 +74,25 @@ jobs:
             pwd
             tar -cvzf ./cypress/cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
 
+sending reports to slack:
+     docker:
+  - image: python:3.8
+   steps:
+
       - run:
           name: Send Cucumber report to Slack
-          command: |
+
+           command: |
+            if [ "${CIRCLE_JOB}" == "build" ]; then
+              # Build job succeeded
+              SLACK_MESSAGE="Build succeeded! :white_check_mark:"
+              SLACK_COLOR="#36a64f"
+            else
+              # Build job failed
+              SLACK_MESSAGE="Build failed! :x:"
+              SLACK_COLOR="#ff0000"
+            fi
+
             curl -X POST -H 'Content-type: application/json' --data '{
               "channel": "C05PJHA3NTD",
               "username": "CircleCI",
@@ -104,7 +113,7 @@ jobs:
                   ]
                 }
               ]
-            }' https://hooks.slack.com/services/your/slack/webhook/url
+            }' https://hooks.slack.com/services/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
 
             
       - store_artifacts:
@@ -118,56 +127,7 @@ jobs:
       
    
   
-  # cypress-tests:
-  #   docker:
-  #     - image: cimg/base:2021.04
-  #   steps:
-  #     - checkout
-  #     - restore_cache:
-  #         key: v1-deps-{{ checksum "package.json" }}
-  #     - run:
-  #         name: Install Node.js
-  #         command: |
-  #           cd ~
-  #           curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-  #           sudo apt-get install -y nodejs
-  #           sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
-  #     # install dependencies
-  #     - run:
-  #         name: install dependencies
-  #         command: |
-  #             cd TLS_E2E_Automation 
-  #             npm install
-  #     - save_cache:
-  #         key: v1-deps-{{ checksum "package.json" }}
-  #         paths:
-  #           - node_modules
-  #     - run:
-  #         name: Install Cypress 
-  #         command: |
-  #           pwd
-  #           cd TLS_E2E_Automation
-  #           npm add cypress --dev
-  #           npm add -D cypress-wait-until
-  #           npm add -D faker 
-  #     - run:
-  #         name: Run Cypress tests
-  #         command: |
-  #           pwd
-  #           cd TLS_E2E_Automation
-  #           pwd
-  #           npx cypress run  --env ENV=dev --spec 'cypress/e2e/PERFORMANCE/Perfromance.cy.js'
-  #     - run:
-  #         name: Creating Dummy Artifacts
-  #         command: |
-  #           echo TLS_E2E_Automation/cypress/screenshots/lhreport.html > /tmp/art-1
-  #            mkdir /tmp/artifacts
-  #     - store_artifacts:
-  #         path: /tmp/art-1
-  #         destination: artifact-file
-  #     - store_artifacts:
-  #         path: TLS_E2E_Automation/cypress/screenshots
-              
+
           
 workflows:
   tests:
@@ -176,6 +136,7 @@ workflows:
       # - test
       - production-health-check-tests:
           <<: *slack-fail-post-step
+      - sending reports to slack:    
           
         
 
