@@ -74,6 +74,15 @@ jobs:
             pwd
             tar -cvzf ./cypress/cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
 
+      - run:
+          name: Set SLACK_WEBHOOK_URL
+          command: |
+            pwd
+            cd TLS_E2E_Automation
+            pwd
+            echo "export SLACK_WEBHOOK_URL=$(node cypress/config.js)" >> $BASH_ENV
+
+
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
@@ -133,7 +142,7 @@ workflows:
       - sending reports to slack:
           requires:
             - production-health-check-tests
-            
+        
          
           
         
