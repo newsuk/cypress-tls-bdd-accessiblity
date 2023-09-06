@@ -74,14 +74,22 @@ jobs:
             pwd
             tar -cvzf ./cypress/cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
 
-  sending reports to slack:
+       - store_artifacts:
+          path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
+      - store_artifacts:
+          path: TLS_E2E_Automation/cypress/videos
+      - store_artifacts:
+          path:  TLS_E2E_Automation/cypress/cucmberReport.tar     
+
+sending reports to slack:
      docker:
-       - image: python:3.8
-     steps:
+  - image: python:3.8
+   steps:
 
       - run:
           name: Send Cucumber report to Slack
-          command: |
+
+           command: |
             if [ "${CIRCLE_JOB}" == "build" ]; then
               # Build job succeeded
               SLACK_MESSAGE="Build succeeded! :white_check_mark:"
@@ -115,12 +123,7 @@ jobs:
             }' https://hooks.slack.com/services/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
 
             
-      - store_artifacts:
-          path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
-      - store_artifacts:
-          path: TLS_E2E_Automation/cypress/videos
-      - store_artifacts:
-          path:  TLS_E2E_Automation/cypress/cucmberReport.tar
+      
          
 
       
@@ -133,9 +136,13 @@ workflows:
     jobs:
       # - cypress-tests
       # - test
+      
       - production-health-check-tests:
           <<: *slack-fail-post-step
-      - sending reports to slack   
+      - sending reports to slack: 
+            requies:
+                  -production-health-check-tests   
+         
           
         
 
