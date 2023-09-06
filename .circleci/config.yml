@@ -89,8 +89,8 @@ jobs:
       - checkout
        # Fetch the SLACK_WEBHOOK_URL environment variable
       - run:
-          name: Set Environment Variable for Slack Webhook URL
-          command: echo "export SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}" >> $BASH_ENV
+          name: Set SLACK_WEBHOOK_URL
+          command: echo "export SLACK_WEBHOOK_URL=$(node cypress/config.js)" >> $BASH_ENV
 
       - run:
           name: Print Slack Webhook URL
