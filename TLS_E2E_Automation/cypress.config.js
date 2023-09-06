@@ -3,15 +3,7 @@ const { defineConfig } = require( 'cypress' );
 //const ReportGenerator = require('lighthouse/report/generator/report-generator');
 
 
-const getSlackWebhookUrl = () => {
-	// Implement your logic to determine the URL
-	// For example, you can read it from a file or fetch it from an external source
-	return 'https://hooks.slack.com/services/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';
-};
-module.exports = (on, config) => {
-	config.env.slackWebhookUrl = getSlackWebhookUrl();
-	return config;
-  };
+
 
 module.exports = defineConfig( {
 	projectId: 'prise6',

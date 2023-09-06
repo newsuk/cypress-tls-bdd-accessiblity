@@ -74,10 +74,7 @@ jobs:
             pwd
             tar -cvzf ./cypress/cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
 
-      - run:
-          name: Set SLACK_WEBHOOK_URL
-          command: |
-            echo "export SLACK_WEBHOOK_URL=$(node cypress/config.js)" >> $BASH_ENV
+     
 
 
       - store_artifacts:
@@ -94,13 +91,7 @@ jobs:
       
       - checkout
        # Fetch the SLACK_WEBHOOK_URL environment variable
-      - run:
-          name: Set SLACK_WEBHOOK_URL
-          command: |
-            pwd
-            cd TLS_E2E_Automation
-            pwd
-            echo "export SLACK_WEBHOOK_URL=$(node cypress/config.js)" >> $BASH_ENV
+      
 
       - run:
           name: Print Slack Webhook URL
