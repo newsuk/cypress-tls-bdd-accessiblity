@@ -77,9 +77,6 @@ jobs:
       - run:
           name: Set SLACK_WEBHOOK_URL
           command: |
-            pwd
-            cd TLS_E2E_Automation
-            pwd
             echo "export SLACK_WEBHOOK_URL=$(node cypress/config.js)" >> $BASH_ENV
 
 
