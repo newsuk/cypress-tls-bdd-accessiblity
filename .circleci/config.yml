@@ -102,6 +102,8 @@ jobs:
           name: Send Cucumber report to Slack
           command: |
             ls 
+            cd TLS_E2E_Automation
+            ls
             curl -X POST -H 'Content-type: application/json' --data '{
               "channel": "C05PJHA3NTD",
               "username": "CircleCI",
@@ -113,7 +115,7 @@ jobs:
                   "title_link": "cypress/cucumberreports/cucumber-htmlreport.html/index.html"
                 }
               ]
-            }' $SLACK_WEBHOOK_URL
+            }'$SLACK_WEBHOOK_URL
             
       
          
