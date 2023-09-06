@@ -97,7 +97,7 @@ jobs:
               "channel": "C05PJHA3NTD",
               "username": "CircleCI",
               "text": "Cucumber test report is available!",
-            }'https://hooks.slack.com/services/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
+            }' https://hooks.slack.com/services/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
             
       
          
