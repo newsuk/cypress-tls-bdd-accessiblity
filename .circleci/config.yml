@@ -92,7 +92,7 @@ jobs:
           name: Set Environment Variable for Slack Webhook URL
           command: echo "export SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}" >> $BASH_ENV
 
-       - run:
+      - run:
           name: Print Slack Webhook URL
           command: |
             source $BASH_ENV
