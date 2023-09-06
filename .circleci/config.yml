@@ -102,7 +102,7 @@ jobs:
                   "fallback": "Cucumber Test Report",
                   "color": "#36a64f",
                   "title": "Cucumber Test Report",
-                  "title_link": "cypress/cucmberReport.tar",
+                  "title_link": "cypress/cucumberreports/cucumber-htmlreport.html/index.html",
                   "text": "Here is the latest Cucumber test report.",
                   "fields": [
                     {
