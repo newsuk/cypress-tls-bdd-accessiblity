@@ -89,6 +89,9 @@ jobs:
       - run:
           name: Send Cucumber report to Slack
           command: |
+            pwd
+            cd TLS_E2E_Automation
+            pwd
             if [ "${CIRCLE_JOB}" == "build" ]; then
               # Build job succeeded
               SLACK_MESSAGE="Build succeeded! :white_check_mark:"
