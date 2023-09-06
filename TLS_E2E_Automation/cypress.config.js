@@ -3,12 +3,14 @@ const { defineConfig } = require( 'cypress' );
 //const ReportGenerator = require('lighthouse/report/generator/report-generator');
 
 
+Cypress.env('SLACK_WEBHOOK_URL', 'https://hooks.slack.com/services/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');
 
 module.exports = defineConfig( {
 	projectId: 'prise6',
 	firstRun: true,
 	chromeWebSecurity: false,
 	screenshotsFolder: 'cypress/productionhealthcheckscreenshots',
+	
 	env: {
 		dev_url: 'https://www.dev-the-tls.co.uk/',
 		staging_url: 'https://www.staging-the-tls.co.uk/',
