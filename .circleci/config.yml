@@ -108,6 +108,13 @@ jobs:
               "channel": "C05PJHA3NTD",
               "username": "CircleCI",
               "text": "Sending test text from circle using slack webhook",
+              "attachments": [
+                {
+                  "fallback": "Cucumber Test Report",
+                  "title": "Testing slack integration",
+                  "title_link": "cypress/cucumberreports/cucumber-htmlreport.html/index.html"
+                }
+              ]
             }' $SLACK_WEBHOOK_URL
             
       
