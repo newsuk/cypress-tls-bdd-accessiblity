@@ -92,6 +92,7 @@ jobs:
           command: |
             pwd
             cd TLS_E2E_Automation
+            pwd
             curl -X POST -H 'Content-type: application/json' --data '{
               "channel": "C05PJHA3NTD",
               "username": "CircleCI",
