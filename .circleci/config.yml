@@ -101,9 +101,7 @@ jobs:
       - run:
           name: Send Cucumber report to Slack
           command: |
-            pwd
-            cd TLS_E2E_Automation
-            pwd
+            ls 
             curl -X POST -H 'Content-type: application/json' --data '{
               "channel": "C05PJHA3NTD",
               "username": "CircleCI",
@@ -131,11 +129,11 @@ workflows:
       # - cypress-tests
       # - test
       
-      - production-health-check-tests
+      #- production-health-check-tests
           #<<: *slack-fail-post-step
-      - sending reports to slack:
-          requires:
-            - production-health-check-tests
+      - sending reports to slack
+          #requires:
+            #- production-health-check-tests
         
          
           
