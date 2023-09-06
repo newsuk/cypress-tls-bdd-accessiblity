@@ -112,7 +112,7 @@ jobs:
                   "fallback": "Cucumber Test Report",
                   "color": "#36a64f",
                   "title": "Cucumber Test Report",
-                  "title_link": "TLS_E2E_Automation/cypress/cucmberReport.tar",
+                  "title_link": "cypress/cucmberReport.tar",
                   "text": "Here is the latest Cucumber test report.",
                   "fields": [
                     {
