@@ -101,22 +101,18 @@ jobs:
       - run:
           name: Send Cucumber report to Slack
           command: |
+            echo "${CIRCLE_WORKFLOW_ID}"
             pwd
             cd TLS_E2E_Automation
             pwd
             curl -X POST -H 'Content-type: application/json' --data '{
-              "channel": "C05PJHA3NTD",
-              "username": "CircleCI",
-              "text": "Sending test text from circle using slack webhook",
-              "attachments": [
-                {
-                  "fallback": "Cucumber Test Report",
-                  "title": "Testing slack integration",
-                  "title_link": "cypress/cucumberreports/cucumber-htmlreport.html/index.html"
-                }
-              ]
-            }' $SLACK_WEBHOOK_URL
+            "channel": "C05PJHA3NTD",
+            "username": "CircleCI",
+            "text": "Please click on the link for Report : https://output.circle-artifacts.com/output/job/383842b5-ad98-4628-96f0-c5a1865c0f9f/artifacts/0/TLS_E2E_Automation/cypress/cucmberReport.tar",
+            }' https://hooks.slack.com/services/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
             
+
+
       
          
 
@@ -132,7 +128,7 @@ workflows:
       # - test
       
       - production-health-check-tests
-          #<<: *slack-fail-post-step
+          <<: *slack-fail-post-step
       - sending reports to slack:
           requires:
             - production-health-check-tests
