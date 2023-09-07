@@ -99,7 +99,7 @@ jobs:
       - run:
           name: Send Cucumber report to Slack
           command: |
-            echo "${CIRCLE_BUILD_NUM}"
+            echo "${CIRCLE_WORKFLOW_JOB_ID}"
             pwd
             cd TLS_E2E_Automation
             ls
