@@ -75,6 +75,12 @@ jobs:
             echo "${CIRCLE_WORKFLOW_JOB_ID}"
             tar -cvzf ./cypress/cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
 
+      - run :      
+          name: Updating environmental url
+          command: |
+           ARTIFACT_URL="https://output.circle-artifacts.com/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/0/TLS_E2E_Automation/cypress/cucmberReport.tar" 
+           echo "Artifact URL: $ARTIFACT_URL"
+
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
       - store_artifacts:
@@ -100,7 +106,7 @@ jobs:
       - run:
           name: Send Cucumber report to Slack
           command: |
-            echo "${CIRCLE_WORKFLOW_JOB_ID}"
+            echo "Artifact URL: $ARTIFACT_URL"
             pwd
             cd TLS_E2E_Automation
             ls
