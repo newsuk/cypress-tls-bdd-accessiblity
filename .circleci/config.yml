@@ -109,7 +109,7 @@ jobs:
             "channel": "C05PJHA3NTD",
             "username": "CircleCI",
             "text": "Please click on the link for Report : https://output.circle-artifacts.com/output/job/383842b5-ad98-4628-96f0-c5a1865c0f9f/artifacts/0/TLS_E2E_Automation/cypress/cucmberReport.tar",
-            }' https://hooks.slack.com/services/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
+            }' $SLACK_WEBHOOK_URL
             
 
 
