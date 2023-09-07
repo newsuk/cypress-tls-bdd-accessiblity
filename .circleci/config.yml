@@ -107,10 +107,11 @@ jobs:
             pwd
             cd TLS_E2E_Automation
             ls
+            message="Please click on the link to download the report: $ARTIFACT_URL"
             curl -X POST -H 'Content-type: application/json' --data '{
             "channel": "C05PJHA3NTD",
             "username": "CircleCI",
-            "text": "Please click on the link to downlod the report : $ARTIFACT_URL",
+            "text": "'"${message}"'",
             }' $SLACK_WEBHOOK_URL
             
 
@@ -118,8 +119,7 @@ jobs:
 workflows:
   tests:
     jobs:
-      # - cypress-tests
-      # - test
+  
       - production-health-check-tests:
           <<: *slack-fail-post-step
       - sending reports to slack:
