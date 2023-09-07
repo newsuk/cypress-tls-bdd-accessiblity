@@ -111,7 +111,7 @@ jobs:
             curl -X POST -H 'Content-type: application/json' --data '{
             "channel": "C05PJHA3NTD",
             "username": "CircleCI",
-            "text": "Please click on the link to download the report: ${ARTIFACT_URL}"
+            "text": "Please click on the link to download the report: "'"${ARTIFACT_URL}"'"
             }' $SLACK_WEBHOOK_URL
             
 
