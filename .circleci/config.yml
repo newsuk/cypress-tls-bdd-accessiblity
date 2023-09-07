@@ -72,6 +72,7 @@ jobs:
             pwd
             cd TLS_E2E_Automation
             pwd
+            echo "${CIRCLE_WORKFLOW_JOB_ID}"
             tar -cvzf ./cypress/cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
 
       - store_artifacts:
