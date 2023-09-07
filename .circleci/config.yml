@@ -73,6 +73,13 @@ jobs:
             cd TLS_E2E_Automation
             pwd
             tar -cvzf ./cypress/cucmberReport.tar cypress/cucumberreports/cucumber-htmlreport.html
+
+      - store_artifacts:
+          path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
+      - store_artifacts:
+          path: TLS_E2E_Automation/cypress/videos
+      - store_artifacts:
+          path:  TLS_E2E_Automation/cypress/cucmberReport.tar
      
 
   sending reports to slack:
@@ -83,12 +90,7 @@ jobs:
       - checkout
        # Fetch the SLACK_WEBHOOK_URL environment variable
       
-      - store_artifacts:
-          path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
-      - store_artifacts:
-          path: TLS_E2E_Automation/cypress/videos
-      - store_artifacts:
-          path:  TLS_E2E_Automation/cypress/cucmberReport.tar
+    
       - run:
           name: Print Slack Webhook URL
           command: |
@@ -97,14 +99,14 @@ jobs:
       - run:
           name: Send Cucumber report to Slack
           command: |
-            echo "${CIRCLE_WORKFLOW_ID}"
+            echo "${CIRCLE_BUILD_NUM}"
             pwd
             cd TLS_E2E_Automation
             ls
             curl -X POST -H 'Content-type: application/json' --data '{
             "channel": "C05PJHA3NTD",
             "username": "CircleCI",
-            "text": "Please click on the link for Report : https://output.circle-artifacts.com/output/job/383842b5-ad98-4628-96f0-c5a1865c0f9f/artifacts/0/TLS_E2E_Automation/cypress/cucmberReport.tar",
+            #"text": "Please click on the link for Report : https://output.circle-artifacts.com/output/job/383842b5-ad98-4628-96f0-c5a1865c0f9f/artifacts/0/TLS_E2E_Automation/cypress/cucmberReport.tar",
             }' $SLACK_WEBHOOK_URL
             
 
@@ -122,8 +124,8 @@ workflows:
     jobs:
       # - cypress-tests
       # - test
-      - production-health-check-tests:
-          <<: *slack-fail-post-step
+      - production-health-check-tests
+          #<<: *slack-fail-post-step
       - sending reports to slack:
           requires:
             - production-health-check-tests
