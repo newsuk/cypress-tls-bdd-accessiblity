@@ -83,8 +83,10 @@ jobs:
 
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
+
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/videos
+          
       - store_artifacts:
           path:  TLS_E2E_Automation/cypress/cucmberReport.tar
      
@@ -97,42 +99,27 @@ jobs:
       - checkout
        # Fetch the SLACK_WEBHOOK_URL environment variable
       
-    
-      - run:
-          name: Print Slack Webhook URL
-          command: |
-            
-            echo "Slack Webhook URL: $SLACK_WEBHOOK_URL"
       - run:
           name: Send Cucumber report to Slack
           command: |
-            echo "Artifact URL: $ARTIFACT_URL"
             pwd
             cd TLS_E2E_Automation
             ls
             curl -X POST -H 'Content-type: application/json' --data '{
             "channel": "C05PJHA3NTD",
             "username": "CircleCI",
-            #"text": "Please click on the link for Report : https://output.circle-artifacts.com/output/job/383842b5-ad98-4628-96f0-c5a1865c0f9f/artifacts/0/TLS_E2E_Automation/cypress/cucmberReport.tar",
+            "text": "Please click on the link to downlod the report : $ARTIFACT_URL",
             }' $SLACK_WEBHOOK_URL
             
 
 
-      
-         
-
-      
-   
-  
-
-          
 workflows:
   tests:
     jobs:
       # - cypress-tests
       # - test
       - production-health-check-tests
-          #<<: *slack-fail-post-step
+          <<: *slack-fail-post-step
       - sending reports to slack:
           requires:
             - production-health-check-tests
