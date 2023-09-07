@@ -107,7 +107,7 @@ jobs:
             pwd
             cd TLS_E2E_Automation
             ls
-            message="Please click on the link to download the report: $ARTIFACT_URL"
+            message="Please click on the link to download the report: "'" ${ARTIFACT_URl}"'"
             curl -X POST -H 'Content-type: application/json' --data '{
             "channel": "C05PJHA3NTD",
             "username": "CircleCI",
