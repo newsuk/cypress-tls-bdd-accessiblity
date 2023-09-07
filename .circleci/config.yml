@@ -68,6 +68,7 @@ jobs:
             node ./cypress/support/cucumberreport.js
       - run :      
           name: Compressing Report
+          when: always
           command: |
             pwd
             cd TLS_E2E_Automation
@@ -77,6 +78,7 @@ jobs:
 
       - run :      
           name: Updating environmental url
+          when: always
           command: |
            ARTIFACT_URL="https://output.circle-artifacts.com/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/0/TLS_E2E_Automation/cypress/cucmberReport.tar" 
            echo "Artifact URL: $ARTIFACT_URL"
@@ -86,7 +88,7 @@ jobs:
 
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/videos
-          
+
       - store_artifacts:
           path:  TLS_E2E_Automation/cypress/cucmberReport.tar
      
