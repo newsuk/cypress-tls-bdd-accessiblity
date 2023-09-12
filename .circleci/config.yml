@@ -91,29 +91,22 @@ jobs:
 
       - store_artifacts:
           path:  TLS_E2E_Automation/cypress/cucmberReport.tar
-     
 
-  sending reports to slack:
-     docker:
-      - image: circleci/node:14
-     steps:
-      
-      - checkout
-       # Fetch the SLACK_WEBHOOK_URL environment variable
-      
       - run:
           name: Send Cucumber report to Slack
           command: |
             pwd
             cd TLS_E2E_Automation
             ls
-            message="Please click on the link to download the report: "'" ${ARTIFACT_URl}"'"
+            message="Please click on the link to download the report: ${ARTIFACT_URL}"
             curl -X POST -H 'Content-type: application/json' --data '{
             "channel": "C05PJHA3NTD",
             "username": "CircleCI",
-            "text": "Please click on the link to download the report: "'"${ARTIFACT_URL}"'"
-            }' $SLACK_WEBHOOK_URL
-            
+            "text": "'"${message}"'"
+            }' "$SLACK_WEBHOOK_URL"
+     
+
+  
 
 
 workflows:
@@ -122,9 +115,7 @@ workflows:
   
       - production-health-check-tests:
           <<: *slack-fail-post-step
-      - sending reports to slack:
-          requires:
-            - production-health-check-tests
+      
         
          
           
