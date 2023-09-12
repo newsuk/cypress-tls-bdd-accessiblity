@@ -106,7 +106,7 @@ workflows:
   tests:
     jobs:
   
-      - production-health-check-tests
+      - production-health-check-tests:
           <<: *slack-fail-post-step
       
         
