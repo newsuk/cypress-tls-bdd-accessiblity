@@ -4,7 +4,7 @@
 /wpcs/
 /coverage/
 .DS_Store
-/cypress/cucumberreports/
+cucumberreports
 /cypress/cucumber-json/
 /cypress/productionhealthcheckscreenshots/
 /cypress/videos/
