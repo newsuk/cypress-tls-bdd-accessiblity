@@ -91,11 +91,29 @@ jobs:
             pwd
             cd TLS_E2E_Automation
             ls
-            message="Please click on the link to download the report: https://output.circle-artifacts.com/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/0/TLS_E2E_Automation/cypress/cucmberReport.tar"
+            message="https://output.circle-artifacts.com/output/job/${CIRCLE_WORKFLOW_JOB_ID}/artifacts/0/TLS_E2E_Automation/cypress/cucmberReport.tar"
+            
             curl -X POST -H 'Content-type: application/json' --data '{
             "channel": "C05PJHA3NTD",
             "username": "CircleCI",
-            "text": "'"$message"'"
+            "text": "*Cucumber Test Report*",
+            "attachments": [
+            {
+            "color": "#FF0000",
+            "fields": [
+            {
+             "title": "Build number",
+             "value": "'"$CIRCLE_BUILD_NUM"'",
+             "short": true
+            },
+            {
+             "title": "Report Link",
+             "value": "'"$message"'",
+             "short": false
+            }
+            ]
+            }
+            ]
             }' "$SLACK_WEBHOOK_URL"
      
 
@@ -108,6 +126,15 @@ workflows:
   
       - production-health-check-tests:
           <<: *slack-fail-post-step
+
+
+triggers:
+  - schedule:
+      cron: "30 0 * * *"  
+      filters:
+        branches:
+          only:
+            - feat/add-cucumber-report 
       
         
          

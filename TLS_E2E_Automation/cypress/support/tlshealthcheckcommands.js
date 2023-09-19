@@ -74,7 +74,7 @@ const subscriptionPageTitle="Account set up";
 
 //TLS Author page
 const verifyAuthorName="[class*='tls-aggregation-page__author-details-name']";
-const authorName="David Herd";
+const authorName="David Herd12";
 
 //TLS Category page
 const verifyCategoryName="[class*='tls-collections-header__title']";
