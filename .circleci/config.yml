@@ -14,11 +14,7 @@ slack-fail-post-step: &slack-fail-post-step
         template: basic_fail_1
         mentions: '@stdev'
         channel: C05PJHA3NTD
-    - slack/notify:
-        branch_pattern: .+
-        event: pass
-        template: basic_success_1
-        channel: C05PJHA3NTD
+ 
         
 jobs:
   
@@ -60,7 +56,7 @@ jobs:
 
       - run :
           name: Generating cucmber report
-          when: always 
+          when: always
           command : |
             pwd
             cd TLS_E2E_Automation
@@ -68,7 +64,7 @@ jobs:
             node ./cypress/support/cucumberreport.js
       - run :      
           name: Compressing Report
-          when: always
+          when: on_fail
           command: |
             pwd
             cd TLS_E2E_Automation
@@ -87,6 +83,7 @@ jobs:
 
       - run:
           name: Send Cucumber report to Slack
+          when: on_fail
           command: |
             pwd
             cd TLS_E2E_Automation
