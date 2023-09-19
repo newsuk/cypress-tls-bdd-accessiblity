@@ -15,7 +15,7 @@ slack-fail-post-step: &slack-fail-post-step
         mentions: '@stdev'
         channel: C05PJHA3NTD
  
-        
+       
 jobs:
   
   production-health-check-tests:
@@ -118,7 +118,7 @@ jobs:
 
 
 workflows:
-  tests:
+  build-on-schedule:
     jobs:
   
       - production-health-check-tests:
@@ -127,7 +127,7 @@ workflows:
 
 triggers:
   - schedule:
-      cron: "00 10 * * *"  
+      cron: "15 11 * * *"  
       filters:
         branches:
           only:
