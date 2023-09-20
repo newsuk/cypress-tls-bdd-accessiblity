@@ -118,20 +118,13 @@ jobs:
 
 
 workflows:
-  build-on-schedule:
+  tests:
     jobs:
   
       - production-health-check-tests:
           <<: *slack-fail-post-step
 
 
-triggers:
-  - schedule:
-      cron: "15 11 * * *"  
-      filters:
-        branches:
-          only:
-            - feat/add-cucumber-report 
       
         
          
