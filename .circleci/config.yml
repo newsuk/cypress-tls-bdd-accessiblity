@@ -14,10 +14,7 @@ slack-fail-post-step: &slack-fail-post-step
         template: basic_fail_1
         mentions: '@stdev'
         channel: C05PJHA3NTD
- 
-       
 jobs:
-  
   production-health-check-tests:
     machine: true
     resource_class: nukengprod/pubsys-circleci-runner-dev
@@ -45,7 +42,6 @@ jobs:
             cd TLS_E2E_Automation
             npm add cypress --dev 
             npm add -D cypress-wait-until
-
       - run:
           name: Run production health check tests
           command: |
@@ -53,7 +49,6 @@ jobs:
             cd TLS_E2E_Automation
             pwd
             npm run cypress:run-healthcheck
-
       - run :
           name: Generating cucmber report
           when: always
@@ -71,16 +66,12 @@ jobs:
             pwd
             echo "${CIRCLE_WORKFLOW_JOB_ID}"
             tar -cvzf ./cypress/cucmberReport.tar cucumberreports
-        
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/productionhealthcheckscreenshots
-
       - store_artifacts:
           path: TLS_E2E_Automation/cypress/videos
-
       - store_artifacts:
           path:  TLS_E2E_Automation/cypress/cucmberReport.tar
-
       - run:
           name: Send Cucumber report to Slack
           when: on_fail
@@ -112,29 +103,8 @@ jobs:
             }
             ]
             }' "$SLACK_WEBHOOK_URL"
-     
-
-  
-
-
 workflows:
   tests:
     jobs:
-  
       - production-health-check-tests:
           <<: *slack-fail-post-step
-
-
-      
-        
-         
-          
-        
-
-
-
-
-
-
-
-
