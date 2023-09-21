@@ -64,7 +64,7 @@ jobs:
             node ./cypress/support/cucumberreport.js
       - run :      
           name: Compressing Report
-          when: on_fail
+          when: always
           command: |
             pwd
             cd TLS_E2E_Automation
