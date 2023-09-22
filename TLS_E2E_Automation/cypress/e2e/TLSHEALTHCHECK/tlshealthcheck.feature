@@ -35,5 +35,5 @@ As a user, I am checking production site is stable
     Scenario: Validate TLS header-footer page
         Then I validate tls header-footer page
     
-    Scenario: Validate TLS author page
+    Scenario: Validate TLS article page
         Then I validate tls article page

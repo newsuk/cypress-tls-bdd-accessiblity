@@ -21,6 +21,7 @@
 import './commands';
 import '@bahmutov/cy-api';
 import 'cypress-wait-until';
+import "cypress-cucumber-attach-screenshots-to-failed-steps";
 require('cypress-wait-until')
 /**
  * External dependencies
@@ -51,46 +52,43 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
   });
 
   before( () => {
-	if(environment!='healthcheck')
-	{
-	if ( Cypress.config( 'firstRun' ) ) {
-		cy.log( 'Open the TLS Home page for environment =>' + Cypress.env( 'ENV' ) );
-		//Fetch the environment from the command line
-		const environment = Cypress.env( 'ENV' );
-		//Corresponded environment url is picked
-		const url = Cypress.env( `${ environment }_url` );
-		//Load the URL
-		cy.visit(url);
-		//Accept the cookie banner
-		cy.acceptCookieBanner();
-		/**
-	     * If needed can add(err, runnable)
-         */
-		Cypress.on("uncaught:exception", (err, runnable) => {
-			// returning false here prevents Cypress from
-			// failing the test
-			return false;
-		  });
-		Cypress.config( 'firstRun', false );
-		cy.log( 'TLS Home page for environment =>' + Cypress.env( 'ENV' ) + 'loaded' );
+	if(environment!='healthcheck') {
+		if ( Cypress.config( 'firstRun' ) ) {
+			cy.log( 'Open the TLS Home page for environment =>' + Cypress.env( 'ENV' ) );
+			//Fetch the environment from the command line
+			const environment = Cypress.env( 'ENV' );
+			//Corresponded environment url is picked
+			const url = Cypress.env( `${ environment }_url` );
+			//Load the URL
+			cy.visit(url);
+			//Accept the cookie banner
+			cy.acceptCookieBanner();
+			/**
+			 * If needed can add(err, runnable)
+			 */
+			Cypress.on("uncaught:exception", (err, runnable) => {
+				// returning false here prevents Cypress from
+				// failing the test
+				return false;
+			});
+			Cypress.config( 'firstRun', false );
+			cy.log( 'TLS Home page for environment =>' + Cypress.env( 'ENV' ) + 'loaded' );
+		}
 	}
-}
 } );
 
 beforeEach( () => {
 } );
 
 after( () => {
-	if(environment!='healthcheck')
-	{
-	cy.log( 'Test Secenario Completed' );
-	Cypress.config( 'firstRun', true );
+	if(environment!='healthcheck') {
+		cy.log( 'Test Secenario Completed' );
+		Cypress.config( 'firstRun', true );
 	}
 } );
 
 afterEach( () => {
-	if(environment!='healthcheck')
-	{
-	cy.log( 'Test Completed' );
+	if( environment!='healthcheck' ) {
+		cy.log( 'Test Completed' );
 	}
 } );

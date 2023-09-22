@@ -4,3 +4,8 @@
 /wpcs/
 /coverage/
 .DS_Store
+cucumberreports
+/cypress/cucumber-json/
+/cypress/productionhealthcheckscreenshots/
+/cypress/videos/
+/cypress/cucmberReport.tar/
