@@ -175,7 +175,7 @@ Cypress.Commands.add( 'validateTlsArchivePage', () => {
 	cy.get(verifyArchiveLinkYear,{ timeout: 5000 }).should('be.visible');
 	//searchFilter Validation
 	// eslint-disable-next-line cypress/unsafe-to-chain-command
-	cy.get(verifySearchFilter,{ timeout: 5000 }).click().type('Mary Beard').type('{enter}')
+	cy.get(verifySearchFilter,{ timeout: 5000 }).click({force: true}).type('Mary Beard').type('{enter}')
 	cy.get(verifySearchedAuthorPage,{ timeout: 5000 }).should('be.visible');
 	cy.log( 'Successfully validated the tls archieve page' );
 } );
