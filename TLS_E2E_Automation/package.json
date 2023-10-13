@@ -9,7 +9,7 @@
     "cypress:open-healthcheck": "./node_modules/.bin/cypress open --env ENV=healthcheck",
     "cypress:open": "./node_modules/.bin/cypress open",
     "cypress:run-dev": "./node_modules/.bin/cypress run --env ENV=dev",
-    "cypress:open-dev": "./node_modules/.bin/cypress open --env ENV=dev",
+    "cypress:open-dev": "./node_modules/.bin/cypress open --env ENV=uat",
     "cypress:run-staging": "./node_modules/.bin/cypress run --env ENV=staging",
     "cypress:open-staging": "./node_modules/.bin/cypress open --env ENV=staging",
     "cypress:run-prod": "./node_modules/.bin/cypress run --env ENV=prod",

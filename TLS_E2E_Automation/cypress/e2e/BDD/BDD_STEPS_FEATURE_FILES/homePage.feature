@@ -4,7 +4,7 @@ Feature: Validations on Home page
         Given Users enters into the tls home page
         When  The home page is loaded successfully
 
-    @focus
+    @sanity
     Scenario: Validate left block and center collections
         Then Validate left block and center collections
 

@@ -1,19 +1,16 @@
 const { defineConfig } = require( 'cypress' );
 //const ReportGenerator = require('lighthouse/lighthouse-core/report/report-generator'); 
 //const ReportGenerator = require('lighthouse/report/generator/report-generator');
+
 module.exports = defineConfig( {
 	projectId: 'prise6',
 	firstRun: true,
 	chromeWebSecurity: false,
-	screenshotsFolder: 'cypress/productionhealthcheckscreenshots',
-	env: 
-		{
-		dev_url: 'https://www.dev-the-tls.co.uk/',
+	env: {
+		uat_url: 'https://www.uat-the-tls.co.uk/',
 		staging_url: 'https://www.staging-the-tls.co.uk/',
-		beta_url: 'https://beta.the-tls.co.uk/',
-		uat_url: 'http://nu-ecs-wp-tls-uat.elb.iha-dev.ntch.co.uk/',
 		prod_url: 'https://www.the-tls.co.uk/'
-		},
+	},
 	viewportWidth: 1200,
 	viewportHeight: 660,
 	pageLoadTimeout: 25000,
@@ -44,6 +41,6 @@ module.exports = defineConfig( {
 			return require( './cypress/plugins/index.js' )( on, config );
 		},
 		excludeSpecPattern: [ '*.js', '*.md' ],
-		specPattern: [ 'cypress/e2e/**/*.{feature,features}', 'cypress/e2e/**/*.cy.js' ],
+		specPattern: [ 'cypress/e2e/**/*.{feature,features}'],
 	},
 } );
