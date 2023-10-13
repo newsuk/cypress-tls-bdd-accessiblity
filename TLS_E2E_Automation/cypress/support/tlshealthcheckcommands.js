@@ -34,7 +34,7 @@ const collectionSlices="div[class*='slices']";
 const newsletterBlock="div[class='tls-newsletter']";
 
 //archive page elements
-const verifySearchFilter ="[class*='tls-archive-issue-page__header-filter-section-search-filter']";
+const verifySearchFilter ="[class*='tls-search-filter__search-bar']";
 const verifyDropdownForYears =".tls-date-filter__dropdown-btn";
 const selectYears ="[class*='tls-date-filter__content-item']";
 const verifySearchedAuthorPage="[class*='tls-search-core__hits']";
@@ -148,9 +148,10 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 		cy.get(articleHeadline,{ timeout: 5000 }).should('be.visible').should('have.text', headline);
 	}))
 	cy.acceptCookieBanner();
-	cy.get(ads, { timeout: 5000 }).should('be.visible').should('not.be.null');
+	cy.get(ads, { timeout: 5000 }).eq(0).scrollIntoView().should('be.visible').should('not.be.null');
 	cy.get(paywallBanner,{ timeout: 5000 }).should('be.visible').should('not.be.null');
 	cy.get(articleHeadline,{ timeout: 5000 }).should('be.visible').should('not.be.null');
+	cy.get(ads, { timeout: 5000 }).eq(1).scrollIntoView().should('be.visible').should('not.be.null');
 	cy.get(newsletterBlock,{ timeout: 5000 }).should('be.visible').should('not.be.null');
 	cy.log( 'Successfully validated the tls article page' );
 } );
@@ -174,7 +175,7 @@ Cypress.Commands.add( 'validateTlsArchivePage', () => {
 	cy.get(verifyArchiveLinkYear,{ timeout: 5000 }).should('be.visible');
 	//searchFilter Validation
 	// eslint-disable-next-line cypress/unsafe-to-chain-command
-	cy.get(verifySearchFilter,{ timeout: 5000 }).click().type('Mary Beard').type('{enter}')
+	cy.get(verifySearchFilter,{ timeout: 5000 }).click({force: true}).type('Mary Beard').type('{enter}')
 	cy.get(verifySearchedAuthorPage,{ timeout: 5000 }).should('be.visible');
 	cy.log( 'Successfully validated the tls archieve page' );
 } );

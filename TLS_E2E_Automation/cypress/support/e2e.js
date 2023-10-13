@@ -21,7 +21,7 @@
 import './commands';
 import '@bahmutov/cy-api';
 import 'cypress-wait-until';
-import "cypress-cucumber-attach-screenshots-to-failed-steps";
+// import "cypress-cucumber-attach-screenshots-to-failed-steps";
 require('cypress-wait-until')
 /**
  * External dependencies

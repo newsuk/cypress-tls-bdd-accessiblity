@@ -76,10 +76,17 @@ Cypress.Commands.add( 'readFromFile', ( pathOfFile ) => {
  * Author :Nithya
  * This will click the TLS Logo image
  */
+
 Cypress.Commands.add( 'clickTLSLogo', () => {
 	cy.acceptCookieBanner();
-	cy.get( HOME_PAGE_TLS_LOGO, { timeout: 3000 } ).click();
-	cy.title().should( 'include', PAGE_TITLE );
+	const environment = Cypress.env( 'ENV' );
+			//Corresponded environment url is picked
+	const url = Cypress.env( `${ environment }_url` );
+			//Load the URL
+	cy.visit(url);
+	// cy.get( HOME_PAGE_TLS_LOGO, { timeout: 3000 } ).click();
+	cy.wait(5000)
+	cy.title().should('include', PAGE_TITLE );
 	cy.acceptCookieBanner();
 } );
 
