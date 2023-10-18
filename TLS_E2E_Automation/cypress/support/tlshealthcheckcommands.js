@@ -149,9 +149,10 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 	}))
 	cy.acceptCookieBanner();
 	cy.get(ads, { timeout: 5000 }).eq(0).scrollIntoView().should('be.visible').should('not.be.null');
+	cy.get(ads, { timeout: 5000 }).eq(1).scrollIntoView().should('be.visible').should('not.be.null');
 	cy.get(paywallBanner,{ timeout: 5000 }).should('be.visible').should('not.be.null');
 	cy.get(articleHeadline,{ timeout: 5000 }).should('be.visible').should('not.be.null');
-	cy.get(ads, { timeout: 5000 }).eq(1).scrollIntoView().should('be.visible').should('not.be.null');
+	
 	cy.get(newsletterBlock,{ timeout: 5000 }).should('be.visible').should('not.be.null');
 	cy.log( 'Successfully validated the tls article page' );
 } );
