@@ -96,9 +96,9 @@ const PacksSection='.subscription-container';
 const subscribeNowButtonForAllCategory='a[class*="has-utag primary"]';
 const subscribeButton='span[class*="subscribe"] > a';
 const printAndDigitalPrice='.best-value > .price';
-const printPrice='.print > .price';
-const DigitalPrice='.digital > .price';
-const digitalTerms='.digital > .terms';
+const printPrice='div[class="price"]';
+// const DigitalPrice='.digital > .price';
+//const digitalTerms='.digital > .terms';
 const subscriptionPageHeading='h1[class*="caSCKo"]';
 const emailAddress='#email';
 const password='#password';
@@ -271,9 +271,9 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.acceptCookieBanner();
 	cy.get(subscribeButton).click();
 	cy.get(printAndDigitalPrice,{ timeout: 5000 }).should('be.visible');
-	cy.get(printPrice).should('be.visible');
-	cy.get(DigitalPrice).should('be.visible');
-    cy.get(digitalTerms).should('be.visible');
+	cy.get(printPrice).eq(0).should('be.visible');
+	cy.get(printPrice).eq(1).should('be.visible');
+    cy.get(printPrice).eq(2).should('be.visible');
 	cy.waitUntil(() =>cy.get(PacksSection,{ timeout: 5000 }).should('not.be.empty'));
 	cy.get(subscribeNowButtonForAllCategory).each(($element) => {
 		const href = $element.attr('href');
