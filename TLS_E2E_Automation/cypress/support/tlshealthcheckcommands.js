@@ -96,7 +96,7 @@ const PacksSection='.subscription-container';
 const subscribeNowButtonForAllCategory='a[class*="has-utag primary"]';
 const subscribeButton='span[class*="subscribe"] > a';
 const printAndDigitalPrice='.best-value > .price';
-const printPrice='div[class="price"]';
+const price='div[class="price"]';
 // const DigitalPrice='.digital > .price';
 //const digitalTerms='.digital > .terms';
 const subscriptionPageHeading='h1[class*="caSCKo"]';
@@ -105,7 +105,7 @@ const password='#password';
 const continueButton='#account-setup-continue';
 
 //current-issue page elements
-const currentIssueImage='.tls-contents-page__issue-image';
+const currentIssueImage='.tls-contents-page__issue-image-container';
 const PreviousIssueButton='.tls-contents-page__issue-pagination-wrapper > a.tls-link';
 const currentIssueDate='.tls-issue-date-line';
 
@@ -272,9 +272,9 @@ Cypress.Commands.add( 'validateTlsBuyPage', () => {
 	cy.acceptCookieBanner();
 	cy.get(subscribeButton).click();
 	cy.get(printAndDigitalPrice,{ timeout: 5000 }).should('be.visible');
-	cy.get(printPrice).eq(0).should('be.visible');
-	cy.get(printPrice).eq(1).should('be.visible');
-    cy.get(printPrice).eq(2).should('be.visible');
+	cy.get(price).eq(0).should('be.visible');
+	cy.get(price).eq(1).should('be.visible');
+    cy.get(price).eq(2).should('be.visible');
 	cy.waitUntil(() =>cy.get(PacksSection,{ timeout: 5000 }).should('not.be.empty'));
 	cy.get(subscribeNowButtonForAllCategory).each(($element) => {
 		const href = $element.attr('href');
