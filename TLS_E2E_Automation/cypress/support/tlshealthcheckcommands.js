@@ -34,7 +34,7 @@ const collectionSlices="div[class*='slices']";
 const newsletterBlock="div[class='tls-newsletter']";
 
 //archive page elements
-const verifySearchFilter ='.tls-search-filter__input';
+const verifySearchFilter ='.tls-search-filter .tls-search-filter__input';
 const verifyDropdownForYears =".tls-date-filter__dropdown-btn";
 const selectYears ="[class*='tls-date-filter__content-item']";
 const verifySearchedAuthorPage="[class*='tls-search-core__hits']";
