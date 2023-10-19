@@ -34,7 +34,7 @@ const collectionSlices="div[class*='slices']";
 const newsletterBlock="div[class='tls-newsletter']";
 
 //archive page elements
-const verifySearchFilter ='.tls-search-filter .tls-search-filter__input';
+const verifySearchFilter ='.tls-search-filter__search-bar input[class*="tls-search-filter__input"]';
 const verifyDropdownForYears =".tls-date-filter__dropdown-btn";
 const selectYears ="[class*='tls-date-filter__content-item']";
 const verifySearchedAuthorPage="[class*='tls-search-core__hits']";
@@ -105,7 +105,7 @@ const password='#password';
 const continueButton='#account-setup-continue';
 
 //current-issue page elements
-const currentIssueImage='.tls-contents-page__issue-image-container';
+const currentIssueImage='div[class*="tls-contents-page__issue-image"]';
 const PreviousIssueButton='.tls-contents-page__issue-pagination-wrapper > a.tls-link';
 const currentIssueDate='.tls-issue-date-line';
 
