@@ -34,7 +34,7 @@ const collectionSlices="div[class*='slices']";
 const newsletterBlock="div[class='tls-newsletter']";
 
 //archive page elements
-const verifySearchFilter ="[class*='tls-search-filter__search-bar']";
+const verifySearchFilter ='.tls-search-filter__search-bar input[class*="tls-search-filter__input"]';
 const verifyDropdownForYears =".tls-date-filter__dropdown-btn";
 const selectYears ="[class*='tls-date-filter__content-item']";
 const verifySearchedAuthorPage="[class*='tls-search-core__hits']";
@@ -96,16 +96,16 @@ const PacksSection='.subscription-container';
 const subscribeNowButtonForAllCategory='a[class*="has-utag primary"]';
 const subscribeButton='span[class*="subscribe"] > a';
 const printAndDigitalPrice='.best-value > .price';
-const printPrice='.print > .price';
-const DigitalPrice='.digital > .price';
-const digitalTerms='.digital > .terms';
+const printPrice='div[class="product  print"] > div[class="price"]';
+const DigitalPrice='div[class*="print-digital"] > div[class="price"]';
+const digitalTerms='div[class="product  digital"] > div[class="price"]';
 const subscriptionPageHeading='h1[class*="caSCKo"]';
 const emailAddress='#email';
 const password='#password';
 const continueButton='#account-setup-continue';
 
 //current-issue page elements
-const currentIssueImage='.tls-contents-page__issue-image';
+const currentIssueImage='div[class*="tls-contents-page__issue-image"]';
 const PreviousIssueButton='.tls-contents-page__issue-pagination-wrapper > a.tls-link';
 const currentIssueDate='.tls-issue-date-line';
 
@@ -149,9 +149,10 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
 	}))
 	cy.acceptCookieBanner();
 	cy.get(ads, { timeout: 5000 }).eq(0).scrollIntoView().should('be.visible').should('not.be.null');
+	cy.get(ads, { timeout: 5000 }).eq(1).scrollIntoView().should('be.visible').should('not.be.null');
 	cy.get(paywallBanner,{ timeout: 5000 }).should('be.visible').should('not.be.null');
 	cy.get(articleHeadline,{ timeout: 5000 }).should('be.visible').should('not.be.null');
-	cy.get(ads, { timeout: 5000 }).eq(1).scrollIntoView().should('be.visible').should('not.be.null');
+	
 	cy.get(newsletterBlock,{ timeout: 5000 }).should('be.visible').should('not.be.null');
 	cy.log( 'Successfully validated the tls article page' );
 } );
