@@ -22,13 +22,6 @@ jobs:
     #   - image: cimg/base:2023.08
     steps:
       - checkout
-      - run:
-          name: Install Node.js
-          command: |
-            cd ~
-            curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-            sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
       # install dependencies
       - run:
           name: Install Dependencies
