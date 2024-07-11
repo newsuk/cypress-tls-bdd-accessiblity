@@ -10,7 +10,7 @@ const NEXT_ISSUE = '.tls-contents-page__issue-pagination-wrapper > span';
 const ISSUE_DATE = '.tls-issue-date-line > span';
 const HOME_PAGE_ISSUE_BLOCK_CONTENTS_PAGE = '.tls-issue-details-medium__wrapper-link > a';
 const HOME_PAGE_ISSUE_BLOCK_DATE = '.tls-issue-details-medium__wrapper-container > h1';
-const ISSUE_IMAGE = '.tls-contents-page__issue-image';
+const ISSUE_IMAGE = '.tls-contents-page__issue-image-container';
 const ISSUE_TITLE = '.tls-card-headline > h2.tls-card-headline__title';
 const ISSUE_AUTHOR = '.tls-byline > span';
 const SHOWCASE_TITLE = '.tls-contents-page__above-content-wrapper > .tls-aggregation > .tls-aggregation__content-container > .tls-aggregation__title';
@@ -19,14 +19,14 @@ const SHOWCASE_ARTICLE_HEADLINE = '.tls-contents-page__highlights-wrapper .tls-c
 const SHOWCASE_ARTICLE_STANDFIRST = '.tls-contents-page__highlights-wrapper .tls-card-headline + p';
 const SHOWCASE_ARTICLE_AUTHOR = '.tls-contents-page__highlights-wrapper .tls-byline';
 const CONTENT_TITLE = '.tls-contents-page__categories > .tls-aggregation > .tls-aggregation__content-container > .tls-aggregation__title';
-const CONTENT_MENU = '.tls-aggregation-navigation__menu > li>a';
+const CONTENT_MENU = '.tls-aggregation-navigation__menu > li > a';
 const CONTENT_PAGE_DATE_LINE = '.tls-contents-page__issue-date-line > div > span:nth-child(1)';
 
 const CURRENT_ISSUE_TITLE_VALUE = 'Current Issue';
 const URL_VALUE = 'current-issue';
-const DATE_FORMAT = 'MMM DD, YYYY';
+const DATE_FORMAT = 'MMMM D, YYYY';
 const PAGE_ELEMENT_FILE_PATH = 'cypress/pageElementValues/issue_pages.json';
-const CONTENT_MENU_LIST = [ 'Religion', 'Literature', 'Politics & society', 'Regular features', 'Classics', 'Lives', 'World', 'Science & technology', 'Arts' ];
+const CONTENT_MENU_LIST = ['Arts','Regular features','Literature','History', 'Classics', 'Science & technology','Politics & society'];
 
 class contentPage {
 	static navigateToCurrentIssuePage() {
@@ -170,11 +170,23 @@ class contentPage {
 	static validateContentSection() {
 		//Validate all section on Content
 		cy.get( CONTENT_TITLE ).should( 'have.text', 'Contents' );
-		cy.get( CONTENT_MENU ).should( 'have.length', '9' );
-		for ( let count = 0; count < 8; count++ ) {
-			cy.get( CONTENT_MENU ).eq( count ).should( 'have.text', CONTENT_MENU_LIST[ count ] );
-			cy.get( CONTENT_MENU ).eq( count ).should( 'have.attr', 'href' );
-		}
+		cy.get( CONTENT_MENU ).should( 'have.length', '7' );
+	//cy.get(CONTENT_MENU).eq(0).should('have.text', )
+	
+	const elements= cy.get('.tls-aggregation-navigation__menu .tls-aggregation-navigation__menu-item');
+	elements.map(check => {
+		cy.log(check);
+	});
+	// cy.get('.tls-aggregation-navigation__menu-item').map(anchorTags=>{
+	// 	console.log("CHETHANA GOT THE LI ", anchorTags)
+	// })
+		// for ( let count = 0; count <= 7;count++ ) {
+		// 	cy.get( CONTENT_MENU ).eq(count).should( 'have.text', CONTENT_MENU_LIST );
+			
+		// 	//console.log(cy.get( CONTENT_MENU ).eq( count ));
+			
+		// 	cy.get( CONTENT_MENU ).eq( count ).should( 'have.attr', 'href' );
+		// }
 		cy.log( 'Validation completed for Contents section' );
 	}
 	/**

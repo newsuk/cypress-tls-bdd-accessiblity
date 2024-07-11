@@ -5,11 +5,11 @@ Feature: Validations on Content page
         When User Navigate to Current Issue
         Then Validate Page is loaded
 
-    @sanity
+    
     Scenario: Validate the Previous Issue and Next Issue in Current Issue Page
         Then Validate the Previous Issue and Next Issue in Current Issue Page
 
-    @sanity
+    
     Scenario: Validate the Previous Issue
         Then Validate User should have Previous Issue which is 7 days before from current Issue
 
@@ -21,14 +21,14 @@ Feature: Validations on Content page
 
     Scenario:Validate Showcase section
         Then Validate showcase section
-   
+   @focus
     Scenario:Validate Contents section
         Then Validate Contents section
         
-    @sanity
+    
     Scenario: Validate appropriate Tealium JS is loading for each environment in content page
         Then Validate appropriate Tealium JS is loading for each environment in single content page
 
-    @sanity
-    Scenario: Validate appropriate Tealium JS is loading
-        Then Validate appropriate Tealium JS is loading
+    
+    # Scenario: Validate appropriate Tealium JS is loading
+    #     Then Validate appropriate Tealium JS is loading

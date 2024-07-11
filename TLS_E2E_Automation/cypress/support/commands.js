@@ -131,7 +131,7 @@ Cypress.Commands.add( 'validateUtagsDataValuesForGuestUser', () => {
 	cy.get( HOME_PAGE_HEADER_USER_NAVIGATION, { timeout: 3000 } ).find( HOME_PAGE_LINKS ).contains( LOGIN );
 	cy.window()
 		.then( ( win ) => {
-			expect( win.utag_data.registration_type ).to.equal( GUEST );
+			expect( win.utag_data.registration_type ).to.equal( 'logged out' );
 		} );
 } );
 

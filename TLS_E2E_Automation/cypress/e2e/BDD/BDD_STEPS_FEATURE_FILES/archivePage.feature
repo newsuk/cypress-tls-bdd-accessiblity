@@ -35,7 +35,7 @@ Feature: Validations on Archive page
     Scenario: Validate click here for non subscriber
         Then  Validate click here for non subscriber
     
-    @focus
+   
     Scenario: Validate showmore button
         And Validate Show more button
     

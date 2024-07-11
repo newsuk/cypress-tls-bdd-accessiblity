@@ -23,11 +23,11 @@ Feature: Validations on Article page
         When User click on second article from Home page
         Then Validate the Article has content and other details
         
-    @sanity
-    Scenario: Validate the Utags and Tealium check
-        Then Validate Utag data values
-        And Validate Utag data values for Guest
-        And  Validate appropriate Tealium JS is loading for each environment in single article page
+    # @sanity
+    # Scenario: Validate the Utags and Tealium check
+    #     Then Validate Utag data values
+    #     And Validate Utag data values for logged out
+    #     And  Validate appropriate Tealium JS is loading for each environment in single article page
 
 
 

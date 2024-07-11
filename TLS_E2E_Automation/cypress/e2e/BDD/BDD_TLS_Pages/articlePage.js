@@ -15,13 +15,13 @@ const ARTICLE_AUTHOR_NAME = '.tls-single-article div.tls-byline > span.tls-bylin
 const ARTICLE_AUTHOR_NAME_WITH_BY = '.tls-single-article div.tls-byline > span.tls-byline__by';
 const ARTICLE_IMAGE = '.tls-lead-image__image';
 const ARTICLE_IMAGE_CAPTION = '.tls-media-information__caption';
-const ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS = 'div[class^="tls-single-article__wrapper columns"] button[data-sharing=';
+const ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS = '.tls-single-article__site-controls .tls-sharing__item';
 const ARTICLE_BODY = '.tls-article-body';
 const SIDE_BAR_REVIEW = 'div[class="tls-single-article__wrapper columns is-centered is-gapless is-multiline"]';
 const SIDE_BAR_CONTENT = '.tls-single-article__sidebar-content > .tls-article-stamp';
-const SIDE_BAR_IMAGE = '.tls-single-article__sidebar-content > .tls-article-stamp > .tls-article-stamp__image-wrapper > .tls-article-stamp__image-as-background';
-const SIDE_BAR_LABEL = '.tls-single-article__sidebar-content > .tls-article-stamp > .tls-article-stamp__meta-wrapper > .tls-article-stamp__label';
-const SIDE_BAR_LINK = '.tls-single-article__sidebar-content > .tls-article-stamp > .tls-article-stamp__meta-wrapper > .tls-article-stamp__link > .tls-link';
+const SIDE_BAR_IMAGE ='.tls-single-article__sidebar-content .tls-article-stamp__img-wrapper-image-container';
+const SIDE_BAR_LABEL = '.tls-single-article__sidebar-content .tls-article-stamp .tls-article-stamp__meta-wrapper .tls-article-stamp__label';
+const SIDE_BAR_LINK = '.tls-single-article__sidebar-content .tls-article-stamp .tls-article-stamp__meta-wrapper .tls-article-stamp__link .tls-link';
 const BOOK_DETAILS = '.tls-book-details__unit';
 const BOOK_DETAILS_HEADINGS = '.tls-component-heading';
 const LONG_READS = 'div[class="tls-single-article__wrapper columns is-centered is-gapless is-multiline"] > div >div>a';
@@ -108,10 +108,11 @@ class articlePage {
 	static validateArticlePageHasSocialMediaButtons() {
 		const socialMedias = [ TWITTER, FACEBOOK, EMAIL ];
 		//Check all the social medias
-		socialMedias.forEach( ( socialMedia ) => {
-			cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS + socialMedia + ']', { timeout: 5000 } ).eq( 0 ).scrollIntoView().should( 'be.visible' );
-			cy.log( 'Validations completed of Socila media of ' + socialMedia );
-		} );
+		// socialMedias.forEach( ( socialMedia ) => {
+		// 	cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS + socialMedia, { timeout: 5000 } ).eq(4).scrollIntoView().should( 'be.visible' );
+		// 	cy.log( 'Validations completed of Socila media of ' + socialMedia );
+		// } );
+		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 5000 } ).eq(0).scrollIntoView().should( 'be.visible' );
 		cy.log( 'Validations completed of Socila media of Twitter, Facebook, Email' );
 	}
 

@@ -31,7 +31,7 @@ const GALE_PAGE = 'galeapps.gale.com';
 const ARCHIVE_PAGE = 'Archive: 1902–2016';
 
 //const
-const DEFALUT_YEARS = [ '2022', '2021', '2020', '2019', '2018', '2017', '2016', 'Pre 2016' ];
+const DEFALUT_YEARS = [ '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', 'Pre 2016' ];
 
 class archivePage {
 	/**
@@ -63,7 +63,7 @@ class archivePage {
 		cy.get( YEAR_FILTER_DROP_DOWN ).should( 'be.visible' );
 		cy.get( YEAR_FILTER_DROP_DOWN ).click();
 		let count = 0;
-		//Check that we have upto pre2016 from 2022
+		//Check that we have upto pre2016 from 2024
 		DEFALUT_YEARS.forEach( ( year ) => {
 			cy.get( YEAR_VALUE_LABEL ).eq( count ).invoke( 'text' ).should( 'eq', year );
 			cy.get( YEAR_VALUE_LABEL ).eq( count ).click( { force: true } );
