@@ -18,7 +18,7 @@ Script to extract Google PageSpeed API Data from multiple URLs. This script allo
 5. You can change the number of tests per URL you'd like to perform. Change the variable `numTest` in Line 14 to your desired number of tests. Maximum recommended 5.
    ```javascript
    // Example tu run 3 lab tests
-   const numTest = 1; // Number of Lab test to run (Lighthouse). Line 16
+   const numTest = 3; // Number of Lab test to run (Lighthouse). 
    ```
 6. You can also change the device variable between mobile and desktop if you want to get different viewport results. By default, the test will run on both devices.
 7. Run the script. Type in your terminal:
@@ -46,7 +46,7 @@ These files will contain the lab metrics for each succesful test result from the
 
 
 
-The "results-median" files are the median values for each lab metric extracted as long as there were a minimum of 3 rounds of testing performed.
+The "results-median" files are the median values for each lab metric extracted as long as there were a minimum of 2 rounds of testing performed.
 
 ## CrUX data
 
