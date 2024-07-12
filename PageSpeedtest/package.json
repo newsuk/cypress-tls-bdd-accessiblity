@@ -5,7 +5,7 @@
   "main": "test.js",
   "type": "module",
   "scripts": {
-    "start": "node test.js"
+    "start": "node pageSpeedTest.js"
   },
   "keywords": [
     "pagespeed insights api",

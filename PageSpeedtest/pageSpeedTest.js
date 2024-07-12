@@ -11,8 +11,8 @@ import { median } from "./median-math.js";
 const file = "urls.csv"; // File name for list of URLs to check
 const folder = "results"; // Name of folder for output
 const fullJson = true; // Variable for testing purposes. Extracts full API response into JSON File
-const numTest = 1; // Number of Lab test to run (Lighthouse)
-const device_list = ["mobile", "desktop"]; //
+const numTest = 3; // Number of Lab test to run (Lighthouse)
+const device_list = ["mobile","desktop"]; //list of devices
 
 ////* Start of script *////
 console.time();
@@ -55,6 +55,7 @@ const getSpeedData = async (testNum = 1) => {
           }
 
           const labAudit = res.lighthouseResult.audits;
+          const labCategory=res.lighthouseResult.categories;
           const testUrl = res.lighthouseResult.finalUrl;
           const device_type = device;
           const TTFB = labAudit["server-response-time"].numericValue / 1000;
@@ -79,6 +80,9 @@ const getSpeedData = async (testNum = 1) => {
             (labAudit["total-byte-weight"].numericValue / 1000000).toFixed(3)
           );
           const date = moment().format("YYYY-MM-DD");
+          const performance=(labCategory.performance.score)*100;
+          const accessibility=(labCategory.accessibility.score)*100;
+          const SEO=(labCategory.seo.score)*100;
 
           const finalObj = {
             testUrl,
@@ -86,6 +90,9 @@ const getSpeedData = async (testNum = 1) => {
             LCP,
             FCP,
             CLS,
+            performance,
+            accessibility,
+            SEO,
             speedIndex,
             TTFB,
             TBT,
@@ -151,6 +158,10 @@ const getSpeedData = async (testNum = 1) => {
             LCP: median(sameUrl.map(({ LCP }) => LCP)),
             FCP: median(sameUrl.map(({ FCP }) => FCP)),
             CLS: median(sameUrl.map(({ CLS }) => CLS)),
+            performance: median(sameUrl.map(({ performance }) => performance)),
+            accessibility: median(sameUrl.map(({ accessibility }) => accessibility)),
+            SEO: median(sameUrl.map(({ SEO }) => SEO)),
+
             speedIndex: median(sameUrl.map(({ speedIndex }) => speedIndex)),
             TTFB: median(sameUrl.map(({ TTFB }) => TTFB)),
             TBT: median(sameUrl.map(({ TBT }) => TBT)),

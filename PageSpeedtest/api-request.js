@@ -10,7 +10,7 @@ const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 export const apiRequest = async (url, device, delayTime =500) => {
   try {
     const cacheBuster = new Date().getTime(); // Cache-busting parameter
-    const requestUrl = `${endpoint}?url=${encodeURIComponent(url)}&strategy=${device}&category=performance&category=pwa&category=best-practices&category=accessibility&category=seo&key=${key}&cacheBuster=${cacheBuster}`;
+    const requestUrl = `${endpoint}?url=${encodeURIComponent(url)}&strategy=${device}&category=performance&category=best-practices&category=accessibility&category=seo&key=${key}&cacheBuster=${cacheBuster}`;
     //console.log(`Requesting URL: ${requestUrl}`); // Log the full request URL
 
     await delay(delayTime); // Delay before making the request
