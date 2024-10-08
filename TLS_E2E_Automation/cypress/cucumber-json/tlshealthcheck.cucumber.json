@@ -1,0 +1,253 @@
+[
+  {
+    "description": "As a user, I am checking production site is stable",
+    "keyword": "Feature",
+    "name": "Validating TLS production site",
+    "line": 2,
+    "id": "validating-tls-production-site",
+    "tags": [],
+    "uri": "tlshealthcheck.feature",
+    "elements": [
+      {
+        "id": "validating-tls-production-site;validate-tls-home-page",
+        "keyword": "Scenario",
+        "line": 5,
+        "name": "Validate TLS home page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I validate tls home page",
+            "result": {
+              "status": "passed",
+              "duration": 9961000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-buy-page",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Validate TLS buy page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "I validate tls buy page",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 4000ms: expected '<div.price>' to be 'visible'\n\nThis element `<div.price>` is not visible because its parent `<div.product.print>` has CSS property: `display: none`\n    at Context.eval (cypress/support/tlshealthcheckcommands.js:275:20)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-archive-page",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Validate TLS Archive page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 12,
+            "name": "I validate tls archive page",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 4000ms: expected 'The Archive | TLS | More than 100 years of TLS reviews' to equal 'The Archive - TLS'\n    + expected - actual\n\n    -'The Archive | TLS | More than 100 years of TLS reviews'\n    +'The Archive - TLS'\n\n    at eval (cypress/support/tlshealthcheckcommands.js:168:30)\n    at resolveValue (node_modules/cypress-wait-until/src/index.js:71:0)\n    at Context.waitUntil (node_modules/cypress-wait-until/src/index.js:81:0)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-new-to-the-tls-page",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Validate TLS New To The TLS page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I validate tls new to the tls page",
+            "result": {
+              "status": "passed",
+              "duration": 3930000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-highlights-page",
+        "keyword": "Scenario",
+        "line": 17,
+        "name": "Validate TLS Highlights page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "I validate tls highlights page",
+            "result": {
+              "status": "passed",
+              "duration": 4922000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-longreads-page",
+        "keyword": "Scenario",
+        "line": 20,
+        "name": "Validate TLS LongReads Page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "I validate tls long reads page",
+            "result": {
+              "status": "passed",
+              "duration": 2809000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-author-page",
+        "keyword": "Scenario",
+        "line": 23,
+        "name": "Validate TLS author page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "I validate TLS author page",
+            "result": {
+              "status": "passed",
+              "duration": 2385000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-category-page",
+        "keyword": "Scenario",
+        "line": 26,
+        "name": "Validate TLS category page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 27,
+            "name": "I validate TLS category page",
+            "result": {
+              "status": "passed",
+              "duration": 2802000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-search-page",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "Validate TLS search page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "I validate TLS search page",
+            "result": {
+              "status": "passed",
+              "duration": 3758000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-current-issue-page",
+        "keyword": "Scenario",
+        "line": 32,
+        "name": "Validate TLS current-issue page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "I validate tls current-issue page",
+            "result": {
+              "status": "passed",
+              "duration": 6452000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-header-footer-page",
+        "keyword": "Scenario",
+        "line": 35,
+        "name": "Validate TLS header-footer page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 36,
+            "name": "I validate tls header-footer page",
+            "result": {
+              "status": "passed",
+              "duration": 3546000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validating-tls-production-site;validate-tls-article-page",
+        "keyword": "Scenario",
+        "line": 38,
+        "name": "Validate TLS article page",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 39,
+            "name": "I validate tls article page",
+            "result": {
+              "status": "failed",
+              "error_message": "AssertionError: Timed out retrying after 5000ms: Expected to find element: `.tls-subscriptions-block`, but never found it.\n    at Context.eval (cypress/support/tlshealthcheckcommands.js:153:41)"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

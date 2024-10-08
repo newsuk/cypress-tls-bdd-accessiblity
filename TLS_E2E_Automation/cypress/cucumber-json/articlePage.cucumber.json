@@ -1,0 +1,215 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Validations on Article page",
+    "line": 3,
+    "id": "validations-on-article-page",
+    "tags": [
+      {
+        "name": "@article",
+        "line": 2
+      }
+    ],
+    "uri": "articlePage.feature",
+    "elements": [
+      {
+        "id": "validations-on-article-page;navigate-to-article-page-and-validate--category,-separator-and-article-type",
+        "keyword": "Scenario",
+        "line": 8,
+        "name": "Navigate to Article page and Validate  Category, Separator And Article type",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 2
+          },
+          {
+            "name": "@sanity",
+            "line": 7
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "passed",
+              "duration": 11761000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 9,
+            "name": "User click on second article from Home page",
+            "result": {
+              "status": "passed",
+              "duration": 1847000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 10,
+            "name": "Article page should open which the user has selected",
+            "result": {
+              "status": "passed",
+              "duration": 119000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 11,
+            "name": "Validate the category, separator And Article type",
+            "result": {
+              "status": "passed",
+              "duration": 219000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-article-page;verify-article-title,-subtitle,-author-and-image",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Verify Article title, subtitle, Author and Image",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 2
+          },
+          {
+            "name": "@sanity",
+            "line": 13
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "passed",
+              "duration": 7770000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "User click on second article from Home page",
+            "result": {
+              "status": "passed",
+              "duration": 1957000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "Validate the title, subtitles , author with prefix by, image and its caption",
+            "result": {
+              "status": "passed",
+              "duration": 346000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-article-page;verify-article-has-social-media-sharing-buttons-(twitter,facebook,email)",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Verify Article has social media sharing buttons (twitter,facebook,email)",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 2
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "passed",
+              "duration": 8506000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 19,
+            "name": "User click on second article from Home page",
+            "result": {
+              "status": "passed",
+              "duration": 4187000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "Validate the social media buttons twitter, facebook , email",
+            "result": {
+              "status": "passed",
+              "duration": 23000000
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-article-page;verify-the-article-has-content-with-side-bar-details-like-(read-issue,review,keep-reading-etc)",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "Verify the Article has content with side bar details like (Read issue,Review,Keep Reading etc)",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 2
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "passed",
+              "duration": 7849000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "User click on second article from Home page",
+            "result": {
+              "status": "passed",
+              "duration": 1533000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 24,
+            "name": "Validate the Article has content and other details",
+            "result": {
+              "status": "passed",
+              "duration": 231000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "name": "tls-automation-cypress",
+  "version": "1.0.0",
+  "description": "this has the recent TDD cypress tc for TLS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@bahmutov/cy-api": "^2.2.6",
+    "cypress": "^13.13.1",
+    "cypress-axe": "^1.5.0",
+    "cypress-wait-until": "^3.0.2"
+  }
+}

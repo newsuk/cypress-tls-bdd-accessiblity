@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+// <reference types="cypress" />
 // ***********************************************************
 // This example support/index.js is processed and
 // loaded automatically before your test files.
@@ -60,7 +60,10 @@ if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
 		//Corresponded environment url is picked
 		const url = Cypress.env( `${ environment }_url` );
 		//Load the URL
+		cy.viewport(1024,768);
+		
 		cy.visit(url);
+		cy.log("******")
 		//Accept the cookie banner
 		cy.acceptCookieBanner();
 		/**
