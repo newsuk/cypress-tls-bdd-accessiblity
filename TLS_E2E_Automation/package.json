@@ -13,7 +13,8 @@
     "cypress:run-staging": "./node_modules/.bin/cypress run --env ENV=staging",
     "cypress:open-staging": "./node_modules/.bin/cypress open --env ENV=staging",
     "cypress:run-prod": "./node_modules/.bin/cypress run --env ENV=prod",
-    "cypress:open-prod": "./node_modules/.bin/cypress open --env ENV=prod"
+    "cypress:open-prod": "./node_modules/.bin/cypress open --env ENV=prod",
+    "cypress:open-regression": "./node_modules/.bin/cypress open --env ENV=uat "
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "./cypress/e2e",
@@ -36,6 +37,7 @@
     "cypress-cucumber-attach-screenshots-to-failed-steps": "^1.0.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-wait-until": "^1.7.2",
+    "cypress-xpath": "^2.0.1",
     "lighthouse": "^9.6.8",
     "multiple-cucumber-html-reporter": "^1.20.0"
   },
