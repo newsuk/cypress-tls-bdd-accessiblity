@@ -7,10 +7,16 @@ module.exports = defineConfig( {
 	firstRun: true,
 	chromeWebSecurity: false,
 	env: {
-		uat_url: 'https://www.uat-the-tls.co.uk/',
+		uat_url: 'https://uat-the-tls.co.uk/',
 		staging_url: 'https://www.staging-the-tls.co.uk/',
-		prod_url: 'https://www.the-tls.co.uk/'
+		prod_url: 'https://www.the-tls.co.uk/',
+		uat_username: 'test_uat_newuser_tls@yopmail.com',
+		uat_password: 'password123',
+		prod_username: 'kavinprabu.sm+testing@news.co.uk',
+		prod_password: 'Kavin_1711'
 	},
+
+	
 	viewportWidth: 1200,
 	viewportHeight: 660,
 	pageLoadTimeout: 25000,
@@ -41,6 +47,6 @@ module.exports = defineConfig( {
 			return require( './cypress/plugins/index.js' )( on, config );
 		},
 		excludeSpecPattern: [ '*.js', '*.md' ],
-		specPattern: [ 'cypress/e2e/**/*.{feature,features}'],
+		specPattern: [ 'cypress/e2e/modules'],
 	},
 } );
