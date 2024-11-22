@@ -1,0 +1,382 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Validations on Content page",
+    "line": 2,
+    "id": "validations-on-content-page",
+    "tags": [
+      {
+        "name": "@article",
+        "line": 1
+      }
+    ],
+    "uri": "contentPage.feature",
+    "elements": [
+      {
+        "id": "validations-on-content-page;validate-the-previous-issue-and-next-issue-in-current-issue-page",
+        "keyword": "Scenario",
+        "line": 9,
+        "name": "Validate the Previous Issue and Next Issue in Current Issue Page",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User Navigate to Current Issue",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Validate Page is loaded",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 10,
+            "name": "Validate the Previous Issue and Next Issue in Current Issue Page",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-content-page;validate-the-previous-issue",
+        "keyword": "Scenario",
+        "line": 13,
+        "name": "Validate the Previous Issue",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User Navigate to Current Issue",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Validate Page is loaded",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 14,
+            "name": "Validate User should have Previous Issue which is 7 days before from current Issue",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-content-page;validate-the-current-issue-and-previous-issue-has-image,artcile-headline-and-by",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Validate the Current Issue and Previous Issue has Image,Artcile headline and By",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User Navigate to Current Issue",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Validate Page is loaded",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "Validate the Current Issue and Previous Issue has Image,Artcile headline and By",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-content-page;validate-the-current-issue-page-and-view-content-page-are-opens-same-and-both-dates-are-equal",
+        "keyword": "Scenario",
+        "line": 19,
+        "name": "Validate the Current Issue page and View Content page are opens same and both dates are equal",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User Navigate to Current Issue",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Validate Page is loaded",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "Validate the Current Issue page and View Content page are opens same and both dates are equal",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-content-page;validate-showcase-section",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "Validate Showcase section",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User Navigate to Current Issue",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Validate Page is loaded",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 23,
+            "name": "Validate showcase section",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-content-page;validate-contents-section",
+        "keyword": "Scenario",
+        "line": 25,
+        "name": "Validate Contents section",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 1
+          },
+          {
+            "name": "@focus",
+            "line": 24
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "passed",
+              "duration": 14313000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User Navigate to Current Issue",
+            "result": {
+              "status": "passed",
+              "duration": 4929000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Validate Page is loaded",
+            "result": {
+              "status": "passed",
+              "duration": 20000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "Validate Contents section",
+            "result": {
+              "status": "failed",
+              "error_message": "TypeError: elements.map is not a function\n    at Function.validateContentSection (cypress/e2e/BDD/BDD_TLS_Pages/contentPage.js:177:10)\n    at Context.eval (cypress/e2e/BDD/BDD_STEPS_FEATURE_FILES/contentPage/content_page_steps.js:51:13)\n    at Context.resolveAndRunStepDefinition (node_modules/cypress-cucumber-preprocessor/lib/resolveStepDefinition.js:193:0)\n    at Context.eval (node_modules/cypress-cucumber-preprocessor/lib/createTestFromScenario.js:27:0)\nFrom previous event:\n    at Promise.longStackTracesCaptureStackTrace [as _captureStackTrace] (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:3486:19)\n    at Promise._then (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:1239:17)\n    at Promise.then (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:1132:17)\n    at next (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:143627:39)\n    at next (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:143592:16)\n    at <unknown> (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:143648:16)\n    at tryCatcher (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:1807:23)\n    at Promise._settlePromiseFromHandler (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:1519:31)\n    at Promise._settlePromise (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:1576:18)\n    at Promise._settlePromise0 (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:1621:10)\n    at Promise._settlePromises (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:1701:18)\n    at <unknown> (https://www.the-tls.co.uk/__cypress/runner/cypress_runner.js:2392:25)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "validations-on-content-page;validate-appropriate-tealium-js-is-loading-for-each-environment-in-content-page",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "Validate appropriate Tealium JS is loading for each environment in content page",
+        "tags": [
+          {
+            "name": "@article",
+            "line": 1
+          }
+        ],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "User clicks on TLS Logo",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "User Navigate to Current Issue",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "Validate Page is loaded",
+            "result": {
+              "status": "skipped"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 30,
+            "name": "Validate appropriate Tealium JS is loading for each environment in single content page",
+            "result": {
+              "status": "skipped"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

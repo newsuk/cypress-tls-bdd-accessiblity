@@ -13,8 +13,8 @@ module.exports = defineConfig( {
 		uat_url: 'http://nu-ecs-wp-tls-uat.elb.iha-dev.ntch.co.uk/',
 		prod_url: 'https://www.the-tls.co.uk/',
 	},
-	viewportWidth: 1200,
-	viewportHeight: 660,
+	viewportWidth: 1024,
+	viewportHeight: 768,
 	pageLoadTimeout: 25000,
 	"retries": {
 		"runMode": 1,
