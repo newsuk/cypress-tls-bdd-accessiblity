@@ -19,7 +19,6 @@
  * Internal dependencies
  */
 import './commands';
-import '@bahmutov/cy-api';
 import 'cypress-wait-until';
 require('cypress-wait-until')
 /**

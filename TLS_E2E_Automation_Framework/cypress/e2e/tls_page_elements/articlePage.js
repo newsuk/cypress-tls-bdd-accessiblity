@@ -1,9 +1,7 @@
-// <reference types="cypress" />
+/// <reference types="cypress" />
 /**
  * Internal dependencies
  */
-//import '../../../support/e2e';
-
 // Page Elements
 const HOME_PAGE_SECOND_ARTICLE = ':nth-child(2) > .tls-card-horizontal-medium__content > .tls-card-headline > .tls-card-headline__title';
 const ARTICLE_PAGE_HEADLINE = '.tls-card-headline';
@@ -43,7 +41,7 @@ const EMAIL = 'email';
 	export const clickSecondArtcileINHomePage= ()=> {
 		//Fetch the name of Article and store it
 		cy.get( HOME_PAGE_SECOND_ARTICLE ).then( ( articleName ) => {
-			cy.writeIntoFile( PAGE_ELEMENT_FILE_PATH, articleName.text() );
+			cy.writeFile( PAGE_ELEMENT_FILE_PATH, articleName.text() );
 		} );
 		//Click the 2nd article
 		cy.get( HOME_PAGE_SECOND_ARTICLE ).click();
@@ -57,7 +55,7 @@ const EMAIL = 'email';
 	export const getHeadlineOfArtcilePage=()=> {
 		// Validate that opened Article is opened correctly
 		cy.get( ARTICLE_PAGE_HEADLINE ).then( ( titleOfPage ) => {
-			cy.readFromFile( PAGE_ELEMENT_FILE_PATH ).then( ( selectedArticleName ) => {
+			cy.readFile( PAGE_ELEMENT_FILE_PATH ).then( ( selectedArticleName ) => {
 				console.log(titleOfPage)
 				//expect( selectedArticleName ).to.equal( titleOfPage );
 			} );
@@ -165,6 +163,5 @@ const EMAIL = 'email';
 		cy.get( KEEP_READING_OPTION ).should( 'be.visible' );
 		cy.log( 'Keep reading is exist and Verified' );
 	}
-
 
 
