@@ -99,7 +99,6 @@ before(() => {
   }
 });
 
-beforeEach(() => {});
 
 after(() => {
   if (environment != "healthcheck") {
