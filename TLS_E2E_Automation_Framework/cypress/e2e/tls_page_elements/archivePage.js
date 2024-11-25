@@ -1,4 +1,4 @@
-
+/// <reference types="cypress" />
 // Page Elements
 const ARCHIVE_PAGE_ELEMENT_ON_HOME_PAGE = '.tls-header-navigation__menu-list > div > a';
 const YEAR_FILTER_DROP_DOWN = '.tls-date-filter__dropdown-btn';

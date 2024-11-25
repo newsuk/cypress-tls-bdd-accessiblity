@@ -2,11 +2,10 @@
 import * as articlePage from '../e2e/tls_page_elements/articlePage';
 
 const LITERATURE_PAGE_URL = 'literature/fiction/so-much-he-bought-the-company/';
-/**
- * Click the TLS Logo button
- */
+
+
 describe('Article Page', () => {
-    it.only('Validate Article Page headline once user visit to article page', () => {
+    it('Validate Article Page headline once user visit to article page', () => {
         articlePage.clickSecondArtcileINHomePage();
         cy.acceptCookieBanner();
         articlePage.getHeadlineOfArtcilePage();
