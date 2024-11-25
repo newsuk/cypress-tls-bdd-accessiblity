@@ -21,8 +21,6 @@ const url = Cypress.env(`${environment}_url`);
  */
 export function welcomeBannerGuest() {
   // Visit the homepage and accept the cookie banner
-  cy.visit(url, { timeout: 20000 });
-  cy.acceptCookieBanner();
 
   // Verify the welcome banner is present and the app button is absent
   cy.get(WELCOME_MESSAGE_BANNER).should("exist");
@@ -40,8 +38,6 @@ export function welcomeBannerGuest() {
  */
 export function welcomeMessageLoggedIn() {
   // Visit the homepage and accept the cookie banner
-  cy.visit(url, { timeout: 20000 });
-  cy.acceptCookieBanner();
 
   cy.log("verify the welcome message banner for logged In user on TLS site");
   // Verify the welcome banner is present, then perform login
@@ -63,8 +59,6 @@ export function welcomeMessageLoggedIn() {
  */
 export function closingBannerFromHomePage() {
   // Visit the homepage and accept the cookie banner
-  cy.visit(url, { timeout: 20000 });
-  cy.acceptCookieBanner();
 
   // Verify the welcome banner and click the close button
   cy.get(WELCOME_MESSAGE_BANNER).should("exist");
@@ -86,8 +80,7 @@ export function closingBannerFromHomePage() {
  */
 export function closingBannerFromArticlePage() {
   // Visit the homepage, accept the cookie banner, and navigate to an article page
-  cy.visit(url, { timeout: 20000 });
-  cy.acceptCookieBanner();
+
   cy.get(ARTICLE_LINK).eq(0).click();
 
   // Verify the welcome banner and click the close button

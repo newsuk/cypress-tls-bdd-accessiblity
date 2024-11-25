@@ -1,5 +1,13 @@
 import * as welcomeBanner from "../e2e/tls_page_elements/welcomeBanner";
 
+const environment = Cypress.env("ENV") || "prod";
+const url = Cypress.env(`${environment}_url`);
+
+beforeEach(() => {
+  cy.visit(url, { timeout: 20000 });
+  cy.acceptCookieBanner();
+});
+
 describe("Verify welcome message banner on TLS site", () => {
   it("should verify the welcome banner for guest user", () => {
     cy.log("verify the welcome message banner for quest user on TLS site");

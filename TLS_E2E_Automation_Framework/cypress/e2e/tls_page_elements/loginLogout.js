@@ -9,6 +9,8 @@ const loginSubmitButton = ".auth0-lock-submit";
 const logoutLink = ".tls-header-navigation__link-logout";
 const myAccountLink = ".tls-header-navigation__my-account";
 const articleLink = ".tls-card-headline";
+const errorMessage =
+  "//div[@class='auth0-global-message auth0-global-message-error']//span[@class='animated fadeInUp']";
 
 // Environment-specific variables
 const environment = Cypress.env("ENV") || "prod";
@@ -92,10 +94,6 @@ export function performLogout() {
 export function validateLoginFromHomepage() {
   cy.log("Verify the user tries to login from homepage");
 
-  // Visit the homepage URL and accept the cookie banner
-  cy.visit(url, { timeout: 20000 });
-  cy.acceptCookieBanner();
-
   // Verify the user is currently logged out
   cy.get(subscribeButton)
     .invoke("text")
@@ -112,10 +110,6 @@ export function validateLoginFromHomepage() {
 // Validate login functionality from an article page
 export function validateLoginFromArticlePage() {
   cy.log("Verify the user tries to login from article page");
-
-  // Visit the homepage URL and accept the cookie banner
-  cy.visit(url, { timeout: 20000 });
-  cy.acceptCookieBanner();
 
   // Navigate to the first article and verify the user is logged out
   cy.get(articleLink).eq(0).click();
@@ -135,9 +129,6 @@ export function validateLoginFromArticlePage() {
 export function validateLogoutFromHomepage() {
   cy.log("Verify the logout scenario from the homepage");
 
-  // Visit the homepage URL, accept the cookie banner, and perform login
-  cy.visit(url, { timeout: 20000 });
-  cy.acceptCookieBanner();
   performLogin();
 
   // Perform logout and verify
@@ -149,9 +140,6 @@ export function validateLogoutFromHomepage() {
 export function validateLogoutFromArticlePage() {
   cy.log("Verify the logout scenario from the article page");
 
-  // Visit the homepage URL, accept the cookie banner, and perform login
-  cy.visit(url, { timeout: 20000 });
-  cy.acceptCookieBanner();
   performLogin();
 
   // Navigate to the first article and perform logout
@@ -162,10 +150,6 @@ export function validateLogoutFromArticlePage() {
 // Validate login attempt with invalid credentials
 export function validateLoginForInvalidCreds() {
   cy.log("Verify when user tries to login using invalid credentials");
-
-  // Visit the homepage URL and accept the cookie banner
-  cy.visit(url, { timeout: 20000 });
-  cy.acceptCookieBanner();
 
   // Click the login button to navigate to the login page
   cy.get(loginButton).click();
@@ -181,9 +165,7 @@ export function validateLoginForInvalidCreds() {
   cy.get(loginSubmitButton).click();
 
   // Verify if an error message is displayed for incorrect credentials
-  cy.xpath(
-    "//div[@class='auth0-global-message auth0-global-message-error']//span[@class='animated fadeInUp']"
-  )
+  cy.xpath(errorMessage)
     .should("exist")
     .invoke("text")
     .then((text) => {

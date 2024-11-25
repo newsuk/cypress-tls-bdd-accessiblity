@@ -1,5 +1,14 @@
 import * as loginLogout from "../e2e/tls_page_elements/loginLogout.js";
 
+const environment = Cypress.env("ENV") || "prod";
+const url = Cypress.env(`${environment}_url`);
+
+beforeEach(() => {
+  cy.visit(url, { timeout: 20000 });
+  cy.acceptCookieBanner();
+});
+
+
 describe("Verify login and logout scenarios", () => {
   it("should verify the user tries to login from the home page", () => {
     cy.log("Verify the user tries to login from homepage");
