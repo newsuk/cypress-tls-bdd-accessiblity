@@ -90,6 +90,8 @@ Cypress.Commands.add( 'clickTLSLogo', () => {
 	cy.acceptCookieBanner();
 } );
 
+
+
 Cypress.Commands.add( 'tealiumEnvironmentCheck', () => {
 	if ( Cypress.env( ENVIRONMENT ) === ENV_PROD ) {
 		cy
