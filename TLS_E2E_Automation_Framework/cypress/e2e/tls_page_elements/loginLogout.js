@@ -2,6 +2,8 @@ require("cypress-xpath");
 
 // Selector constants
 const loginButton = ".tls-header-navigation__link-login > a";
+const invalidEmail = "testing@gmail.com";
+const passwordInvalid = "1234";
 const subscribeButton = ".tls-header-navigation__button-subscribe > a";
 const creds =
   "[class*='mdl-textfield mdl-js-textfield mdl-textfield--floating-label']";
@@ -158,8 +160,8 @@ export function validateLoginForInvalidCreds() {
   cy.wait(2000);
 
   // Enter invalid credentials
-  cy.get(creds).eq(0).type("testing@gmail.com");
-  cy.get(creds).eq(1).type("1234");
+  cy.get(creds).eq(0).type(invalidEmail);
+  cy.get(creds).eq(1).type(passwordInvalid);
 
   // Click the login button to submit the login form
   cy.get(loginSubmitButton).click();
