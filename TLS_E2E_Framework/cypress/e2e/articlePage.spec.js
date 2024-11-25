@@ -1,6 +1,6 @@
 import {clickSecondArtcileINHomePage,getHeadlineOfArtcilePage, validateArticleCategorySepartorAndType,
     validateArticleTitleSubtitleAuthorAndImage, validateArticlePageHasSocialMediaButtons, 
-    validateArticlePageContentWithSideBarDetails} from '../helpers/articlePage.helper';
+    validateArticlePageContentWithSideBarDetails} from './tls_page_elements/articlePage'
 
 
 /**
@@ -13,7 +13,7 @@ describe('Article Page', () => {
     
     it('Validate Article Page headline once user visit to article page', () => {
         cy.visit('/',)
-        clickSecondArtcileINHomePage()
+        clickSecondArtcileINHomePage();
         cy.acceptCookieBanner();
         getHeadlineOfArtcilePage();
         
@@ -28,7 +28,7 @@ describe('Static Article Page', ()=>{
 	        validateArticleCategorySepartorAndType();  
         });
 
-        it( 'Validate the title, subtitles , author, with prefix by, lead image and its caption', () => {
+        it( 'Validate the Article has content and other details like title, subtitles , author and  image', () => {
             validateArticleTitleSubtitleAuthorAndImage();
         });
   

@@ -80,6 +80,7 @@ before(() => {
       //Corresponded environment url is picked
       const url = Cypress.env(`${environment}_url`);
       //Load the URL
+      cy.viewport(1024,768);
       cy.visit(url);
       //Accept the cookie banner
       cy.acceptCookieBanner();
