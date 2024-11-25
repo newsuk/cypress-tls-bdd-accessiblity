@@ -12,7 +12,8 @@
     "cypress:run-staging": "./node_modules/.bin/cypress run --env ENV=staging",
     "cypress:open-staging": "./node_modules/.bin/cypress open --env ENV=staging",
     "cypress:run-prod": "./node_modules/.bin/cypress run --env ENV=prod",
-    "cypress:open-prod": "./node_modules/.bin/cypress open --env ENV=prod"
+    "cypress:open-prod": "./node_modules/.bin/cypress open --env ENV=prod",
+    "cypress:open-regression": "./node_modules/.bin/cypress open --env ENV=prod"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
     "cypress-wait-until": "^3.0.2"
   },
   "devDependencies": {
-    "cypress": "^13.16.0"
+    "cypress": "^13.16.0",
+    "cypress-xpath": "^2.0.1"
   }
 }
