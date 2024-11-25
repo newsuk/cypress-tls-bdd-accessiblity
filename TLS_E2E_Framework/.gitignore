@@ -1,7 +1,0 @@
-/assets/dist/
-/node_modules/
-/vendor/
-/wpcs/
-/coverage/
-.DS_Store
-/package-lock.json
