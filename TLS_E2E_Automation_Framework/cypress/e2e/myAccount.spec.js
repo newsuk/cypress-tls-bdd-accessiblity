@@ -4,7 +4,7 @@ import * as myAccount from "../e2e/tls_page_elements/myAccount.js";
 const environment = Cypress.env("ENV") || "prod";
 const url = Cypress.env(`${environment}_url`);
 const myAccountLink =
-  "//*[@id='tls-home-page-root']/div/div/nav/div/div[2]/span[5]/a";
+  "//div[@class='tls-header-navigation__right-controls']/span/*[contains(text(),'My Account')]";
 
 describe("Verify login and logout scenarios", () => {
   beforeEach(() => {
@@ -17,23 +17,23 @@ describe("Verify login and logout scenarios", () => {
       .click({ force: true });
   });
 
-  it.skip("should verify the links on the my account page", () => {
+  it("should verify the links on the my account page", () => {
     cy.log("Verifying the links on the My Account page");
     myAccount.myAccountLinkValidation(); // Ensure this function is correctly implemented
   });
-  it.skip("should verify the billing page links on the my account page", () => {
+  it("should verify the billing page links on the my account page", () => {
     cy.log("Verifying the billing page links on the My Account page");
     myAccount.billingLinkValidation(); // Ensure this function is correctly implemented
   });
-  it.skip("should verify the footer links on the my account page", () => {
+  it("should verify the footer links on the my account page", () => {
     cy.log("Verifying the footer links on the My Account page");
     myAccount.footerLinkValidatiion(); // Ensure this function is correctly implemented
   });
-  it.skip("should verify the go to home page links on the my account page", () => {
+  it("should verify the go to home page links on the my account page", () => {
     cy.log("Verifying the go to home page links on the My Account page");
     myAccount.goToHomePageLinkValidation(); // Ensure this function is correctly implemented
   });
-  it.skip("should verify the logout  link on the my account page", () => {
+  it("should verify the logout  link on the my account page", () => {
     cy.log("Verifying the logoutlinks on the My Account page");
     myAccount.logoutButtonValidation(); // Ensure this function is correctly implemented
   });

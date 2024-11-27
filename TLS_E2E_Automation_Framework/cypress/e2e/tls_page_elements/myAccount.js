@@ -7,7 +7,7 @@ const footerLink = "//div[@class='css-1c1zire']/a";
 const goToLink = ".css-mycqxl";
 const homaPageLink = ".tls-card-headline";
 const myAccountLinkHome =
-  "//*[@id='tls-home-page-root']/div/div/nav/div/div[2]/span[5]/a";
+  "//div[@class='tls-header-navigation__right-controls']/span/*[contains(text(),'My Account')]";
 const subscribeButton = ".tls-header-navigation__button-subscribe > a";
 
 export function myAccountLinkValidation() {
