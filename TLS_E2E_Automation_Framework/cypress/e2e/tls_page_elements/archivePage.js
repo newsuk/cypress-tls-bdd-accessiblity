@@ -1,6 +1,6 @@
-/// <reference types="cypress" />
+// <reference types="cypress" />
 // Page Elements
-const ARCHIVE_PAGE_ELEMENT_ON_HOME_PAGE = '.tls-header-navigation__menu-list > div > a';
+const ARCHIVE_PAGE_ELEMENT_ON_HOME_PAGE = '.tls-header-navigation__left-controls .tls-header-navigation__menu-list >div >a';
 const YEAR_FILTER_DROP_DOWN = '.tls-date-filter__dropdown-btn';
 const YEAR_LABEL_ACTIVE = 'div.tls-date-filter__content-label.active';
 const YEAR_VALUE_LABEL = '.tls-date-filter__content-item';
@@ -14,6 +14,7 @@ const ALGOLOA_NAV_ARROW = '.tls-issue__explore-section-content-link> a.tls-issue
 const CLICK_HERE_NOT_SUB = '.tls-issue__subscribe-description > span>a';
 const SHOWMORE_BUTTON = '.tls-show-more';
 const ARCHIVE_CAREDS = '.tls-issue-card';
+const ARCHIVE_TITLE = '[data-index="3"] > .tls-link';
 
 //const DATE_FORMAT = 'MMMM DD, YYYY';
 const EXPECTED_RESULT_VALUE_1 = "Your search for '";
@@ -24,19 +25,33 @@ const ARCHIVE_PAGE = 'Archive: 1902–2016';
 
 //const
 const DEFALUT_YEARS = [ '2022', '2021', '2020', '2019', '2018', '2017', '2016', 'Pre 2016' ];
-
+const ARCHIVE_TITLE_NAME = 'Archive';
 
 	/**
 	 * Author : Chetana
 	 * Navigate to archive page
 	 */
 	export const navigateToArchivePage=()=> {
+		cy.acceptCookieBanner();
 		cy.get( ARCHIVE_PAGE_ELEMENT_ON_HOME_PAGE ).eq( 3 ).should( 'have.text', 'Archive' );
 		cy.get( ARCHIVE_PAGE_ELEMENT_ON_HOME_PAGE ).eq( 3 ).click();
 		cy.url().should( 'contain', 'archive' );
 		cy.log( ' Navigated to Archive Page' );
 	}
-
+	/**
+     * Navigates to Archive title on header
+     */
+	export const validateArchiveTitle=()=> {
+		cy.acceptCookieBanner();
+		//Navigates to the categories, history page , url append with 404 error page
+		cy.get( ARCHIVE_TITLE, { timeout: 4000 } ).invoke( 'text' ).then( ( value ) => {
+		expect( value ).to.eq( ARCHIVE_TITLE_NAME );
+		cy.get( ARCHIVE_TITLE, { timeout: 4000 } ).click();
+		cy.acceptCookieBanner();
+		cy.url().should( 'include', ARCHIVE_TITLE_NAME.toLocaleLowerCase() );
+	} );
+		cy.log( 'Successfully validated to Archive title and its link' );
+}
 	/**
 	 * Navigate to archive page and validate it is loaded or not
 	 */
@@ -83,7 +98,7 @@ const DEFALUT_YEARS = [ '2022', '2021', '2020', '2019', '2018', '2017', '2016', 
 				expect( value ).to.match( regex );
 			} );
 		cy.get( SEARCH_CORE ).click();
-		this.validateArchivePageIsLoaded();
+		validateArchivePageIsLoaded();
 		cy.log( 'Search  is validated' );
 	}
 

@@ -21,7 +21,7 @@ describe('Static Article Page', ()=>{
 	        articlePage.validateArticleCategorySepartorAndType();  
         });
 
-        it( 'Validate the title, subtitles , author, with prefix by, lead image and its caption', () => {
+        it( 'Validate the Article has content and other details like title, subtitles,image and author, with prefix by, lead image and its caption', () => {
             articlePage.validateArticleTitleSubtitleAuthorAndImage();
         });
   
@@ -29,7 +29,7 @@ describe('Static Article Page', ()=>{
             articlePage.validateArticlePageHasSocialMediaButtons();
         });
     
-        it( 'Validate the Article has content and other details', () => {
+        it( 'Validate the issue section and In this review section which appears left side of the article page', () => {
             articlePage.validateArticlePageContentWithSideBarDetails();
         });
 

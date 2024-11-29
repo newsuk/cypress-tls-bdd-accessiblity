@@ -8,6 +8,7 @@ import * as archivePage from '../e2e/tls_page_elements/archivePage'
         it( 'Validate search filter functionality in Archive page', () => {
             archivePage.navigateToArchivePage();
             archivePage.validateArchivePageIsLoaded();
+            archivePage.validateArchiveTitle();
             archivePage.validateSearchFilter();
         });
 

@@ -68,34 +68,34 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-before(() => {
-  if (environment != "healthcheck") {
-    if (Cypress.config("firstRun")) {
-      cy.log("Open the TLS Home page for environment =>" + Cypress.env("ENV"));
-      //Fetch the environment from the command line
-      const environment = Cypress.env("ENV");
-      //Corresponded environment url is picked
-      const url = Cypress.env(`${environment}_url`);
-      //Load the URL
-      cy.viewport(1024,768);
-      cy.visit(url);
-      //Accept the cookie banner
-      cy.acceptCookieBanner();
-      /**
-       * If needed can add(err, runnable)
-       */
-      Cypress.on("uncaught:exception", (err, runnable) => {
-        // returning false here prevents Cypress from
-        // failing the test
-        return false;
-      });
-      Cypress.config("firstRun", false);
-      cy.log(
-        "TLS Home page for environment =>" + Cypress.env("ENV") + "loaded"
-      );
-    }
-  }
-});
+// before(() => {
+//   if (environment != "healthcheck") {
+//     if (Cypress.config("firstRun")) {
+//       cy.log("Open the TLS Home page for environment =>" + Cypress.env("ENV"));
+//       //Fetch the environment from the command line
+//       const environment = Cypress.env("ENV");
+//       //Corresponded environment url is picked
+//       const url = Cypress.env(`${environment}_url`);
+//       //Load the URL
+//       cy.viewport(1024,768);
+//       cy.visit(url);
+//       //Accept the cookie banner
+//       cy.acceptCookieBanner();
+//       /**
+//        * If needed can add(err, runnable)
+//        */
+//       Cypress.on("uncaught:exception", (err, runnable) => {
+//         // returning false here prevents Cypress from
+//         // failing the test
+//         return false;
+//       });
+//       Cypress.config("firstRun", false);
+//       cy.log(
+//         "TLS Home page for environment =>" + Cypress.env("ENV") + "loaded"
+//       );
+//     }
+//   }
+// });
 
 
 after(() => {
