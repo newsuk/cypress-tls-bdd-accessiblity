@@ -97,16 +97,15 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 //   }
 // });
 
+// after(() => {
+//   if (environment != "healthcheck") {
+//     cy.log("Test Secenario Completed");
+//     Cypress.config("firstRun", true);
+//   }
+// });
 
-after(() => {
-  if (environment != "healthcheck") {
-    cy.log("Test Secenario Completed");
-    Cypress.config("firstRun", true);
-  }
-});
-
-afterEach(() => {
-  if (environment != "healthcheck") {
-    cy.log("Test Completed");
-  }
-});
+// afterEach(() => {
+//   if (environment != "healthcheck") {
+//     cy.log("Test Completed");
+//   }
+// });
