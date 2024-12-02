@@ -13,7 +13,7 @@
     "cypress:open-staging": "./node_modules/.bin/cypress open --env ENV=staging",
     "cypress:run-prod": "./node_modules/.bin/cypress run --env ENV=prod",
     "cypress:open-prod": "./node_modules/.bin/cypress open --env ENV=prod",
-    "cypress:open-regression": "./node_modules/.bin/cypress open --env ENV=prod"
+    "cypress:open-regression": "./node_modules/.bin/cypress open --env ENV=uat"
   },
   "author": "",
   "license": "ISC",
