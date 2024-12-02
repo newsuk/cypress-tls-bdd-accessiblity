@@ -18,6 +18,7 @@ const tlsLogo = ".tls-header-navigation__logo";
 const errorIcon = ".tls-input-field>svg";
 const errorMessage =
   ".tls-newsletter__wrapper-container-form--state-error-message";
+const emailID = "testingsubscription_tls@yopmail.com";
 
 class NewsLetter {
   /**
@@ -79,7 +80,7 @@ class NewsLetter {
   static newsletterSubscriptionFromPopUp() {
     cy.scrollTo(0, 1200);
     cy.xpath(newsLetterPopUp).should("exist");
-    cy.get(inputBox).eq(0).type("testingsubscription_tls@yopmail.com");
+    cy.get(inputBox).eq(0).type(emailID);
     cy.xpath(sendButton).eq(0).click();
     cy.xpath(successMessage)
       .invoke("text")
@@ -102,7 +103,7 @@ class NewsLetter {
   static newsletterSubscriptionFromBlock() {
     this.validateNewsLetterHomePage();
     cy.get(newsLetterBlock).eq(1).scrollIntoView().should("exist");
-    cy.get(inputBox).eq(1).type("testingsubscription_tls@yopmail.com");
+    cy.get(inputBox).eq(1).type(emailID);
     cy.xpath(sendButton).eq(1).click();
     cy.xpath(successBlock)
       .invoke("text")
@@ -158,7 +159,7 @@ class NewsLetter {
     cy.get(articleLink).eq(3).click();
     paywall.closeNewsletterBanner();
     cy.get(newsLetterBlock).eq(1).scrollIntoView().should("exist");
-    cy.get(inputBox).eq(1).type("testingsubscription_tls@yopmail.com");
+    cy.get(inputBox).eq(1).type(emailID);
     cy.xpath(sendButton).eq(1).click();
     cy.xpath(successBlock)
       .invoke("text")
