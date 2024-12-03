@@ -31,7 +31,7 @@ function performLogin(userName, password) {
 }
 
 // Function to handle the newsletter banner, scroll, and close if visible
-function closeNewsletterBanner() {
+export function closeNewsletterBanner() {
   let scrollPosition = 1000;
   const scrollIncrement = 200;
   const maxScrollHeight = 2500;
@@ -48,6 +48,7 @@ function closeNewsletterBanner() {
           0 &&
         cy.xpath(newsLetter).should("be.visible")
       ) {
+        cy.log("news letter pop up is present on article page");
         cy.xpath(newsLetterButton).click(); // Close the newsletter
       } else if (scrollPosition <= maxScrollHeight) {
         // Continue scrolling if the popup is not found
