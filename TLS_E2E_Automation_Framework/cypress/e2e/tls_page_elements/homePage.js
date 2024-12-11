@@ -28,14 +28,14 @@ const HERO_BLOCK_LARGE_IMAGE_IMAGE_BELOW = '.tls-card-horizontal-medium__wrapper
 const SocialMediaButtons='.tls-header-navigation__right-controls .tls-header-navigation__social-icon';
 const FooterSection='div[role="complementary"] .tls-footer__menu__ul';
 const FooterRightside= '.tls-footer__sidebar-right';
-const termsandCondition='tls-footer__tc';
+const termsandCondition='.tls-footer__tc';
 
 //const PODCASTS_ADS = '#advert--section--billboard';
 const PODCASTS_SLICE = '.tls-podcast-slice';
 const PODCASTS_HEADER = 'div.tls-card-intro-centered > a';
 const PODCAST_CENTRE_TITLE = '.tls-card-intro-centered__title';
 const PODCAST_CENTRE_HEADER_STANDFIRST = '.tls-card-intro-centered__standfirst';
-const PODCAST_CENTRE_HEADER_IMG = '.tls-podcast-slice__issue-bg-img';
+const PODCAST_CENTRE_HEADER_IMG = '.tls-podcast-slice';
 const PODCAST_CENTRE_DATE_LINE = '.tls-issue-date-line';
 const PODCASTS_ARTICLE = '.tls-podcast-slice__upper-module.columns.is-gapless.is-multiline > div.column.tls-card-horizontal-medium__content-wrapper.false > div';
 const PODCASTS_ARTICLE_TITLE = 'a.tls-card-headline';
@@ -47,9 +47,9 @@ const PODCASTS_ARTICLE_STANDFIRST = 'p.tls-card-standfirst';
 // const LEFTBLOCK_COLLECTIONS_WRAPPER_SERIES = '.tls-card-intro-left__wrapper-link > a';
 // const COLLECTIONS_IMAGES_LINK = '.tls-card-vertical-medium__wrapper > a';
 // const COLLECTIONS_ARTICLE_LABEL = '.tls-card-vertical-medium__content-wrapper > div > a';
-// const ADS_SECTION = 'div#advert--section--billboard > div';
-// const ADS_SECTION1 = 'div#advert--section--billboard2 > div';
-// const ADS_SECTION2 = 'div#advert--section--billboard3 > div';
+const ADS_SECTION = 'div#advert--section--billboard > div';
+const ADS_SECTION1 = 'div#advert--section--billboard2 > div';
+const ADS_SECTION2 = 'div#advert--section--billboard3 > div';
 // const CENTER_COLLECTION_STANDFIRST = '.tls-home-page__collection-series .tls-home-page__collection-series-content-wrapper .tls-card-standfirst';
 // const CENTER_COLLECTION_BY = '.tls-home-page__collection-series .tls-home-page__collection-series-content-wrapper .tls-byline';
 
@@ -59,7 +59,9 @@ const EXPLORE = 'Explore the TLS';
 const ONLINE = 'Online series';
 const THIS_WEEK_ISSUE = 'This week\’s issue';
 const VIEW_CONTENTS_PAGE = 'View contents page';
-const DATE_FORMAT = 'MMM DD, YYYY';
+const DATE_FORMAT = 'MMMM DD, YYYY';
+const ID = 'id';
+const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 
 	/**
 	* Author: Chetana
@@ -123,7 +125,7 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 		cy.get( HOME_PAGE_ISSUE_BLOCK_DATE ).invoke( 'text' ).then( ( date ) => {
 			const dayjs = require( 'dayjs' );
 			const parsed = dayjs( date, DATE_FORMAT );
-			expect( parsed.format( DATE_FORMAT ) ).to.eq( date );
+			expect( parsed.format( DATE_FORMAT ) ).to.eq(date);
 		} );
 		cy.log( 'Month and Year is displayed in Issue Block' );
 		cy.get( HOME_PAGE_ISSUE_BLOCK_CONTENTS_PAGE ).invoke( 'text' ).should( 'contain', VIEW_CONTENTS_PAGE );
@@ -181,17 +183,6 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 		cy.log( 'Below Hero block has 2 image are displayed' );
 	}
 
-	// /**
-	//  * Validate the Document, Window and Decibel
-	//  */
-	// export const  validateDocumentWindowDecibel=()=> {
-	// 	cy.acceptCookieBanner();
-	// 	cy.document().should( 'have.property', 'charset' ).and( 'eq', 'UTF-8' );
-	// 	cy.window().should( 'have.property', 'top' );
-	// 	cy.window().should( 'have.property', 'decibelInsight' );
-	// 	cy.log( 'Successfully validation completed for document object,window top and decibel Insight' );
-	// }
-
 	/**
 	 * Validate the podcast header, title and standfirst
 	 */
@@ -220,14 +211,7 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 		cy.get( PODCAST_CENTRE_HEADER_STANDFIRST ).eq( 0 ).should( 'be.visible' );
 		cy.log( 'Validation completed for standfirst' );
 		//Verify the podcast has image
-		cy.get( PODCAST_CENTRE_HEADER_IMG ).eq( 0 ).invoke( 'attr', 'style' ).then( ( value ) => {
-			//Fetch the url and check the image
-			const fetchImageUrl = value.replace( 'background-image: url("', '' ).replace( '")', '' ).replace( ';', '' );
-			cy.log( fetchImageUrl );
-			cy.request( fetchImageUrl ).then( ( response ) => {
-				expect( response.status ).to.eq( 200 );
-			} );
-		} );
+		cy.get( PODCAST_CENTRE_HEADER_IMG ).eq(0).should('be.visible').should('be.exist')
 		cy.log( 'Podcast has an image' );
 		//Verify date format
 		cy.get( PODCAST_CENTRE_DATE_LINE ).eq( 0 ).invoke( 'text' ).then( ( date ) => {

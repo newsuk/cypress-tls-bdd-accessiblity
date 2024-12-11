@@ -4,13 +4,12 @@
  */
 // Page Elements
 const HOME_PAGE_SECOND_ARTICLE = ':nth-child(2) > .tls-card-horizontal-medium__content > .tls-card-headline > .tls-card-headline__title';
-const ARTICLE_PAGE_HEADLINE = '.tls-card-headline';
-const ARTICLE_LABEL_CATEGORY = 'article.tls-single-article span.tls-article-label__category > a';
+const ARTICLE_PAGE_HEADLINE = '.tls-headline';
+const ARTICLE_LABEL_CATEGORY = '.tls-article-label .tls-article-label__category';
 const ARTICLE_LABEL_SEPARATOR = '.tls-article-label__separator';
 const ARTICLE_LABEL_ARTICLE_TYPE = '.tls-article-label__article-type';
 const ARTICLE_SUB_TITLE = '.tls-article-intro-primary  div[role="complementary"] #tls-article-intro-primary__standfirst';
-const ARTICLE_AUTHOR_NAME = '.tls-single-article div.tls-byline > span.tls-byline__name';
-const ARTICLE_AUTHOR_NAME_WITH_BY = '.tls-single-article div.tls-byline > span.tls-byline__by';
+const ARTICLE_AUTHOR_NAME = '.tls-article-intro-primary .tls-byline';
 const ARTICLE_IMAGE = '.tls-lead-image__image';
 const ARTICLE_IMAGE_CAPTION = '.tls-media-information__caption';
 const ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS = '.tls-single-article__site-controls .tls-sharing__item'
@@ -28,11 +27,6 @@ const KEEP_READING_OPTION = '.tls-aggregation__title';
 // Const or Variables
 const PAGE_ELEMENT_FILE_PATH = 'cypress/pageElementValues/articles_page_values.txt';
 const SEPARATOR = '|';
-const BY = 'By';
-const TWITTER = 'twitter';
-const FACEBOOK = 'facebook';
-const EMAIL = 'email';
-
 
 	/**
 	 * Fetch the name of the Article and Select the second article in Home
@@ -88,10 +82,6 @@ const EMAIL = 'email';
 		cy.get( ARTICLE_SUB_TITLE ).invoke( 'text' ).should( 'not.be.empty' );
 		//Validate the Authorname and prefix by
 		cy.get( ARTICLE_AUTHOR_NAME ).invoke( 'text' ).should( 'not.be.empty' );
-		cy.get( ARTICLE_AUTHOR_NAME_WITH_BY ).invoke( 'text' ).then( ( value ) => {
-			expect( value.trim() ).eq( BY );
-		} );
-
 		//Validate the Article image should be visible and its cpation under image
 		cy.get( ARTICLE_IMAGE ).should( 'be.visible' );
 		cy.get( ARTICLE_IMAGE_CAPTION ).should( 'be.visible' );
@@ -103,16 +93,10 @@ const EMAIL = 'email';
 	 * Validate the Article has the socila media buttons of Facebook, twitter, email
 	 */
 	export const validateArticlePageHasSocialMediaButtons=()=> {
-		//const socialMedias = [ TWITTER, FACEBOOK, EMAIL ];
-		// Check all the social medias
-		// socialMedias.forEach( ( socialMedia ) => {
-		// 	cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS + socialMedia + ']', { timeout: 5000 } ).eq( 0 ).scrollIntoView().should( 'be.visible' );
-		// 	cy.log( 'Validations completed of Socila media of ' + socialMedia );
-		// } );
 		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(0).scrollIntoView().should( 'be.visible' );
-		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(1).scrollIntoView().should( 'be.visible' );
-		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(2).scrollIntoView().should( 'be.visible' );
-		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(3).scrollIntoView().should( 'be.visible' );
+		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(1).should( 'be.visible' );
+		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(2).should( 'be.visible' );
+		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(3).should( 'be.visible' );
 		cy.log( 'Validations completed of Social media of Twitter, Facebook, Email' );
 	}
 

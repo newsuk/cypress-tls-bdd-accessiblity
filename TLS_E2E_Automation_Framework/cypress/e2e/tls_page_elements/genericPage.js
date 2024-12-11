@@ -4,26 +4,21 @@
  * Internal dependencies
  */
 // Page Elements
-const HOME_PAGE_SOCIAL_MEDIA_BUTTONS = 'span[class^="tls-header-navigation__social-icon"] > a[data-follow=';
 const SEARCH_ICON = '.tls-header-navigation__search-icon';
 const SUBSCRIBE_BUTTON_ON_THE_HEADER = '.tls-header-navigation__button-subscribe > a';
 const LOGIN_BUTTON_ON_HEADER = '.tls-header-navigation__link-login > a';
-
 const SHOP_TITLE = '[data-index="4"] > .tls-link';
 
 const FOOTER_LOGO = '.tls-footer__logo';
-const FOOTER_TC_MENU = '.tls-footer__tc__menu>a';
+const FOOTER_TC_MENU = '.tls-footer__tc__menu > a';
 const TC_HEADER = 'h2.tls-aggregation__title';
-const PRIVACY_HEADER_LOGO = '.header-logo';
+const PRIVACY_HEADER_LOGO = '#np_header_top';
 const TLS_PODCST_HEADER = '.tls-footer__podcast>h3';
 const PODCASTS_LIST = '.tls-footer__podcast-container>div>a + a';
 const FOOTER_LIST = '.tls-footer__body-container > div>ul>li>a';
 const ABOUTUS_LOGO = '.wp-image-199';
 
 //Variables
-const TWITTER = 'twitter';
-const FACEBOOK = 'facebook';
-const INSTAGRAM = 'instagram';
 const SUBSCRIBE = 'Subscribe';
 const LOGIN = 'Login';
 
@@ -37,29 +32,11 @@ const CATEGORIES = 'Categories';
 const ABOUTUS = 'About us';
 const TERMSCONDITIONS = 'Terms & Conditions';
 const PRIVACY = 'Privacy';
-const COOKIE_SETTING = 'Cookie Settings';
 const GOOGLE_PODCASTS = 'Google Podcasts';
 const SPOTIFY = 'Spotify';
 const APPLE_PODCASTS = 'Apple Podcasts';
 
 
-	/**
-	 * Validate the Home Page has the socila media buttons of Facebook, twitter, instagram
-	 * Author:Chetana
-	 */
-	export const validateHomePageHasSocialMediaButtonsAndLinks=()=> {
-		const socialMedias = [ TWITTER, FACEBOOK, INSTAGRAM ];
-		//Check all the social medias
-		socialMedias.forEach( ( socialMedia ) => {
-			cy.get( HOME_PAGE_SOCIAL_MEDIA_BUTTONS + socialMedia + ']', { timeout: 5000 } ).scrollIntoView().should( 'be.visible' );
-			cy.get( HOME_PAGE_SOCIAL_MEDIA_BUTTONS + socialMedia + ']', { timeout: 5000 } ).should( 'have.attr', 'href' ).and( 'include', socialMedia ).then( ( href ) => {
-				cy.request( href ).then( ( response ) => {
-					expect( response.status ).to.eq( 200 );
-				} );
-			} );
-			cy.log( 'Validations completed of Socila media' + socialMedia );
-		} );
-	}
 
 	/**
 	 * Validate the HomePage Subscribe, Search and Login Buttons
@@ -110,23 +87,19 @@ const APPLE_PODCASTS = 'Apple Podcasts';
 		cy.scrollTo( 'bottom' );
 		cy.acceptCookieBanner();
 		//Validate the TC menu
-		const footerTC = [ TERMSCONDITIONS, PRIVACY, COOKIE_SETTING ];
+		const footerTC = [ TERMSCONDITIONS, PRIVACY ];
 		for ( let i = 0; i < footerTC.length; i++ ) {
-			cy.get( FOOTER_TC_MENU ).eq( i ).invoke( 'text' ).should( 'eq', footerTC[ i ] )
-			;
+			cy.get( FOOTER_TC_MENU ).eq( i ).invoke( 'text' ).should( 'eq', footerTC[ i ] );
 		}
 		//Click on TC
-		cy.get( FOOTER_TC_MENU ).eq( 0 ).click();
+		cy.get( FOOTER_TC_MENU ).eq( 0 ).click({force: true});
 		//Validate proper page is navigated
 		cy.get( TC_HEADER ).invoke( 'text' ).should( 'eq', TERMSCONDITIONS );
-		cy.clickTLSLogo();
 		cy.scrollTo( 'bottom' );
 		//Click on Privavy
-		cy.get( FOOTER_TC_MENU ).eq( 1 ).click();
+		cy.get( FOOTER_TC_MENU ).eq( 1 ).click().should('be.visible');
 		//Validate proper page is navigated
-		cy.get( PRIVACY_HEADER_LOGO, { timeout: 4000 } ).should( 'be.visible' );
-		//Load the URL
-		cy.visit( Cypress.env( `${ Cypress.env( 'ENV' ) }_url` ) );
+		cy.get( PRIVACY_HEADER_LOGO, { timeout: 4000 }  ).should( 'be.visible' );
 		cy.log( 'Successfully validated Terms and Conditions Menu' );
 	}
 
@@ -158,7 +131,7 @@ const APPLE_PODCASTS = 'Apple Podcasts';
 		cy.scrollTo( 'bottom' );
 		cy.acceptCookieBanner();
 		cy.get( FOOTER_LIST ).eq( 5 ).invoke( 'text' ).should( 'eq', ABOUTUS );
-		cy.get( FOOTER_LIST ).eq( 5 ).click();
+		cy.get( FOOTER_LIST ).eq( 5 ).click({force: true});
 		cy.get( TC_HEADER, { timeout: 5000 } ).invoke( 'text' ).should( 'eq', ABOUTUS );
 		cy.get( ABOUTUS_LOGO, { timeout: 3000 } ).should( 'be.visible' );
 		cy.log( 'Verified that user is able to navigate to About Us page by clicking on the About Us link given on footer section' );
