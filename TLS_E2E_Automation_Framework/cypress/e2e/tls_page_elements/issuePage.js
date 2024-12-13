@@ -1,9 +1,8 @@
-/// <reference types="cypress" />
+// <reference types="cypress" />
 /**
  * Internal dependencies
  */
 const CurrentIssue_PAGE_ELEMENT_ON_HOME_PAGE='.tls-header-navigation__left-controls .tls-header-navigation__menu-list >div >a'
-// const CURRENT_ISSUE_TITLE = '.tls-header-navigation__menu-item';
 const ISSUE_BUTTON = '.tls-contents-page__issue-pagination-wrapper > a';
 const NEXT_ISSUE = '.tls-contents-page__issue-pagination-wrapper > span';
 const NEXT_ISSUE_BUTTON='.tls-link--disabled';
@@ -20,36 +19,31 @@ const SHOWCASE_ARTICLE_STANDFIRST = '.tls-contents-page__highlights-wrapper .tls
 const SHOWCASE_ARTICLE_AUTHOR = '.tls-contents-page__highlights-wrapper .tls-byline';
 const CONTENT_TITLE = '.tls-contents-page__categories > .tls-aggregation > .tls-aggregation__content-container > .tls-aggregation__title';
 const CONTENT_MENU = '.tls-aggregation-navigation__menu > li>a';
-// const CONTENT_PAGE_DATE_LINE = '.tls-contents-page__issue-date-line > div > span:nth-child(1)';
 
-// const CURRENT_ISSUE_TITLE_VALUE = 'Current Issue';
 const URL_VALUE = 'issues/current-issue';
 const DATE_FORMAT = 'MMMM D, YYYY';
 const PAGE_ELEMENT_FILE_PATH = 'cypress/fixtures/pageElementValues/issue_pages.json';
-const CONTENT_MENU_LIST = [  'Literature', 'Philosophy','Politics & society','Lives','Regular features', 'Classics', 'Arts' ];
-
+const CONTENT_MENU_LIST = [ 'History','Classics','Literature','Arts','Regular features','Religion','Science & technology','Culture','Lives'];
+	
 	export const navigateToCurrentIssuePage=()=> {
-		cy.acceptCookieBanner();
 		cy.get( CurrentIssue_PAGE_ELEMENT_ON_HOME_PAGE ).eq( 0 ).should( 'have.text', 'Current Issue' );
 		cy.get( CurrentIssue_PAGE_ELEMENT_ON_HOME_PAGE ).eq( 0 ).click();
 		cy.url().should( 'contain', 'https://www.the-tls.co.uk/issues/current-issue' );
 		cy.log( ' Navigated to Current Issue Page' );
 	}
 	/**
-     * Validate user navigated to Current Issue page or not
-     */
+	 * Validate user navigated to Current Issue page or not
+	 */
 	export const validateToCurrentIssuePage=()=> {
 		//Navigate to Current Issue from Home page
-		cy.acceptCookieBanner();
 		cy.url().should( 'contain', URL_VALUE );
 		cy.log( 'Validated theCurrent Issue Page' );
 	}
 
 	/**
-     * Validate current Issue page has previous issue and current issue
-     */
+	 * Validate current Issue page has previous issue and current issue
+	 */
 	export const validateCurrentIssuePageHasPreviousNextIssue = ()=> {
-		cy.acceptCookieBanner();
 		cy.get( ISSUE_BUTTON ).eq( 0 ).should( 'contain', 'Previous issue' );
 		cy.get( ISSUE_BUTTON ).eq( 0 ).should( 'not.be.disabled' );
 		cy.get( NEXT_ISSUE ).should( 'contain', 'Next issue' );
@@ -58,8 +52,8 @@ const CONTENT_MENU_LIST = [  'Literature', 'Philosophy','Politics & society','Li
 	}
 
 	/**
-     * Validate the previous page click is working with all details
-     */
+	 * Validate the previous page click is working with all details
+	 */
 	export const validatePreviousIssue=()=> {
 		//Fetch the current Issue date
 		cy.get( ISSUE_DATE ).eq( 0 ).invoke( 'text' ).then( ( currentIssueDate ) => {
@@ -71,7 +65,6 @@ const CONTENT_MENU_LIST = [  'Literature', 'Philosophy','Politics & society','Li
 
 		//Click on previous issue and valiate the date is 7 days before
 		cy.get( ISSUE_BUTTON ).eq( 0 ).click();
-		cy.acceptCookieBanner();
 		cy.get( ISSUE_DATE ).eq( 0 ).invoke( 'text' ).then( ( previousIssueDate ) => {
 			const dayjs = require( 'dayjs' );
 			const parsed = dayjs( previousIssueDate, DATE_FORMAT );
@@ -84,24 +77,21 @@ const CONTENT_MENU_LIST = [  'Literature', 'Philosophy','Politics & society','Li
 				expect( parsed1.format( DATE_FORMAT ) ).to.eq( previousIssueDate );
 			} );
 		} );
-		cy.acceptCookieBanner();
 		//Click on next issue from previous issue
 		cy.get( ISSUE_BUTTON ).eq( 1 ).should( 'contain', 'Next issue' );
 		cy.get( ISSUE_BUTTON ).eq( 1 ).should( 'not.be.disabled' );
 		cy.get( ISSUE_BUTTON ).eq( 1 ).click();
-		cy.acceptCookieBanner();
 		validateToCurrentIssuePage();
 		cy.log( 'Validation completed for Previous Issue' );
 	}
 
 	/**
-     * Click on view content from home page and Current Issue should be directed to Current Issue page
-     */
+	 * Click on view content from home page and Current Issue should be directed to Current Issue page
+	 */
 	export const validateViewContentAndCurrentPageSame=()=> {
 		//Valdiate the current issue page
 		validateToCurrentIssuePage();
 		cy.clickTLSLogo();
-		cy.acceptCookieBanner();
 		//Home page issue date
 		cy.get( HOME_PAGE_ISSUE_BLOCK_DATE ).invoke( 'text' ).then( ( dateInHomePage ) => {
 			const dayjs = require( 'dayjs' );
@@ -111,7 +101,6 @@ const CONTENT_MENU_LIST = [  'Literature', 'Philosophy','Politics & society','Li
 		} );
 		//Click the view contents
 		cy.get( HOME_PAGE_ISSUE_BLOCK_CONTENTS_PAGE ).click();
-		cy.acceptCookieBanner();
 		validateToCurrentIssuePage();
 		//Validate date in home page and date in Current Issue should be same
 		cy.get( ISSUE_DATE ).eq( 0 ).invoke( 'text' ).then( ( currentIssueDate ) => {
@@ -128,7 +117,6 @@ const CONTENT_MENU_LIST = [  'Literature', 'Philosophy','Politics & society','Li
 		imageContentAuthor();
 		//Click on previous issue and validate, image content and author
 		cy.get( ISSUE_BUTTON ).eq( 0 ).click();
-		cy.acceptCookieBanner();
 		imageContentAuthor();
 		cy.log( 'Validation completed for  Issue Image, lead article is present in current Issue and Previous Issue' );
 	}
@@ -152,8 +140,8 @@ const CONTENT_MENU_LIST = [  'Literature', 'Philosophy','Politics & society','Li
 	export const validateContentSection=()=> {
 		//Validate all section on Content
 		cy.get( CONTENT_TITLE ).should( 'have.text', 'Contents' );
-		cy.get( CONTENT_MENU ).should( 'have.length', '7' );
-		for ( let count = 0; count < 7; count++ ) {
+		cy.get( CONTENT_MENU ).should( 'have.length', '9' );
+		for ( let count = 0; count < 9; count++ ) {
 			cy.get( CONTENT_MENU ).eq( count ).should( 'have.text', CONTENT_MENU_LIST[ count ] );
 			cy.get( CONTENT_MENU ).eq( count ).should( 'have.attr', 'href' );
 		}

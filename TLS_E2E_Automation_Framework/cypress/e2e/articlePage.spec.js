@@ -12,7 +12,6 @@ beforeEach(() => {
   
 	describe('Article Page', () => {
 		it('Validate Article Page headline once user visit to article page, & Validate the Article has content and other details like title, subtitles,image and author, with prefix by, lead image and its caption', () => {
-			cy.acceptCookieBanner();
 			articlePage.getHeadlineOfArtcilePage();
 		}); 
 			

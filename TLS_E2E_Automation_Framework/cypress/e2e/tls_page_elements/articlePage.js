@@ -11,7 +11,7 @@ const ARTICLE_LABEL_ARTICLE_TYPE = '.tls-article-label__article-type';
 const ARTICLE_SUB_TITLE = '.tls-article-intro-primary  div[role="complementary"] #tls-article-intro-primary__standfirst';
 const ARTICLE_AUTHOR_NAME = '.tls-article-intro-primary .tls-byline';
 const ARTICLE_IMAGE = '.tls-lead-image__image';
-const ARTICLE_IMAGE_CAPTION = '.tls-media-information__caption';
+const ARTICLE_IMAGE_CAPTION = '.tls-media-information__credit';
 const ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS = '.tls-single-article__site-controls .tls-sharing__item'
 const ARTICLE_BODY = '.tls-article-body';
 const SIDE_BAR_REVIEW = 'div[class="tls-single-article__wrapper columns is-centered is-gapless is-multiline"]';
@@ -39,7 +39,6 @@ const SEPARATOR = '|';
 		} );
 		//Click the 2nd article
 		cy.get( HOME_PAGE_SECOND_ARTICLE ).click();
-		// cy.acceptCookieBanner();
 		cy.log( ' Successfully Navigated to Article Page ' );
 	}
 	
@@ -76,7 +75,6 @@ const SEPARATOR = '|';
 	 */
 	export const validateArticleTitleSubtitleAuthorAndImage =()=> {
 		//Validate the Article Title
-		cy.acceptCookieBanner();
 		cy.get( ARTICLE_PAGE_HEADLINE ).invoke( 'text' ).should( 'not.be.empty' );
 		//Validate the Subtitle;
 		cy.get( ARTICLE_SUB_TITLE ).invoke( 'text' ).should( 'not.be.empty' );
@@ -85,7 +83,6 @@ const SEPARATOR = '|';
 		//Validate the Article image should be visible and its cpation under image
 		cy.get( ARTICLE_IMAGE ).should( 'be.visible' );
 		cy.get( ARTICLE_IMAGE_CAPTION ).should( 'be.visible' );
-		cy.acceptCookieBanner();
 		cy.log( ' Valdiation completed for title , subtitle, author, image and its caption' );
 	}
 
@@ -105,7 +102,6 @@ const SEPARATOR = '|';
 	 */
 	export const validateArticlePageContentWithSideBarDetails=()=> {
 		//Validate the article body//
-		cy.acceptCookieBanner();
 		cy.get( ARTICLE_BODY ).should( 'be.visible' ).should( 'not.be.empty' );
 		cy.log( 'Verified Article body' );
 		//Valiadte the Read this Issue sidebar//
@@ -115,7 +111,6 @@ const SEPARATOR = '|';
 				cy.get( SIDE_BAR_LABEL ).scrollIntoView().should( 'be.visible' );
 				cy.get( SIDE_BAR_LINK ).scrollIntoView().should( 'have.attr', 'href' ).then( ( href ) => {
 					cy.request( href ).then( ( response ) => {
-						cy.acceptCookieBanner();
 						expect( response.status ).to.eq( 200 );
 					} );
 				} );

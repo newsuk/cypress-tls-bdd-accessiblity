@@ -36,8 +36,6 @@ const GOOGLE_PODCASTS = 'Google Podcasts';
 const SPOTIFY = 'Spotify';
 const APPLE_PODCASTS = 'Apple Podcasts';
 
-
-
 	/**
 	 * Validate the HomePage Subscribe, Search and Login Buttons
 	 */
@@ -49,10 +47,9 @@ const APPLE_PODCASTS = 'Apple Podcasts';
 	}
 	
 	/**
-     * Navigates to Shop title on header
-     */
+	 * Navigates to Shop title on header
+	 */
 	export const validateShopOnTitle=()=> {
-		cy.acceptCookieBanner();
 		//Navigates to the categories, history page , url append with 404 error page
 		cy.get( SHOP_TITLE, { timeout: 4000 } ).invoke( 'text' ).then( ( value ) => {
 			expect( value ).to.eq( SHOP_TITLE_NAME );
@@ -70,7 +67,6 @@ const APPLE_PODCASTS = 'Apple Podcasts';
  	*/
 	export const validateFooterLogoAndMainTopics=()=> {
 		cy.scrollTo( 'bottom' );
-		cy.acceptCookieBanner();
 		cy.get( FOOTER_LOGO ).should( 'be.visible' );
 		const footerMainTopics = [ HOME, REGULAR_FEATURES, THE_ARCHIVE, EXPLORE, CATEGORIES, ABOUTUS, SHOP_TITLE_NAME ];
 		for ( let i = 0; i < footerMainTopics.length; i++ ) {
@@ -85,7 +81,6 @@ const APPLE_PODCASTS = 'Apple Podcasts';
 	 */
 	export const validateTermConditionPrivacyandCookieInFooter=()=> {
 		cy.scrollTo( 'bottom' );
-		cy.acceptCookieBanner();
 		//Validate the TC menu
 		const footerTC = [ TERMSCONDITIONS, PRIVACY ];
 		for ( let i = 0; i < footerTC.length; i++ ) {
@@ -108,7 +103,6 @@ const APPLE_PODCASTS = 'Apple Podcasts';
 	 */
 	export const validatePodcasts=()=> {
 		cy.scrollTo( 'bottom' );
-		cy.acceptCookieBanner();
 		cy.get( TLS_PODCST_HEADER ).invoke( 'text' ).should( 'eq', 'Subscribe to the podcast' );
 		//Validate the podcas menu
 		const footerPodcast = [ GOOGLE_PODCASTS, SPOTIFY, APPLE_PODCASTS ];
@@ -129,7 +123,6 @@ const APPLE_PODCASTS = 'Apple Podcasts';
 	 */
 	export const validateAboutUs=()=> {
 		cy.scrollTo( 'bottom' );
-		cy.acceptCookieBanner();
 		cy.get( FOOTER_LIST ).eq( 5 ).invoke( 'text' ).should( 'eq', ABOUTUS );
 		cy.get( FOOTER_LIST ).eq( 5 ).click({force: true});
 		cy.get( TC_HEADER, { timeout: 5000 } ).invoke( 'text' ).should( 'eq', ABOUTUS );

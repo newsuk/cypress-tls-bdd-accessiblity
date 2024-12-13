@@ -7,7 +7,6 @@ describe('Explore Page validation', () => {
 		beforeEach(() => {
 				cy.visit(url, { timeout: 20000 });
 				cy.acceptCookieBanner();
-				
 			});
 
 		it( 'Validate Explore title', () => {

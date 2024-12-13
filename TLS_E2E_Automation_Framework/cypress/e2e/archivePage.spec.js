@@ -22,10 +22,12 @@ beforeEach(() => {
 			archivePage.validateSearchFilter();
 		});
    
-		it( 'Validate Browse by year of issue  filter functionality in Archive Page and validate X button of browse by year of issue and Validate Explore older TLS issues section and subscribe section', () => {
+		it( 'Validate Browse by year of issue filter functionality in Archive Page and validate X button of browse by year of issue and Validate Explore older TLS issues section and subscribe section', () => {
 			archivePage.validateYearFilterDropDown();
 			archivePage.validateBackToTop();
 			archivePage.verifyArchiveCaredsSection();
+			archivePage.validateAlgoliaNavigation();
+			archivePage.validateClickHereNotSubscriber();
 			genericPage.validateFooterLogoAndMainTopics();
 	});
 });

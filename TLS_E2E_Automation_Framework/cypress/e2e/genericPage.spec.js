@@ -7,7 +7,6 @@ const url = Cypress.env(`${environment}_url`);
 beforeEach(() => {
 	cy.visit(url, { timeout: 20000 });
 	cy.acceptCookieBanner();
-	
   });
 
 describe('Generic Page validation', () => {

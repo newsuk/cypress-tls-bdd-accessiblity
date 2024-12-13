@@ -40,18 +40,9 @@ const PODCAST_CENTRE_DATE_LINE = '.tls-issue-date-line';
 const PODCASTS_ARTICLE = '.tls-podcast-slice__upper-module.columns.is-gapless.is-multiline > div.column.tls-card-horizontal-medium__content-wrapper.false > div';
 const PODCASTS_ARTICLE_TITLE = 'a.tls-card-headline';
 const PODCASTS_ARTICLE_STANDFIRST = 'p.tls-card-standfirst';
-// const LEFTBLOCK_COLLECTIONS = '.tls-home-page__collection-series';
-// const LEFTBLOCK_COLLECTIONS_WRAPPER = '.tls-card-intro-left__wrapper';
-// const LEFTBLOCK_COLLECTIONS_HEADLINE = '.tls-card-headline';
-// const LEFTBLOCK_COLLECTIONS_STANDFIRST = '.tls-card-intro-left__standfirst';
-// const LEFTBLOCK_COLLECTIONS_WRAPPER_SERIES = '.tls-card-intro-left__wrapper-link > a';
-// const COLLECTIONS_IMAGES_LINK = '.tls-card-vertical-medium__wrapper > a';
-// const COLLECTIONS_ARTICLE_LABEL = '.tls-card-vertical-medium__content-wrapper > div > a';
 const ADS_SECTION = 'div#advert--section--billboard > div';
 const ADS_SECTION1 = 'div#advert--section--billboard2 > div';
 const ADS_SECTION2 = 'div#advert--section--billboard3 > div';
-// const CENTER_COLLECTION_STANDFIRST = '.tls-home-page__collection-series .tls-home-page__collection-series-content-wrapper .tls-card-standfirst';
-// const CENTER_COLLECTION_BY = '.tls-home-page__collection-series .tls-home-page__collection-series-content-wrapper .tls-byline';
 
 // Const or Variables
 const PATH = 'the-tls.co.uk';
@@ -65,8 +56,8 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 
 	/**
 	* Author: Chetana
-    * Validating all the sections in the home page after the page load
-    */
+	* Validating all the sections in the home page after the page load
+	*/
 	export const landingPageValidation=()=> {
 		//Validating the TLS logo
 		cy.get( TLS_LOGO ).should( 'be.visible' );
@@ -105,7 +96,7 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 	/**
 	 * Validate Issue block image at right corner
 	 */
-    export const valdiateIssueImageBlock=()=> {
+	export const valdiateIssueImageBlock=()=> {
 		//Validate issue block is visible
 		cy.get( HOME_PAGE_ISSUE_BLOCK_IMAGE ).invoke( 'attr', 'style' ).then( ( value ) => {
 			//Fetch the url and check the image
@@ -170,7 +161,6 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 			} );
 		cy.log( 'Hero Block has Article Name is displayed' );
 		//Hero block has standfirst
-		cy.acceptCookieBanner();
 		cy.get( HERO_BLOCK_LARGE_IMAGE_BANNER )
 			.find( HERO_BLOCK_LARGE_IMAGE_STANDFIRST ).eq( 0 ).should( 'be.visible' );
 		cy.log( 'Hero Block has Stand First is displayed' );
@@ -188,7 +178,6 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 	 */
 	export const validatePodcastHeaderTitleStandfirst=()=> {
 		//Verify visibility of entire block ads section
-		cy.acceptCookieBanner();
 		//cy.scrollTo( 'center' );
 		//cy.get( PODCASTS_ADS ).scrollIntoView();
 		cy.waitUntil( () => cy.get( PODCASTS_SLICE ).should( 'be.visible' ) );
@@ -203,7 +192,6 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 					} );
 			} );
 		cy.log( 'Validation completed for podcast top link section' );
-		cy.acceptCookieBanner();
 		//Verify the it has title
 		cy.get( PODCAST_CENTRE_TITLE ).eq( 0 ).should( 'have.text', 'The TLS Podcast' );
 		cy.log( 'Validation completed for podcast title' );
@@ -224,7 +212,6 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 
 	export const valdiatePodcastArticleTitleStandfirst=()=> {
 		cy.scrollTo( 'center' );
-		cy.acceptCookieBanner();
 		cy.get( PODCASTS_ARTICLE ).eq( 0 ).find( PODCASTS_ARTICLE_TITLE ).should( 'have.attr', 'href' ).then( ( href ) => {
 			cy.request( href )
 				.then( ( response ) => {
