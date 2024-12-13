@@ -1,7 +1,8 @@
-/// <reference types="cypress" />
+//<reference types="cypress" />
 // Page Elements
-const ARCHIVE_PAGE_ELEMENT_ON_HOME_PAGE = '.tls-header-navigation__menu-list > div > a';
-const YEAR_FILTER_DROP_DOWN = '.tls-date-filter__dropdown-btn';
+
+const ARCHIVE_PAGE_ELEMENT_ON_HOME_PAGE = '.tls-header-navigation__left-controls .tls-header-navigation__menu-list >div >a';
+const YEAR_FILTER_DROP_DOWN = '.tls-date-filter__dropdown-btn .tls-card-standfirst';
 const YEAR_LABEL_ACTIVE = 'div.tls-date-filter__content-label.active';
 const YEAR_VALUE_LABEL = '.tls-date-filter__content-item';
 const SEARCH_FILTER = '.tls-search-filter__input';
@@ -9,11 +10,12 @@ const SEARCH_CORE = '.tls-search-core__link > a';
 const SEARCH_RESUTLS = '.tls-search-core__stats';
 const BACKTOTOP = '.tls-back-to-top__arrow-icon';
 const IMAGE_CARD = '.tls-issue-card__content';
+const CLICK_HERE_NOT_SUB = '.tls-issue__subscribe-description > span>a';
+const ARCHIVE_CAREDS_SECTION = '.tls-archive-issue-page__content';
+const ARCHIVE_TITLE = '[data-index="3"] > .tls-link';
+
 const ALGOLIA_NAV_LINK = '.tls-issue__explore-section-content-link > a';
 const ALGOLOA_NAV_ARROW = '.tls-issue__explore-section-content-link> a.tls-issue__explore-section-content-icon> svg';
-const CLICK_HERE_NOT_SUB = '.tls-issue__subscribe-description > span>a';
-const SHOWMORE_BUTTON = '.tls-show-more';
-const ARCHIVE_CAREDS = '.tls-issue-card';
 
 //const DATE_FORMAT = 'MMMM DD, YYYY';
 const EXPECTED_RESULT_VALUE_1 = "Your search for '";
@@ -23,8 +25,9 @@ const GALE_PAGE = 'galeapps.gale.com';
 const ARCHIVE_PAGE = 'Archive: 1902–2016';
 
 //const
-const DEFALUT_YEARS = [ '2022', '2021', '2020', '2019', '2018', '2017', '2016', 'Pre 2016' ];
-
+const DEFALUT_YEARS = [ '2024','2023','2022', '2021', '2020', '2019', '2018', '2017', '2016', 'Pre 2016' ];
+const ARCHIVE_TITLE_NAME = 'Archive';
+const PATH = '/buy';
 
 	/**
 	 * Author : Chetana
@@ -38,9 +41,21 @@ const DEFALUT_YEARS = [ '2022', '2021', '2020', '2019', '2018', '2017', '2016', 
 	}
 
 	/**
+     * Navigates to Archive title on header
+     */
+	export const validateArchiveTitle=()=> {
+		//Navigates to the categories, history page , url append with 404 error page
+		cy.get( ARCHIVE_TITLE, { timeout: 4000 } ).invoke( 'text' ).then( ( value ) => {
+		expect( value ).to.eq( ARCHIVE_TITLE_NAME );
+		cy.get( ARCHIVE_TITLE, { timeout: 4000 } ).click();
+		cy.url().should( 'include', ARCHIVE_TITLE_NAME.toLocaleLowerCase() );
+	} );
+		cy.log( 'Successfully validated to Archive title and its link' );
+	}
+
+	/**
 	 * Navigate to archive page and validate it is loaded or not
 	 */
-    
 	export const validateArchivePageIsLoaded=()=> {
 		cy.url().should( 'contain', 'archive' );
 	}
@@ -49,7 +64,6 @@ const DEFALUT_YEARS = [ '2022', '2021', '2020', '2019', '2018', '2017', '2016', 
 	 * Validate year filter
 	 */
 	export const validateYearFilterDropDown=()=> {
-		cy.acceptCookieBanner();
 		//Check year filter drop down is visible
 		cy.get( YEAR_FILTER_DROP_DOWN ).should( 'be.visible' );
 		cy.get( YEAR_FILTER_DROP_DOWN ).click();
@@ -66,10 +80,9 @@ const DEFALUT_YEARS = [ '2022', '2021', '2020', '2019', '2018', '2017', '2016', 
 	}
 
 	/**
-	 * Validate saerch filter
+	 * Validate search filter
 	 */
     export const validateSearchFilter=()=> {
-		cy.acceptCookieBanner();
 		//Check search is visible
 		cy.get( SEARCH_FILTER ).should( 'be.visible' );
 		//Enter the text
@@ -78,19 +91,13 @@ const DEFALUT_YEARS = [ '2022', '2021', '2020', '2019', '2018', '2017', '2016', 
 		cy.get( SEARCH_CORE ).invoke( 'text' ).should( 'eq', 'Back to all issues in the Archive' );
 		cy.get( SEARCH_RESUTLS )
 			.invoke( 'text' ).then( ( value ) => {
-				cy.acceptCookieBanner();
 				const regex = new RegExp( EXPECTED_RESULT_VALUE_1 + VALUE + EXPECTED_RESULT_VALUE_2 );
 				expect( value ).to.match( regex );
 			} );
 		cy.get( SEARCH_CORE ).click();
-		this.validateArchivePageIsLoaded();
+		validateArchivePageIsLoaded();
 		cy.log( 'Search  is validated' );
 	}
-
-    // export const validateSocialMediaAndLoginButton=()=> {
-	// 	genericPage.validateHomePageHasSocialMediaButtonsAndLinks();
-	// 	genericPage.validateHomePageSubscribeSearchAndLoginButtoons();
-	// }
 
 	/**
 	 * Validate Back to Top button
@@ -123,31 +130,29 @@ const DEFALUT_YEARS = [ '2022', '2021', '2020', '2019', '2018', '2017', '2016', 
 		cy.go( 'back' );
 		cy.log( 'Algolia search Navigation is working' );
 	}
+
+	/**
+	 * Validate Archive careds Section 
+	 */
+	export const verifyArchiveCaredsSection=()=> {
+		cy.get( ARCHIVE_CAREDS_SECTION ).should ('be.visible')
+		cy.log( 'Archive careds should load and should be visible as expected' );
+	}
+
+	/**
+      * Validate the URL of the buy page
+      */
+	export const validateUrlOfTheSubscriptionPage=()=> {
+		//Validate the URL of Subscription page
+		cy.url().should( 'include', PATH );
+		cy.log( 'User is naviagted Subscription page' );
+	}
+
 	/**
 	 * Click Here for Not an subscriber
 	 */
 	export const validateClickHereNotSubscriber=()=> {
 		cy.get( CLICK_HERE_NOT_SUB ).click();
-		subscriptionPage.validateUrlOfTheSubscriptionPage();
+		validateUrlOfTheSubscriptionPage();
 		cy.log( 'Click Here for Not an subscriber is validated' );
-	}
-
-	/**
-	 * Validate Show more button
-	 */
-	export const verifyShowmore=()=> {
-		cy.get( ARCHIVE_CAREDS ).eq( 9 ).scrollIntoView( { duration: 3000 } );
-		cy.get( ARCHIVE_CAREDS ).eq( 12 ).scrollIntoView( { duration: 3000 } );
-		cy.get( ARCHIVE_CAREDS ).eq( 45 ).scrollIntoView( { duration: 3000 } );
-		cy.get( ARCHIVE_CAREDS ).should( 'have.length', 52 );
-		//Click on show more and check pages are appended
-		cy.get( SHOWMORE_BUTTON ).scrollIntoView( { timeout: 3000 } ).click( { force: true } );
-		cy.get( ARCHIVE_CAREDS ).eq( 45 ).scrollIntoView( { duration: 2000 } );
-		let count = 52;
-		for ( let i = 0; i <= 10; i++ ) {
-			cy.get( ARCHIVE_CAREDS ).eq( count ).scrollIntoView( { duration: 1000 } );
-			count = count + 5;
-		}
-		cy.get( ARCHIVE_CAREDS ).should( 'have.length', 104 );
-		cy.log( 'Show more is working as expected' );
 	}

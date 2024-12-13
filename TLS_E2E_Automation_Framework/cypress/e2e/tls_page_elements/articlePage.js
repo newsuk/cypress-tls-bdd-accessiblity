@@ -1,18 +1,17 @@
-/// <reference types="cypress" />
+// <reference types="cypress" />
 /**
  * Internal dependencies
  */
 // Page Elements
 const HOME_PAGE_SECOND_ARTICLE = ':nth-child(2) > .tls-card-horizontal-medium__content > .tls-card-headline > .tls-card-headline__title';
-const ARTICLE_PAGE_HEADLINE = '.tls-card-headline';
-const ARTICLE_LABEL_CATEGORY = 'article.tls-single-article span.tls-article-label__category > a';
+const ARTICLE_PAGE_HEADLINE = '.tls-headline';
+const ARTICLE_LABEL_CATEGORY = '.tls-article-label .tls-article-label__category';
 const ARTICLE_LABEL_SEPARATOR = '.tls-article-label__separator';
 const ARTICLE_LABEL_ARTICLE_TYPE = '.tls-article-label__article-type';
 const ARTICLE_SUB_TITLE = '.tls-article-intro-primary  div[role="complementary"] #tls-article-intro-primary__standfirst';
-const ARTICLE_AUTHOR_NAME = '.tls-single-article div.tls-byline > span.tls-byline__name';
-const ARTICLE_AUTHOR_NAME_WITH_BY = '.tls-single-article div.tls-byline > span.tls-byline__by';
+const ARTICLE_AUTHOR_NAME = '.tls-article-intro-primary .tls-byline';
 const ARTICLE_IMAGE = '.tls-lead-image__image';
-const ARTICLE_IMAGE_CAPTION = '.tls-media-information__caption';
+const ARTICLE_IMAGE_CAPTION = '.tls-media-information__credit';
 const ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS = '.tls-single-article__site-controls .tls-sharing__item'
 const ARTICLE_BODY = '.tls-article-body';
 const SIDE_BAR_REVIEW = 'div[class="tls-single-article__wrapper columns is-centered is-gapless is-multiline"]';
@@ -28,11 +27,6 @@ const KEEP_READING_OPTION = '.tls-aggregation__title';
 // Const or Variables
 const PAGE_ELEMENT_FILE_PATH = 'cypress/pageElementValues/articles_page_values.txt';
 const SEPARATOR = '|';
-const BY = 'By';
-const TWITTER = 'twitter';
-const FACEBOOK = 'facebook';
-const EMAIL = 'email';
-
 
 	/**
 	 * Fetch the name of the Article and Select the second article in Home
@@ -45,7 +39,6 @@ const EMAIL = 'email';
 		} );
 		//Click the 2nd article
 		cy.get( HOME_PAGE_SECOND_ARTICLE ).click();
-		// cy.acceptCookieBanner();
 		cy.log( ' Successfully Navigated to Article Page ' );
 	}
 	
@@ -82,20 +75,14 @@ const EMAIL = 'email';
 	 */
 	export const validateArticleTitleSubtitleAuthorAndImage =()=> {
 		//Validate the Article Title
-		cy.acceptCookieBanner();
 		cy.get( ARTICLE_PAGE_HEADLINE ).invoke( 'text' ).should( 'not.be.empty' );
 		//Validate the Subtitle;
 		cy.get( ARTICLE_SUB_TITLE ).invoke( 'text' ).should( 'not.be.empty' );
 		//Validate the Authorname and prefix by
 		cy.get( ARTICLE_AUTHOR_NAME ).invoke( 'text' ).should( 'not.be.empty' );
-		cy.get( ARTICLE_AUTHOR_NAME_WITH_BY ).invoke( 'text' ).then( ( value ) => {
-			expect( value.trim() ).eq( BY );
-		} );
-
 		//Validate the Article image should be visible and its cpation under image
 		cy.get( ARTICLE_IMAGE ).should( 'be.visible' );
 		cy.get( ARTICLE_IMAGE_CAPTION ).should( 'be.visible' );
-		cy.acceptCookieBanner();
 		cy.log( ' Valdiation completed for title , subtitle, author, image and its caption' );
 	}
 
@@ -103,16 +90,10 @@ const EMAIL = 'email';
 	 * Validate the Article has the socila media buttons of Facebook, twitter, email
 	 */
 	export const validateArticlePageHasSocialMediaButtons=()=> {
-		//const socialMedias = [ TWITTER, FACEBOOK, EMAIL ];
-		// Check all the social medias
-		// socialMedias.forEach( ( socialMedia ) => {
-		// 	cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS + socialMedia + ']', { timeout: 5000 } ).eq( 0 ).scrollIntoView().should( 'be.visible' );
-		// 	cy.log( 'Validations completed of Socila media of ' + socialMedia );
-		// } );
 		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(0).scrollIntoView().should( 'be.visible' );
-		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(1).scrollIntoView().should( 'be.visible' );
-		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(2).scrollIntoView().should( 'be.visible' );
-		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(3).scrollIntoView().should( 'be.visible' );
+		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(1).should( 'be.visible' );
+		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(2).should( 'be.visible' );
+		cy.get( ARTICLE_PAGE_SOCIAL_MEDIA_BUTTONS, { timeout: 10000 } ).eq(3).should( 'be.visible' );
 		cy.log( 'Validations completed of Social media of Twitter, Facebook, Email' );
 	}
 
@@ -121,7 +102,6 @@ const EMAIL = 'email';
 	 */
 	export const validateArticlePageContentWithSideBarDetails=()=> {
 		//Validate the article body//
-		cy.acceptCookieBanner();
 		cy.get( ARTICLE_BODY ).should( 'be.visible' ).should( 'not.be.empty' );
 		cy.log( 'Verified Article body' );
 		//Valiadte the Read this Issue sidebar//
@@ -131,7 +111,6 @@ const EMAIL = 'email';
 				cy.get( SIDE_BAR_LABEL ).scrollIntoView().should( 'be.visible' );
 				cy.get( SIDE_BAR_LINK ).scrollIntoView().should( 'have.attr', 'href' ).then( ( href ) => {
 					cy.request( href ).then( ( response ) => {
-						cy.acceptCookieBanner();
 						expect( response.status ).to.eq( 200 );
 					} );
 				} );
