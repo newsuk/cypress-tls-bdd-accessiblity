@@ -142,6 +142,11 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 					} );
 			} );
 		cy.log( 'Hero Block has an Large Image at left corner is displayed' );
+		// Validate Book review by hovering on book reviews
+		cy.get('.tooltip-container').trigger('mouseover')
+		cy.get('div[class*="tooltip above"]').should('be.visible')
+
+
 		//Hero block has an category
 		cy.get( HERO_BLOCK_LARGE_IMAGE_CATEGORY )
 			.should( 'have.attr', 'href' ).then( ( href ) => {

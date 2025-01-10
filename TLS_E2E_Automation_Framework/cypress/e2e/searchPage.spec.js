@@ -23,14 +23,14 @@ describe('Search Page & User click on search icon', () => {
 	/**
 	 * Search by Author name
 	 */
-	it( 'Search the Author name and validate the its results', () => {
+	it( 'Search with Author name and validate the its results', () => {
 		searchPage.verifyAuthorUsingSearchBar();
 	});
 
 	/**
 	 * Search by bookname
 	 */
-	it( 'Search the Book name and validate the its results', () => {
+	it( 'Search with Book name and validate the its results', () => {
 		searchPage.verifyBookTitleUsingSearchBar();
 	});
 

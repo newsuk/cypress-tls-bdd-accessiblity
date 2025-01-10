@@ -17,10 +17,12 @@ module.exports = defineConfig({
     prod_password: "Kavin_1711",
     prod_username_cancelled: "kavinprabu.sm+testing@news.co.uk",
     prod_password_cancelled: "Kavin_1711",
+    prod_subscribe_username: "chetana.hiremath",
+    prod_subscribe_password: "password123",
   },
   viewportWidth: 1024,
   viewportHeight: 768,
-  pageLoadTimeout: 25000,
+  pageLoadTimeout: 50000,
   retries: {
     runMode: 1,
     openMode: 0,

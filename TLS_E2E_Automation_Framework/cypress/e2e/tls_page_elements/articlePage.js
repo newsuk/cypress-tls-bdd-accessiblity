@@ -31,7 +31,6 @@ const SEPARATOR = '|';
 	/**
 	 * Fetch the name of the Article and Select the second article in Home
 	 */
-
 	export const clickSecondArtcileINHomePage= ()=> {
 		//Fetch the name of Article and store it
 		cy.get( HOME_PAGE_SECOND_ARTICLE ).then( ( articleName ) => {

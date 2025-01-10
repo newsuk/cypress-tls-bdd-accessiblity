@@ -12,7 +12,7 @@ beforeEach(() => {
 describe('Generic Page validation', () => {
 	
 	//Validate the login button,serach icon, subscribe
-	it( 'Validate Subscribe,Login button and search icon are visible', () => {
+	it( 'Validate Subscribe,Login button and search icon are visible in Home page', () => {
 		genericPage.validateHomePageSubscribeSearchAndLoginButtoons();
 	});
 
@@ -27,7 +27,7 @@ describe('Generic Page validation', () => {
 	});
 
 	//Validate Terms and Conditons at botton
-	it( 'Validate Terms and conditions, Privacy and Cookie', () => {
+	it( 'Validate Terms and conditions, Privacy and Cookie in Footer', () => {
 		genericPage.validateTermConditionPrivacyandCookieInFooter();
 	});
 
@@ -37,7 +37,7 @@ describe('Generic Page validation', () => {
 	});
 
 	//Valiate about us
-	it( 'Validate page is navigates to Aboutus and its has header and logo', () => {
+	it( 'Validate page navigates to Aboutus and its has header and logo', () => {
 		genericPage.validateAboutUs();
 	});
 });
