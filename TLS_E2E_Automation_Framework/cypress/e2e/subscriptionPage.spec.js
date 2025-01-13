@@ -12,7 +12,6 @@ beforeEach(() => {
 describe( 'Validate subscription Flow', () => {
 	
 	it( 'User clicks on Subscribe button, Validate user is navigated to Subscription page & Validate TLS logo and Text in the header ', () => {
-		subscriptionPage.clickSubsribeButtonOnTheHeader();
 		subscriptionPage.validateUrlOfTheSubscriptionPage();
 		subscriptionPage.verifyTheTlsLogoAndtextOnTheHeader();
 	});

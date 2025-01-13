@@ -19,7 +19,7 @@ const BODY_OF_FAQS_PAGE = '.tls-article-body';
 const DIGITAL_PACK = '.digital';
 const DIGITAL_IMG = 'div[class*="product best-value digital"]';
 const DIGITAL_HEADDING = '.digital > .subscription-type';
-const DIGITAL_SUBHEADDING = 'div[class*="product best-value digital"] .terms';
+const DIGITAL_SUBHEADDING = '.best-value > .terms';
 const DIGITAL_PRICE = '.digital > .price';
 const DIGITAL_TERMS = '.digital > .terms';
 const DIGITAL_BUTTON = '.best-value-cta';
@@ -42,7 +42,7 @@ const URL_OF_FREQUENTLY_ASKED_QUESTION_PAGE = 'frequently-asked-questions';
 const TEXT_QUESTION_FAQ_PANEL = 'How do I enquire about corporate subscriptions?';
 const TEXT_HEADING_OF_FAQS_PAGE = 'Frequently Asked Questions';
 const DIGITAL_HEADING_TEXT = 'Digital';
-const DIGITAL_SUBHEADING_TEXT = '£1 a month for your first 4 months, £6.99 a month thereafter';
+const DIGITAL_SUBHEADING_TEXT = '£6.99 a month thereafter';
 const ADDRESS_DETAILS = 'Flat 24, Thornewill House, Cable Street - London, E1 0AP';
 
 // Environment-specific variables
@@ -59,6 +59,10 @@ const prod_subscribe_username = Cypress.env("prod_subscribe_username");
 		//Validate the URL of Subscription page
 		cy.url().should( 'include', PATH );
 		cy.log( 'User is naviagted Subscription page' );
+	}
+	export const clickSubsribeButtonOnTheHeader=()=> {
+		//Click Subscribe button on the header
+		cy.get( SUBSCRIBE_BUTTON_ON_THE_HEADER, { timeout: 3000 } ).click();
 	}
 	/**
      * Validate the TLS logo and Text in the header of the Subscription page
