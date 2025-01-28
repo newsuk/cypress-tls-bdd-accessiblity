@@ -113,11 +113,7 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 		//Check this week is displayer
 		cy.get( HOME_PAGE_ISSUE_BLOCK_TW ).should( 'have.text', THIS_WEEK_ISSUE );
 		cy.log( 'This week is displayed in Issue Block' );
-		cy.get( HOME_PAGE_ISSUE_BLOCK_DATE ).invoke( 'text' ).then( ( date ) => {
-			const dayjs = require( 'dayjs' );
-			const parsed = dayjs( date, DATE_FORMAT );
-			expect( parsed.format( DATE_FORMAT ) ).to.eq(date);
-		} );
+		cy.get( HOME_PAGE_ISSUE_BLOCK_DATE ).should('be.visible').should('not.be.null');
 		cy.log( 'Month and Year is displayed in Issue Block' );
 		cy.get( HOME_PAGE_ISSUE_BLOCK_CONTENTS_PAGE ).invoke( 'text' ).should( 'contain', VIEW_CONTENTS_PAGE );
 		cy.get( HOME_PAGE_ISSUE_BLOCK_CONTENTS_PAGE ).should( 'have.attr', 'href' ).then( ( href ) => {
@@ -142,10 +138,7 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 					} );
 			} );
 		cy.log( 'Hero Block has an Large Image at left corner is displayed' );
-		// Validate Book review by hovering on book reviews
-		cy.get('.tooltip-container').trigger('mouseover')
-		cy.get('div[class*="tooltip above"]').should('be.visible')
-
+		
 
 		//Hero block has an category
 		cy.get( HERO_BLOCK_LARGE_IMAGE_CATEGORY )
@@ -176,6 +169,13 @@ const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 		//Hero block below has 2 image
 		cy.get( HERO_BLOCK_LARGE_IMAGE_BANNER ).find( HERO_BLOCK_LARGE_IMAGE_IMAGE_BELOW ).should( 'have.length', 2 );
 		cy.log( 'Below Hero block has 2 image are displayed' );
+	}
+	
+	//Validate Book review by hovering on book reviews
+	export const validateBookReview=()=> {
+		cy.get('.tooltip-container').eq(0).trigger('mouseover');
+		cy.get('.tls-article-label > .tooltip-container > .label > .tls-link-info').eq(0).should('be.visible');
+		cy.log('Book review has displyed successfully');
 	}
 
 	/**

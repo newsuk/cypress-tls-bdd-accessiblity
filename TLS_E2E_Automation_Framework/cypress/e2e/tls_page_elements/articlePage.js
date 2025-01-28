@@ -48,7 +48,6 @@ const SEPARATOR = '|';
 		// Validate that opened Article is opened correctly
 		cy.get( ARTICLE_PAGE_HEADLINE ).then( ( titleOfPage ) => {
 			cy.readFile( PAGE_ELEMENT_FILE_PATH ).then( ( selectedArticleName ) => {
-				console.log(titleOfPage)
 				//expect( selectedArticleName ).to.equal( titleOfPage );
 			} );
 			cy.log( ' Valdiation completed for title of Article Page ' );

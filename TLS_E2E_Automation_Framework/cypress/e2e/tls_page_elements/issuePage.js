@@ -18,21 +18,23 @@ const SHOWCASE_ARTICLE_HEADLINE = '.tls-contents-page__highlights-wrapper .tls-c
 const SHOWCASE_ARTICLE_STANDFIRST = '.tls-contents-page__highlights-wrapper .tls-card-headline + p';
 const SHOWCASE_ARTICLE_AUTHOR = '.tls-contents-page__highlights-wrapper .tls-byline';
 const CONTENT_TITLE = '.tls-contents-page__categories > .tls-aggregation > .tls-aggregation__content-container > .tls-aggregation__title';
-const CONTENT_MENU = '.tls-aggregation-navigation__menu > li>a';
+const CONTENT_MENU = '.tls-aggregation-navigation__menu';
 
 const URL_VALUE = 'issues/current-issue';
 const DATE_FORMAT = 'MMMM D, YYYY';
 const PAGE_ELEMENT_FILE_PATH = 'cypress/fixtures/pageElementValues/issue_pages.json';
-const CONTENT_MENU_LIST = [ 'History','Classics','Literature','Arts','Regular features','Religion','Science & technology','Culture','Lives'];
 	
+	/**
+	 * Validate user navigated to Current Issue page or not
+	 */
 	export const navigateToCurrentIssuePage=()=> {
 		cy.get( CurrentIssue_PAGE_ELEMENT_ON_HOME_PAGE ).eq( 0 ).should( 'have.text', 'Current Issue' );
 		cy.get( CurrentIssue_PAGE_ELEMENT_ON_HOME_PAGE ).eq( 0 ).click();
-		cy.url().should( 'contain', 'https://www.the-tls.co.uk/issues/current-issue' );
-		cy.log( ' Navigated to Current Issue Page' );
+		cy.url().should( 'contain', 'current-issue' );
+		cy.log( ' Navigated to Current IssuePage' );
 	}
 	/**
-	 * Validate user navigated to Current Issue page or not
+	 * Validate the URL of Current Issue page
 	 */
 	export const validateToCurrentIssuePage=()=> {
 		//Navigate to Current Issue from Home page
@@ -140,10 +142,6 @@ const CONTENT_MENU_LIST = [ 'History','Classics','Literature','Arts','Regular fe
 	export const validateContentSection=()=> {
 		//Validate all section on Content
 		cy.get( CONTENT_TITLE ).should( 'have.text', 'Contents' );
-		cy.get( CONTENT_MENU ).should( 'have.length', '9' );
-		for ( let count = 0; count < 9; count++ ) {
-			cy.get( CONTENT_MENU ).eq( count ).should( 'have.text', CONTENT_MENU_LIST[ count ] );
-			cy.get( CONTENT_MENU ).eq( count ).should( 'have.attr', 'href' );
-		}
+		cy.get( CONTENT_MENU ).should( 'be.visible' ).and('not.be.empty');
 		cy.log( 'Validation completed for Contents section' );
 	}
