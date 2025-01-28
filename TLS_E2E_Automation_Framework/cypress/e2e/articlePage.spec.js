@@ -15,8 +15,9 @@ beforeEach(() => {
 			articlePage.getHeadlineOfArtcilePage();
 		}); 
 			
-		it( 'Validate the Article has content and other details like title, subtitles,image and author, with prefix by, lead image and its caption', () => {
-			articlePage.validateArticleTitleSubtitleAuthorAndImage();
+		it( 'Validate the Article has content and other details like title, subtitles,image and author, with prefix by, lead image and its caption and validate breadcrum of the article', () => {
+			articlePage.validateArticleTitleSubtitleAuthorAndImageAndBreadcrum();
+
 		});
 
 		it( 'Validate the category, separator And Article type', () => {

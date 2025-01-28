@@ -23,10 +23,12 @@ const BOOK_DETAILS = '.tls-book-details__unit';
 const BOOK_DETAILS_HEADINGS = '.tls-component-heading';
 const LONG_READS = 'div[class="tls-single-article__wrapper columns is-centered is-gapless is-multiline"] > div >div>a';
 const KEEP_READING_OPTION = '.tls-aggregation__title';
+const verifyHomeBreadcrum =".tls-single-articles__breadcrumbs";
 
 // Const or Variables
 const PAGE_ELEMENT_FILE_PATH = 'cypress/pageElementValues/articles_page_values.txt';
 const SEPARATOR = '|';
+
 
 	/**
 	 * Fetch the name of the Article and Select the second article in Home
@@ -71,7 +73,7 @@ const SEPARATOR = '|';
 	/**
 	 * Validate the Article tile, subtitle , author, image and its caption
 	 */
-	export const validateArticleTitleSubtitleAuthorAndImage =()=> {
+	export const validateArticleTitleSubtitleAuthorAndImageAndBreadcrum =()=> {
 		//Validate the Article Title
 		cy.get( ARTICLE_PAGE_HEADLINE ).invoke( 'text' ).should( 'not.be.empty' );
 		//Validate the Subtitle;
@@ -81,6 +83,7 @@ const SEPARATOR = '|';
 		//Validate the Article image should be visible and its cpation under image
 		cy.get( ARTICLE_IMAGE ).should( 'be.visible' );
 		cy.get( ARTICLE_IMAGE_CAPTION ).should( 'be.visible' );
+		cy.get( verifyHomeBreadcrum ).should('be.visible').should('not.be.empty');
 		cy.log( ' Valdiation completed for title , subtitle, author, image and its caption' );
 	}
 
@@ -140,5 +143,3 @@ const SEPARATOR = '|';
 		cy.get( KEEP_READING_OPTION ).should( 'be.visible' );
 		cy.log( 'Keep reading is exist and Verified' );
 	}
-
-
