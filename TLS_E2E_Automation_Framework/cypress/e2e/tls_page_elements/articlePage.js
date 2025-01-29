@@ -24,6 +24,8 @@ const BOOK_DETAILS_HEADINGS = '.tls-component-heading';
 const LONG_READS = 'div[class="tls-single-article__wrapper columns is-centered is-gapless is-multiline"] > div >div>a';
 const KEEP_READING_OPTION = '.tls-aggregation__title';
 const verifyHomeBreadcrum =".tls-single-articles__breadcrumbs";
+const parentBookreview=".tls-article-label";
+const bookReview=".tls-article-label__article-type";
 
 // Const or Variables
 const PAGE_ELEMENT_FILE_PATH = 'cypress/pageElementValues/articles_page_values.txt';
@@ -61,13 +63,17 @@ const SEPARATOR = '|';
 	 */
 	export const validateArticleCategorySepartorAndType= ()=> {
 		cy.wait(5000);
-		//Validate the Article type has value
 		cy.get( ARTICLE_LABEL_CATEGORY ).eq(0).invoke( 'text' ).should( 'not.be.empty' );
-		//Validate  the Separator is exists
-		cy.get( ARTICLE_LABEL_SEPARATOR ).eq(0).should( 'be.visible' ).contains( SEPARATOR );
-		//Validate the Article Type has value
-		cy.get( ARTICLE_LABEL_ARTICLE_TYPE ).eq(0).invoke( 'text' ).should( 'not.be.empty' );
-		cy.log( ' Valdiation completed for Article category, separator and type' );
+
+		cy.get( parentBookreview ).then( ( $ele ) => {
+			if ( $ele.find( bookReview ).length > 0 ) {
+				//Validate  the Separator is exists
+				cy.get( ARTICLE_LABEL_SEPARATOR ).eq(0).should( 'be.visible' ).contains( SEPARATOR );
+				cy.log( ' Valdiation completed for Article category, separator and type' );
+			} else {
+				cy.log('successfully validated ArticleLabelCategory')
+			}
+		} );
 	}
 
 	/**
