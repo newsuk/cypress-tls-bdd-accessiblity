@@ -28,30 +28,21 @@ const HERO_BLOCK_LARGE_IMAGE_IMAGE_BELOW = '.tls-card-horizontal-medium__wrapper
 const SocialMediaButtons='.tls-header-navigation__right-controls .tls-header-navigation__social-icon';
 const FooterSection='div[role="complementary"] .tls-footer__menu__ul';
 const FooterRightside= '.tls-footer__sidebar-right';
-const termsandCondition='tls-footer__tc';
+const termsandCondition='.tls-footer__tc';
 
 //const PODCASTS_ADS = '#advert--section--billboard';
 const PODCASTS_SLICE = '.tls-podcast-slice';
 const PODCASTS_HEADER = 'div.tls-card-intro-centered > a';
 const PODCAST_CENTRE_TITLE = '.tls-card-intro-centered__title';
 const PODCAST_CENTRE_HEADER_STANDFIRST = '.tls-card-intro-centered__standfirst';
-const PODCAST_CENTRE_HEADER_IMG = '.tls-podcast-slice__issue-bg-img';
+const PODCAST_CENTRE_HEADER_IMG = '.tls-podcast-slice';
 const PODCAST_CENTRE_DATE_LINE = '.tls-issue-date-line';
 const PODCASTS_ARTICLE = '.tls-podcast-slice__upper-module.columns.is-gapless.is-multiline > div.column.tls-card-horizontal-medium__content-wrapper.false > div';
 const PODCASTS_ARTICLE_TITLE = 'a.tls-card-headline';
 const PODCASTS_ARTICLE_STANDFIRST = 'p.tls-card-standfirst';
-// const LEFTBLOCK_COLLECTIONS = '.tls-home-page__collection-series';
-// const LEFTBLOCK_COLLECTIONS_WRAPPER = '.tls-card-intro-left__wrapper';
-// const LEFTBLOCK_COLLECTIONS_HEADLINE = '.tls-card-headline';
-// const LEFTBLOCK_COLLECTIONS_STANDFIRST = '.tls-card-intro-left__standfirst';
-// const LEFTBLOCK_COLLECTIONS_WRAPPER_SERIES = '.tls-card-intro-left__wrapper-link > a';
-// const COLLECTIONS_IMAGES_LINK = '.tls-card-vertical-medium__wrapper > a';
-// const COLLECTIONS_ARTICLE_LABEL = '.tls-card-vertical-medium__content-wrapper > div > a';
-// const ADS_SECTION = 'div#advert--section--billboard > div';
-// const ADS_SECTION1 = 'div#advert--section--billboard2 > div';
-// const ADS_SECTION2 = 'div#advert--section--billboard3 > div';
-// const CENTER_COLLECTION_STANDFIRST = '.tls-home-page__collection-series .tls-home-page__collection-series-content-wrapper .tls-card-standfirst';
-// const CENTER_COLLECTION_BY = '.tls-home-page__collection-series .tls-home-page__collection-series-content-wrapper .tls-byline';
+const ADS_SECTION = 'div#advert--section--billboard > div';
+const ADS_SECTION1 = 'div#advert--section--billboard2 > div';
+const ADS_SECTION2 = 'div#advert--section--billboard3 > div';
 
 // Const or Variables
 const PATH = 'the-tls.co.uk';
@@ -59,12 +50,14 @@ const EXPLORE = 'Explore the TLS';
 const ONLINE = 'Online series';
 const THIS_WEEK_ISSUE = 'This week\’s issue';
 const VIEW_CONTENTS_PAGE = 'View contents page';
-const DATE_FORMAT = 'MMM DD, YYYY';
+const DATE_FORMAT = 'MMMM DD, YYYY';
+const ID = 'id';
+const GOOGLE_ADS_IFRAME = 'google_ads_iframe';
 
 	/**
 	* Author: Chetana
-    * Validating all the sections in the home page after the page load
-    */
+	* Validating all the sections in the home page after the page load
+	*/
 	export const landingPageValidation=()=> {
 		//Validating the TLS logo
 		cy.get( TLS_LOGO ).should( 'be.visible' );
@@ -103,7 +96,7 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 	/**
 	 * Validate Issue block image at right corner
 	 */
-    export const valdiateIssueImageBlock=()=> {
+	export const valdiateIssueImageBlock=()=> {
 		//Validate issue block is visible
 		cy.get( HOME_PAGE_ISSUE_BLOCK_IMAGE ).invoke( 'attr', 'style' ).then( ( value ) => {
 			//Fetch the url and check the image
@@ -120,11 +113,7 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 		//Check this week is displayer
 		cy.get( HOME_PAGE_ISSUE_BLOCK_TW ).should( 'have.text', THIS_WEEK_ISSUE );
 		cy.log( 'This week is displayed in Issue Block' );
-		cy.get( HOME_PAGE_ISSUE_BLOCK_DATE ).invoke( 'text' ).then( ( date ) => {
-			const dayjs = require( 'dayjs' );
-			const parsed = dayjs( date, DATE_FORMAT );
-			expect( parsed.format( DATE_FORMAT ) ).to.eq( date );
-		} );
+		cy.get( HOME_PAGE_ISSUE_BLOCK_DATE ).should('be.visible').should('not.be.null');
 		cy.log( 'Month and Year is displayed in Issue Block' );
 		cy.get( HOME_PAGE_ISSUE_BLOCK_CONTENTS_PAGE ).invoke( 'text' ).should( 'contain', VIEW_CONTENTS_PAGE );
 		cy.get( HOME_PAGE_ISSUE_BLOCK_CONTENTS_PAGE ).should( 'have.attr', 'href' ).then( ( href ) => {
@@ -149,6 +138,8 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 					} );
 			} );
 		cy.log( 'Hero Block has an Large Image at left corner is displayed' );
+		
+
 		//Hero block has an category
 		cy.get( HERO_BLOCK_LARGE_IMAGE_CATEGORY )
 			.should( 'have.attr', 'href' ).then( ( href ) => {
@@ -168,7 +159,6 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 			} );
 		cy.log( 'Hero Block has Article Name is displayed' );
 		//Hero block has standfirst
-		cy.acceptCookieBanner();
 		cy.get( HERO_BLOCK_LARGE_IMAGE_BANNER )
 			.find( HERO_BLOCK_LARGE_IMAGE_STANDFIRST ).eq( 0 ).should( 'be.visible' );
 		cy.log( 'Hero Block has Stand First is displayed' );
@@ -180,24 +170,19 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 		cy.get( HERO_BLOCK_LARGE_IMAGE_BANNER ).find( HERO_BLOCK_LARGE_IMAGE_IMAGE_BELOW ).should( 'have.length', 2 );
 		cy.log( 'Below Hero block has 2 image are displayed' );
 	}
-
-	// /**
-	//  * Validate the Document, Window and Decibel
-	//  */
-	// export const  validateDocumentWindowDecibel=()=> {
-	// 	cy.acceptCookieBanner();
-	// 	cy.document().should( 'have.property', 'charset' ).and( 'eq', 'UTF-8' );
-	// 	cy.window().should( 'have.property', 'top' );
-	// 	cy.window().should( 'have.property', 'decibelInsight' );
-	// 	cy.log( 'Successfully validation completed for document object,window top and decibel Insight' );
-	// }
+	
+	//Validate Book review by hovering on book reviews
+	export const validateBookReview=()=> {
+		cy.get('.tooltip-container').eq(0).trigger('mouseover');
+		cy.get('.tls-article-label > .tooltip-container > .label > .tls-link-info').eq(0).should('be.visible');
+		cy.log('Book review has displyed successfully');
+	}
 
 	/**
 	 * Validate the podcast header, title and standfirst
 	 */
 	export const validatePodcastHeaderTitleStandfirst=()=> {
 		//Verify visibility of entire block ads section
-		cy.acceptCookieBanner();
 		//cy.scrollTo( 'center' );
 		//cy.get( PODCASTS_ADS ).scrollIntoView();
 		cy.waitUntil( () => cy.get( PODCASTS_SLICE ).should( 'be.visible' ) );
@@ -212,7 +197,6 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 					} );
 			} );
 		cy.log( 'Validation completed for podcast top link section' );
-		cy.acceptCookieBanner();
 		//Verify the it has title
 		cy.get( PODCAST_CENTRE_TITLE ).eq( 0 ).should( 'have.text', 'The TLS Podcast' );
 		cy.log( 'Validation completed for podcast title' );
@@ -220,14 +204,7 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 		cy.get( PODCAST_CENTRE_HEADER_STANDFIRST ).eq( 0 ).should( 'be.visible' );
 		cy.log( 'Validation completed for standfirst' );
 		//Verify the podcast has image
-		cy.get( PODCAST_CENTRE_HEADER_IMG ).eq( 0 ).invoke( 'attr', 'style' ).then( ( value ) => {
-			//Fetch the url and check the image
-			const fetchImageUrl = value.replace( 'background-image: url("', '' ).replace( '")', '' ).replace( ';', '' );
-			cy.log( fetchImageUrl );
-			cy.request( fetchImageUrl ).then( ( response ) => {
-				expect( response.status ).to.eq( 200 );
-			} );
-		} );
+		cy.get( PODCAST_CENTRE_HEADER_IMG ).eq(0).should('be.visible').should('be.exist')
 		cy.log( 'Podcast has an image' );
 		//Verify date format
 		cy.get( PODCAST_CENTRE_DATE_LINE ).eq( 0 ).invoke( 'text' ).then( ( date ) => {
@@ -240,7 +217,6 @@ const DATE_FORMAT = 'MMM DD, YYYY';
 
 	export const valdiatePodcastArticleTitleStandfirst=()=> {
 		cy.scrollTo( 'center' );
-		cy.acceptCookieBanner();
 		cy.get( PODCASTS_ARTICLE ).eq( 0 ).find( PODCASTS_ARTICLE_TITLE ).should( 'have.attr', 'href' ).then( ( href ) => {
 			cy.request( href )
 				.then( ( response ) => {

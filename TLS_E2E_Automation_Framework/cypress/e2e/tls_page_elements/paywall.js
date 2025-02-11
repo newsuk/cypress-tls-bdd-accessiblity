@@ -31,7 +31,7 @@ function performLogin(userName, password) {
 }
 
 // Function to handle the newsletter banner, scroll, and close if visible
-export function closeNewsletterBanner() {
+export const closeNewsletterBanner=()=> {
   let scrollPosition = 1000;
   const scrollIncrement = 200;
   const maxScrollHeight = 2500;
