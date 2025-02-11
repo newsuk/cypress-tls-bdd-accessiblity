@@ -48,6 +48,7 @@ export const closeNewsletterBanner=()=> {
           0 &&
         cy.xpath(newsLetter).should("be.visible")
       ) {
+        cy.log("news letter pop up is present on article page");
         cy.xpath(newsLetterButton).click(); // Close the newsletter
       } else if (scrollPosition <= maxScrollHeight) {
         // Continue scrolling if the popup is not found
