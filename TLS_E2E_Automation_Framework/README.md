@@ -43,7 +43,7 @@ This will launch the Cypress Test Runner in interactive mode.
 2. Running Cypress testcases in PRODUCTION:
 
 bash: ./node_modules/.bin/cypress open --env ENV=prod
-This will run all the tests in the background, useful for continuous integration.
+This will launch the Cypress Test Runner in interactive mode.
 
 Writing Tests: Cypress tests are located in the cypress/integration directory. 
 Here's an example of a simple test:
