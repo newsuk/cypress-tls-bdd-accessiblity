@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: cypress-tls-bdd-accessiblity
+  description: Component for cypress-tls-bdd-accessiblity
+  annotations:
+    circleci.com/project-slug: github/newsuk/cypress-tls-bdd-accessiblity
+    backstage.io/source-location: url:https://github.com/newsuk/cypress-tls-bdd-accessiblity/
+    github.com/team-slug: newsuk/cypress-tls-bdd-accessiblity
+    backstage.io/productivity-hub-metrics-enabled: 'true'
+  tags:
+    - bu:newsuk
+spec:
+  type: service
+  lifecycle: production
+  owner: nuk
